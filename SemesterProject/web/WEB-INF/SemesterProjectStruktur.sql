@@ -1,3 +1,4 @@
+CREATE DATABASE semesterproject;
 USE semesterproject;
 DROP TABLE if exists buildings;
 
