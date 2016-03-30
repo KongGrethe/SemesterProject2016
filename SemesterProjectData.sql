@@ -1,2 +1,3 @@
-USE semesteproject;
+USE semesterproject;
 
+USE semesterproject;
