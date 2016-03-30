@@ -1,3 +1,1 @@
 USE semesterproject;
-
-USE semesterproject;
