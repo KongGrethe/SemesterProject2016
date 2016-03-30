@@ -11,7 +11,7 @@ package DataAccess;
  */
 public class DBConnector {
     	public static String driver = "com.mysql.jdbc.Driver";
-	public static String URL    = "jdbc:mysql://localhost/xxxxxxx"; //"jdbc:mysql://localhost/JDBCWebDB" ;
+	public static String URL    = "jdbc:mysql://localhost/semesterproject"; //"jdbc:mysql://localhost/JDBCWebDB" ;
 	public static String ID     = "root";
 	public static String PW     = "xxxxxxxxxxxxx"; // put ya cod for ya server in
 }
