@@ -8,7 +8,7 @@ CREATE TABLE buildings(
     bid INT(2),
     bname VARCHAR(20),
     baddress VARCHAR(20),
-    parcelNr INT(2),
+    parcelnr INT(2),
     bsize DOUBLE(2,0),
     bfplan INT(2),
     condLvl INT(2)
