@@ -5,19 +5,19 @@ DROP TABLE if exists customer;
 
 
 CREATE TABLE buildings(
-    bid INT(2),
-    bname VARCHAR(20),
-    baddress VARCHAR(20),
-    parcelnr INT(2),
-    bsize DOUBLE(2,0),
-    bfplan INT(2),
+    bID INT(2),
+    bName VARCHAR(20),
+    bAddress VARCHAR(20),
+    parcelNr INT(2),
+    bSize DOUBLE(2,0),
+    bfPlan INT(2),
     condLvl INT(2)
 );
 
 CREATE TABLE customer(
-    cid INT(3),
-    cfname VARCHAR(30),
-    clname VARCHAR(30),
+    cID INT(3),
+    cFname VARCHAR(30),
+    cLname VARCHAR(30),
     cpw INT(3)
 );
 
