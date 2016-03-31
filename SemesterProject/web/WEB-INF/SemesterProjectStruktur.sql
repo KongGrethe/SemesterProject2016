@@ -16,8 +16,9 @@ CREATE TABLE buildings(
 
 CREATE TABLE customer(
     cid INT(3),
-    cname VARCHAR (30),
-    cpw INT (3)
+    cfname VARCHAR(30),
+    clname VARCHAR(30),
+    cpw INT(3)
 );
 
 SELECT * FROM buildings;
