@@ -1,6 +1,8 @@
-CREATE DATABASE semesterproject;
+-- CREATE DATABASE semesterproject;
 USE semesterproject;
 DROP TABLE if exists buildings;
+DROP TABLE if exists customer;
+
 
 CREATE TABLE buildings(
     bid INT(2),
@@ -8,7 +10,15 @@ CREATE TABLE buildings(
     baddress VARCHAR(20),
     parcelnumb INT(2),
     bsize DOUBLE(2,0),
+    bfplan INT(2),
     conditionlvl INT(2)
 );
 
+CREATE TABLE customer(
+    cid INT(3),
+    cname VARCHAR (30),
+    cpw INT (3)
+);
+
 SELECT * FROM buildings;
+SELECT * FROM customer;
