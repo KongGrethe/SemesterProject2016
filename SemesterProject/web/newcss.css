@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02-04-2016, 17:22:56
+    Author     : Lasse
+*/
+
+* {
+    font-family: Arial;
+}
+table {
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 0.5em;
+}
+a {
+    color: blue; /*Så links altid er blå, uanset om de er besøgt før*/
+}
+a:hover {
+    color: orange;
+}
+.storliste {
+    border: none;
+}
+.storliste td, .storliste th {
+    padding: 1em;
+}
+.storliste tr th {
+    border-bottom: 1px solid lightgrey;
+}
+.cndGood {
+    background: #CCFFCC;
+    font-weight: bold;
+    border: 1px solid darkgreen;
+    padding: 2px;
+    border-radius: 2px;
+    text-align: center;
+}
+.cndBad {
+    background: #FFCCCC;
+    font-weight: bold;
+    border: 1px solid darkred;
+    padding: 2px;
+    border-radius: 2px;
+    text-align: center;
+}
