@@ -14,25 +14,36 @@ and open the template in the editor.
     <body>
         <fieldset>
             <legend> <img src="http://www.polygongroup.com/UI/build/svg/polygon-logo.svg"> </legend>
-            <div> her er der 5 gang den samme knap </div>
-            <form action="loginside.jsp" method="POST">
+            <div> Velkommmen til Polygon info/frontpage der er knapper til at komme der hen du vil eller info om Polygon </div>
+            <form action="" method="POST">
                 <input
                     type="submit"
-                    name="Loginsiden"
+                    formaction="loginside.jsp"
                     value="Loginsiden">
                 <input
                     type="submit"
-                    value="Loginsiden">
+                    formaction="bygningsliste.jsp"
+                    value="Bygnings list">
                 <input
-                    type="submit"
-                    value="Loginsiden">
+                    type="button"
+                    onclick="fun()"
+                    value="Info om os">
                 <input
-                    type="submit"
-                    value="Loginsiden">
-                <input
-                    type="submit"
-                    value="Loginsiden">
+                    type="button"
+                    onclick="fun2()"
+                    value="kontakt">
             </form>
+            <p id="demo"></p>
         </fieldset>
+        <script>
+        function fun() 
+        {
+            document.getElementById("demo").innerHTML = "MONEY LOT OF EM";
+        }
+        function fun2() 
+        {
+            document.getElementById("demo").innerHTML = "du kan kontakt os via telefon på 11223344 /Eller Email stop@this.shit";
+        }
+        </script>
     </body>
 </html>
