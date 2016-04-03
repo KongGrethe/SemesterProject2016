@@ -9,14 +9,14 @@ DROP TABLE if exists users;
 
 
 CREATE TABLE users(
-	uID INT(1) PRIMARY KEY,
+    uID INT(1) PRIMARY KEY,
     userName VARCHAR(10),
     upw INT(1),
-    userRole ENUM('')
+    userRole ENUM('employee', 'customer')
 );
 
 CREATE TABLE employee(
-	eID INT(2) PRIMARY KEY,
+    eID INT(2) PRIMARY KEY,
     eFname VARCHAR(20),
     eLname VARCHAR(20),
     epw INT(2),
@@ -25,7 +25,7 @@ CREATE TABLE employee(
 );
 
 CREATE TABLE customer(
-	cID INT(3) PRIMARY KEY,
+    cID INT(3) PRIMARY KEY,
     cFname VARCHAR(30),
     cLname VARCHAR(30),
     cpw INT(3),
@@ -37,7 +37,7 @@ CREATE TABLE customer(
 );
 
 CREATE TABLE buildings(
-	bID INT(4) PRIMARY KEY,
+    bID INT(4) PRIMARY KEY,
     bName VARCHAR(40),
     bAddress VARCHAR(40),
     parcelNr INT(4),
@@ -49,7 +49,7 @@ CREATE TABLE buildings(
 );
 
 CREATE TABLE checkup(
-	decay VARCHAR(50),
+    decay VARCHAR(50),
     FK_bID INT(5),
     FK_eID INT(5),
     FOREIGN KEY(FK_bID) REFERENCES buildings(bID),
