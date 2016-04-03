@@ -19,14 +19,15 @@ public class Building {
         this.condLvl = condLvl;
     }
 
-    public Building (String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl) {
-        this.bName = bName;
-        this.bAddress = bAddress;
-        this.parcelNr = parcelNr;
-        this.bSize = bSize;
-        this.bfPlan = bfPlan;
-        this.condLvl = condLvl;
-    }
+    // HVORFOR ER DER TO? 
+//    public Building (String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl) {
+//        this.bName = bName;
+//        this.bAddress = bAddress;
+//        this.parcelNr = parcelNr;
+//        this.bSize = bSize;
+//        this.bfPlan = bfPlan;
+//        this.condLvl = condLvl;
+//    }
     
     public int getbID() {
         return bID;

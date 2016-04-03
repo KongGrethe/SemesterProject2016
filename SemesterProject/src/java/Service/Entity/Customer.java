@@ -14,12 +14,12 @@ public class Customer {
         this.cLname = cLname;
         this.cpw = cpw;
     }
-    
-    public Customer (String cFname, String cLname, int cpw) {
-        this.cFname = cFname;
-        this.cLname = cLname;
-        this.cpw = cpw;
-    }
+    // HVORFOR ER DER TO? 
+//    public Customer (String cFname, String cLname, int cpw) {
+//        this.cFname = cFname;
+//        this.cLname = cLname;
+//        this.cpw = cpw;
+//    }
 
     public int getcId() {
         return cId;
