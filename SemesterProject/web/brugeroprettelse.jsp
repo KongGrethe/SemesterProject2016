@@ -1,7 +1,7 @@
 <%-- 
     Document   : brugeroprettelse
     Created on : 03-04-2016, 15:22:06
-    Author     : Lasse
+    Author     : Lasse & Christian
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,11 +14,29 @@
     </head>
     <body>
         <!-- her skal også være plads til en fejlbesked om at brugernavnet er taget -->
-        <h1>Brugeroprettelse.</h1>
+        <h1>Brugeroprettelse</h1>
         <form>
-            <input type="text" name="username" autocomplete="off">
-            <input type="password" name="password" autocomplete="off">
-            <input type="submit" name="Submit">
+            <table>
+                <tr>
+                    <td>
+                        Brugernavn:
+                    </td>
+                    <td>
+                        Password:
+                    </td>
+                </tr>
+                <tr>
+                    <td>                        
+                        <input type="text" name="username" autocomplete="off">
+                    </td>
+                    <td>
+                        <input type="password" name="password" autocomplete="off">
+                    </td>
+                    <td>
+                        <input type="submit" name="Submit" value="Opret">
+                    </td>
+                </tr>   
+            </table>
         </form>
     </body>
 </html>
