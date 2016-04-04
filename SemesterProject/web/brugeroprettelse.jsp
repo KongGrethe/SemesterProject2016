@@ -13,6 +13,7 @@
         <title>Opret bruger</title>
     </head>
     <body>
+        
         <!-- her skal også være plads til en fejlbesked om at brugernavnet er taget -->
         <h1>Brugeroprettelse</h1>
         <form>

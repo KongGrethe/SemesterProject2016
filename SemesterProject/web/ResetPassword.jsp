@@ -22,8 +22,7 @@
             <tr>
                 <td>E-mail</td>
                 <td><input type="text" name="email" autocomplete="off"></td>
-                <% if(request.getAttribute("email"))
-                %>
+               
             </tr>
             <tr>
                 <td colspan="2" align="right"><input type="submit" name="Indsend" autocomplete="off"></td>
