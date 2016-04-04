@@ -29,7 +29,6 @@ CREATE TABLE customer(
     cFname VARCHAR(30),
     cLname VARCHAR(30),
     cpw VARCHAR(7),
-    eID INT(7) UNIQUE KEY,
     FK_uID INT(7),
     FK_eID INT(7),
     FOREIGN KEY (FK_uID) REFERENCES users(uID),
