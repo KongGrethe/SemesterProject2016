@@ -6,8 +6,8 @@ package Service.Interface;
  */
 public interface IUpdate {
     boolean updateBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl);
-    boolean updateCustomer(String cFname, String cLname, int cpw);
-    boolean updateUser(String userName, int upw);
-    boolean updateEmployee(String eFname, String eLname, int epw, int FK_uID);
+    boolean updateCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID);
+    boolean updateUser(String userName, String upw, String userRole);
+    boolean updateEmployee(String eFname, String eLname, String epw, int FK_uID);
     boolean updateCheckup(String decay, int FK_bID, int FK_eID);
 }

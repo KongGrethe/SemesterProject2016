@@ -5,10 +5,10 @@ package Service.Entity;
  * This class is for the Customer object within the database.
  */
 public class Customer {
-    int cId, cpw, eID, FK_eID, FK_cID;
-    String cFname, cLname;
+    int cId, eID, FK_eID, FK_cID;
+    String cFname, cLname, cpw;
     
-    public Customer(int cId, String cFname, String cLname, int cpw, int eID, int FK_eID, int FK_cID) {
+    public Customer(int cId, String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
         this.cId = cId;
         this.cFname = cFname;
         this.cLname = cLname;
@@ -20,7 +20,7 @@ public class Customer {
     
     // HVORFOR ER DER TO? 
     // Der er to hvis vi skal lave et objekt i programmet. Customerens ID kan laves til en auto increment.
-    public Customer(String cFname, String cLname, int cpw, int eID, int FK_eID, int FK_cID) {
+    public Customer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
         this.cFname = cFname;
         this.cLname = cLname;
         this.cpw = cpw;
@@ -53,11 +53,11 @@ public class Customer {
         this.cLname = cLname;
     }
     
-    public int getCpw() {
+    public String getCpw() {
         return cpw;
     }
 
-    public void setCpw(int cpw) {
+    public void setCpw(String cpw) {
         this.cpw = cpw;
     }
 }
