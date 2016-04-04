@@ -9,49 +9,49 @@ DROP TABLE if exists users;
 
 
 CREATE TABLE users(
-    uID INT(1) PRIMARY KEY,
-    userName VARCHAR(10),
-    upw INT(1),
+    uID INT(7) PRIMARY KEY,
+    userName VARCHAR(30),
+    upw VARCHAR(30),
     userRole ENUM('employee', 'customer')
 );
 
 CREATE TABLE employee(
-    eID INT(2) PRIMARY KEY,
-    eFname VARCHAR(20),
-    eLname VARCHAR(20),
-    epw INT(2),
-    FK_uID INT(2),
+    eID INT(7) PRIMARY KEY,
+    eFname VARCHAR(30),
+    eLname VARCHAR(30),
+    epw VARCHAR(30),
+    FK_uID INT(7),
     FOREIGN KEY (FK_uID) REFERENCES users(uID)
 );
 
 CREATE TABLE customer(
-    cID INT(3) PRIMARY KEY,
+    cID INT(7) PRIMARY KEY,
     cFname VARCHAR(30),
     cLname VARCHAR(30),
-    cpw INT(3),
-    eID INT(3) UNIQUE KEY,
-    FK_uID INT(3),
-    FK_eID INT(3),
+    cpw VARCHAR(7),
+    eID INT(7) UNIQUE KEY,
+    FK_uID INT(7),
+    FK_eID INT(7),
     FOREIGN KEY (FK_uID) REFERENCES users(uID),
     FOREIGN KEY (FK_eID) REFERENCES employee(eID)
 );
 
 CREATE TABLE buildings(
-    bID INT(4) PRIMARY KEY,
-    bName VARCHAR(40),
-    bAddress VARCHAR(40),
-    parcelNr INT(4),
-    bSize DOUBLE(4,0),
-    bfPlan INT(4),
-    condLvl INT(4),
-    FK_cID INT(4),
+    bID INT(7) PRIMARY KEY,
+    bName VARCHAR(30),
+    bAddress VARCHAR(30),
+    parcelNr INT(7),
+    bSize DOUBLE(7,2),
+    bfPlan INT(7),
+    condLvl INT(7),
+    FK_cID INT(7),
     FOREIGN KEY (FK_cID) REFERENCES customer(cID)
 );
 
 CREATE TABLE checkup(
-    decay VARCHAR(50),
-    FK_bID INT(5),
-    FK_eID INT(5),
+    decay VARCHAR(30),
+    FK_bID INT(7),
+    FK_eID INT(7),
     FOREIGN KEY(FK_bID) REFERENCES buildings(bID),
     FOREIGN KEY(FK_eID) REFERENCES employee(eID)
 );
