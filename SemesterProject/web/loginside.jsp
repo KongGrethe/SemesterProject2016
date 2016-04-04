@@ -1,7 +1,7 @@
 <%-- 
     Document   : loginside
     Created on : 02-04-2016, 17:12:32
-    Author     : Lasse
+    Author     : Lasse & Christian
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,7 +29,9 @@
                         <td><input type="password" name="password" autocomplete="off"></td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center"><input type="submit" value="Login"></td>
+                        <td  align="center"><input type="submit" value="Login"></td>
+                        <td  align="right"><a href="ResetPassword.jsp">Glemt Password?</a></td>
+                    
                     </tr>
                 </form>
             </table>
