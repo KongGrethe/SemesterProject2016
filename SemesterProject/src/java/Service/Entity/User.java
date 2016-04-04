@@ -6,17 +6,17 @@ package Service.Entity;
  */
 public class User {
     
-    int uID, upw;
-    String userName, userRole;
+    int uID;
+    String userName, userRole, upw;
     
-    public User(int uID, String userName, int upw, String userRole) {
+    public User(int uID, String userName, String upw, String userRole) {
         this.uID = uID;
         this.userName = userName;
         this.upw = upw;
         this.userRole = userRole;
     }
     
-    public User(String userName, int upw, String userRole) {
+    public User(String userName, String upw, String userRole) {
         this.userName = userName;
         this.upw = upw;
         this.userRole = userRole;
@@ -38,11 +38,11 @@ public class User {
         this.userName = userName;
     }
     
-    public int getUpw() {
+    public String getUpw() {
         return upw;
     }
 
-    public void setUpw(int upw) {
+    public void setUpw(String upw) {
         this.upw = upw;
     }
 

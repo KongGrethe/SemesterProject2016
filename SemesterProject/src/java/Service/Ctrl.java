@@ -38,17 +38,17 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean createCustomer(String cFname, String cLname, int cpw) {
+    public boolean createCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean createUser(String userName, int upw) {
+    public boolean createUser(String userName, String upw, String userRole) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean createEmployee(String eFname, String eLname, int epw, int FK_uID) {
+    public boolean createEmployee(String eFname, String eLname, String epw, int FK_uID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -63,17 +63,17 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean updateCustomer(String cFname, String cLname, int cpw) {
+    public boolean updateCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean updateUser(String userName, int upw) {
+    public boolean updateUser(String userName, String upw, String userRole) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean updateEmployee(String eFname, String eLname, int epw, int FK_uID) {
+    public boolean updateEmployee(String eFname, String eLname, String epw, int FK_uID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -88,17 +88,17 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean deleteCustomer(String cFname, String cLname, int cpw) {
+    public boolean deleteCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deleteUser(String userName, int upw) {
+    public boolean deleteUser(String userName, String upw, String userRole) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deleteEmployee(String eFname, String eLname, int epw, int FK_uID) {
+    public boolean deleteEmployee(String eFname, String eLname, String epw, int FK_uID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

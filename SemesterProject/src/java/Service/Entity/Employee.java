@@ -5,10 +5,10 @@ package Service.Entity;
  * This class is for the Employee object within the database.
  */
 public class Employee {
-    int eID, epw, FK_uID;
-    String eFname, eLname;
+    int eID, FK_uID;
+    String eFname, eLname, epw;
     
-    public Employee(int eID, String eFname, String eLname, int epw, int FK_uID) {
+    public Employee(int eID, String eFname, String eLname, String epw, int FK_uID) {
         this.eID = eID;
         this.eFname = eFname;
         this.eLname = eLname;
@@ -16,7 +16,7 @@ public class Employee {
         this.FK_uID = FK_uID;
     }
     
-    public Employee(String eFname, String eLname, int epw, int FK_uID) {
+    public Employee(String eFname, String eLname, String epw, int FK_uID) {
         this.eFname = eFname;
         this.eLname = eLname;
         this.epw = epw;
@@ -47,11 +47,11 @@ public class Employee {
         this.eLname = eLname;
     }
     
-    public int getEpw() {
+    public String getEpw() {
         return epw;
     }
 
-    public void setEpw(int epw) {
+    public void setEpw(String epw) {
         this.epw = epw;
     }
 
