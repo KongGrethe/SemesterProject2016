@@ -14,6 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <fieldset>
+            <legend> <img src="polygon-logo-small.png"/></legend>
         <h1>Hello World!</h1>
         <div>This is the administrator page.</div>
         <a href="#" style="color: red;">Usage traffic</a><br>
