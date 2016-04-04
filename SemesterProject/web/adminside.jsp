@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="newcss.css">
         <title>JSP Page</title>
     </head>
     <body>
@@ -18,6 +20,6 @@
         <a href="#" style="color: red;">Pending checkupreports</a> <span>(x pending)</span><br>
         <a href="#" style="color: red;">Emails</a><br>
         <a href="#" style="color: red;">List all users</a><br>
-        <a href="brugeroprettelse.jsp" style="color: blue;">Create new user</a><br>
+        <a href="brugeroprettelse.jsp">Create new user</a><br>
     </body>
 </html>
