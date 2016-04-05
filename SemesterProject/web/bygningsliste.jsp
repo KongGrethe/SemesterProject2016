@@ -32,7 +32,11 @@
 
                     <%
                         for (int i = 1; i <= 50; i++) {
-                            out.print("<tr>");
+                            if (i <= 5) {
+                                out.print("<tr style=\"background: yellow;\">");
+                            } else {
+                                out.print("<tr>");
+                            }
                             out.print("<td>" + i + "</td>");
                             out.print("<td>Placeholder</td>");
                             out.print("<td>Placeholder</td>");

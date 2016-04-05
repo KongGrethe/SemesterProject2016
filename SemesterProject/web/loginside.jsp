@@ -21,7 +21,7 @@
             <table>
                 <form method="post">
                     <tr>
-                        <th align="left">ID</th>
+                        <th>ID</th>
                         <td><input type="text" name="username" autocomplete="off"></td>
                     </tr>
                     <tr>
@@ -29,8 +29,9 @@
                         <td><input type="password" name="password" autocomplete="off"></td>
                     </tr>
                     <tr>
-                        <td  align="center"><input type="submit" value="Login"></td>
                         <td  align="right"><a href="ResetPassword.jsp">Glemt Password?</a></td>
+                        <td  align="center"><input type="submit" value="Login"></td>
+                        
                     
                     </tr>
                 </form>
