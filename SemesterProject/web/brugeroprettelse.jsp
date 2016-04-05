@@ -15,7 +15,7 @@
         <title>Opret bruger</title>
     </head>
     <body>
-        
+
         <!-- her skal også være plads til en fejlbesked om at brugernavnet er taget -->
         <div align="center">
             <h1>Brugeroprettelse</h1>
@@ -23,19 +23,27 @@
             <form>
                 <table>
                     <tr>
-                        <td>Brugernavn:</td>
-                        <td>Password:</td>
-                        <td></td>
+                        <td>First name</td>
+                        <td><input type="text" name="firstname" autocomplete="off"></td>
                     </tr>
                     <tr>
-                        <td><input type="text" name="username" autocomplete="off"></td>
-                        <td><input type="password" name="password" autocomplete="off"></td>
+                        <td>Last name</td>
+                        <td><input type="text" name="lastname" autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="text" name="password" autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" name="email" autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                         <td><input type="checkbox" name="accounttype" value="admin">Admin</input></td>
                         <td><input type="submit" name="Submit" value="Opret"></td>
                     </tr>
-                    <tr>
-                        <td colspan="3"><input type="checkbox" name="accounttype" value="admin">Admin</input></td>
-                    </tr>
                 </table>
+                <div align="center" style="padding: 2em; color: grey;">Note: Your ID [ID] will be logged for making this user.</div>
             </form>
         </div>
     </body>
