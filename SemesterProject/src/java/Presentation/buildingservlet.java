@@ -8,6 +8,7 @@ package Presentation;
 import Service.Entity.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -79,6 +80,12 @@ public class buildingservlet extends HttpServlet {
                         session.setAttribute("al", al);
                         System.out.println("Kom til B");
                     }
+                    break;
+                case "remove":
+                    //String nr = request.getParameter("removeNr");
+                    al = (ArrayList<Building>) session.getAttribute("al");
+                    //al.remove(2);
+                    session.setAttribute("al", al);
                     break;
                 default:
                     break;
