@@ -1,7 +1,7 @@
 <%
     if (session.getAttribute("logget ind") == null) 
     {
-        response.sendRedirect("index.html");
+        response.sendRedirect("bygningsliste.jsp");
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
