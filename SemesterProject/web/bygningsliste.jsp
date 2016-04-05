@@ -22,7 +22,7 @@
             <legend> <img src="polygon-logo-small.png"/></legend>
             <div align="center">
                 <h1>Bygningsliste</h1>
-                <form action="buildingservlet">
+                <form action="buildingservlet" method="post">
                     <input type="submit" name="job" value="add">
                 </form>
                 <table class="storliste">
@@ -34,6 +34,7 @@
                         <th>Size</th>
                         <th>Plan</th>
                         <th>Condition</th>
+                        <th></th>
                     </tr>
 
                     <%
@@ -50,8 +51,8 @@
                                         + list.get(i).getParcelNr() + "</td><td>"
                                         + list.get(i).getbSize() + "</td><td>"
                                         + list.get(i).getBfPlan() + "</td><td>"
-                                        + list.get(i).getCondLvl() + "</td></tr>");
-                                        
+                                        + list.get(i).getCondLvl() + "</td>"
+                                        + "<td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + i + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></tr>");
                             }
                         }
                     %>
