@@ -5,6 +5,10 @@
  */
 package DataAccess;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author christian
@@ -14,4 +18,22 @@ public class DBConnector {
 	public static String URL    = "jdbc:mysql://localhost/semesterproject"; //"jdbc:mysql://localhost/JDBCWebDB" ;
 	public static String ID     = "root";
 	public static String PW     = "xxxxxxxxxxxxx"; // put ya cod for ya server in
+        private static Connection con;
+
+        public static Connection getConnection() {
+        if (con == null) {
+            try {
+                Class.forName(driver);
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+        try {
+            con = (Connection) DriverManager.getConnection(URL, ID, PW);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return con;
+    }
 }
