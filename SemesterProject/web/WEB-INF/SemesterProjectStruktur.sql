@@ -13,7 +13,7 @@ CREATE TABLE users(
     upw VARCHAR(7),
     email VARCHAR(15),
     userRole ENUM('employee', 'customer'),
-    FK_cuID INT(7) NOT NULL AUTO_INCREMENT,
+    FK_cuID INT(7) NOT NULL,
     FOREIGN KEY (FK_cuID) REFERENCES users(uID)
 );
 
