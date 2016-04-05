@@ -5,11 +5,11 @@ package Service.Entity;
  * This class is for the Building object within the database.
  */
 public class Building {
-    int bID, parcelNr, bfPlan, condLvl, FK_cID;
+    int bID, parcelNr, bfPlan, condLvl, FK_uID;
     String bName, bAddress;
     double bSize;
     
-    public Building(int bID, String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_cID) {
+    public Building(int bID, String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         this.bID = bID;
         this.bName = bName;
         this.bAddress = bAddress;
@@ -17,19 +17,19 @@ public class Building {
         this.bSize = bSize;
         this.bfPlan = bfPlan;
         this.condLvl = condLvl;
-        this.FK_cID = FK_cID;
+        this.FK_uID = FK_uID;
     }
 
     // HVORFOR ER DER TO? 
     // Der er to hvis vi skal lave et objekt i programmet. Bygningens ID kan laves til en auto increment.
-    public Building(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_cID) {
+    public Building(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         this.bName = bName;
         this.bAddress = bAddress;
         this.parcelNr = parcelNr;
         this.bSize = bSize;
         this.bfPlan = bfPlan;
         this.condLvl = condLvl;
-        this.FK_cID = FK_cID;
+        this.FK_uID = FK_uID;
     }
     
     public int getbID() {
@@ -88,11 +88,11 @@ public class Building {
         this.condLvl = condLvl;
     }
 
-    public int getFK_cID() {
-        return FK_cID;
+    public int getFK_uID() {
+        return FK_uID;
     }
 
-    public void setFK_cID(int FK_cID) {
-        this.FK_cID = FK_cID;
+    public void setFK_uID(int FK_uID) {
+        this.FK_uID = FK_uID;
     }
 }

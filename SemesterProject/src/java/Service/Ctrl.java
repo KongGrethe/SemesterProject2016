@@ -8,8 +8,6 @@ package Service;
 import DataAccess.DBConnector;
 import Service.Entity.Building;
 import Service.Entity.Checkup;
-import Service.Entity.Customer;
-import Service.Entity.Employee;
 import Service.Entity.User;
 import Service.Interface.ICreate;
 import Service.Interface.IDelete;
@@ -33,77 +31,47 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl) {
+    public boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean createCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
+    public boolean createUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean createUser(String userName, String upw, String userRole) {
+    public boolean createCheckup(String decay, int FK_uID, int FK_bID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean createEmployee(String eFname, String eLname, String epw, int FK_uID) {
+    public boolean updateBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean createCheckup(String decay, int FK_bID, int FK_eID) {
+    public boolean updateUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean updateBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl) {
+    public boolean updateCheckup(String decay, int FK_uID, int FK_bID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean updateCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
+    public boolean deleteBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean updateUser(String userName, String upw, String userRole) {
+    public boolean deleteUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean updateEmployee(String eFname, String eLname, String epw, int FK_uID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean updateCheckup(String decay, int FK_bID, int FK_eID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean deleteBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean deleteCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean deleteUser(String userName, String upw, String userRole) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean deleteEmployee(String eFname, String eLname, String epw, int FK_uID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean deleteCheckup(String decay, int FK_bID, int FK_eID) {
+    public boolean deleteCheckup(String decay, int FK_uID, int FK_bID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -113,17 +81,7 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public List<Customer> selectCustomers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<User> selectUsers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Employee> selectEmployees() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -131,4 +89,6 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     public List<Checkup> selectCheckups() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
 }

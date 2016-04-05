@@ -7,12 +7,12 @@ package Service.Entity;
 public class Checkup {
     
     String decay;
-    int FK_bID, FK_eID;
+    int FK_uID, FK_bID;
     
-    public Checkup(String decay, int FK_bID, int FK_eID) {
+    public Checkup(String decay, int FK_uID, int FK_bID) {
         this.decay = decay;
+        this.FK_uID = FK_uID;
         this.FK_bID = FK_bID;
-        this.FK_eID = FK_eID;
     }
 
     public String getDecay() {
@@ -23,19 +23,19 @@ public class Checkup {
         this.decay = decay;
     }
 
+    public int getFK_uID() {
+        return FK_uID;
+    }
+
+    public void setFK_bID(int FK_uID) {
+        this.FK_uID = FK_uID;
+    }
+
     public int getFK_bID() {
         return FK_bID;
     }
 
-    public void setFK_bID(int FK_bID) {
+    public void setFK_eID(int FK_bID) {
         this.FK_bID = FK_bID;
-    }
-
-    public int getFK_eID() {
-        return FK_eID;
-    }
-
-    public void setFK_eID(int FK_eID) {
-        this.FK_eID = FK_eID;
     }
 }
