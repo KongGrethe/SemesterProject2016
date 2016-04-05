@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+
+
+import Presentation.createservlet;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -12,8 +15,12 @@ import static org.junit.Assert.*;
  * @author Lasse
  */
 public class TestCreate {
-    
-    public TestCreate() {
+
+    @Test
+    public void TestCreate() {
+        createservlet cs = new createservlet();
+        assertEquals(cs.createCheckup("hejsa", 3, 4), true);
     }
-    
+
 }
+

@@ -5,21 +5,32 @@
  */
 package Presentation;
 
-import Service.Interface.ICreate;
+import Service.Entity.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Lasse
  */
-@WebServlet(name = "createservlet", urlPatterns = {"/createservlet"})
-public class createservlet extends HttpServlet implements ICreate {
+@WebServlet(name = "buildingservlet", urlPatterns = {"/buildingservlet"})
+public class buildingservlet extends HttpServlet {
+    
+    ResultSet rs = null;
+    Statement statement = null;
+    Connection connection = null;
+    ResultSet rsc = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +42,56 @@ public class createservlet extends HttpServlet implements ICreate {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(true);
+
+        String job = request.getParameter("job");
         
+        int bID = -5;
+        String bName = "placeholder";
+        String bAddress = "placeholder";
+        int parcelNr = -5;
+        double bSize = 100;
+        int bfPlan = 3;
+        int condLvl = 5;
+        int FK_uID = 10;
+        
+
+       /* DataAccess da = new DataAccess();
+        UserClass tmp = da.getUser(un, pw);
+*/
+       
+        //ArrayList<CupcakeClass> cl = new ArrayList<>();
+        String nextJSP = null;
+        
+        ArrayList<Building> al = new ArrayList<>();
+
+        try {
+//rs.next første gang kan bruges til at checke om det er true eller false
+
+            switch(job) {
+                case "add":
+                    if(session.getAttribute("al") == null) {
+                        session.setAttribute("al", al);
+                        System.out.println("Kom til A");
+                    } else {
+                        al = (ArrayList<Building>) session.getAttribute("al");
+                        al.add(new Building(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID));
+                        session.setAttribute("al", al);
+                        System.out.println("Kom til B");
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
+            nextJSP = "/bygningsliste.jsp";
+        } catch (Exception ee) {
+            System.out.println("fail");
+            System.err.println(ee);
+        } finally {
+        }
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,20 +132,5 @@ public class createservlet extends HttpServlet implements ICreate {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    @Override
-    public boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean createUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean createCheckup(String decay, int FK_uID, int FK_bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

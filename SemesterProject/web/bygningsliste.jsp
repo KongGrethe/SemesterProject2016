@@ -4,6 +4,9 @@
     Author     : Lasse
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Service.Entity.Building"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +22,9 @@
             <legend> <img src="polygon-logo-small.png"/></legend>
             <div align="center">
                 <h1>Bygningsliste</h1>
+                <form action="buildingservlet">
+                    <input type="submit" name="job" value="add">
+                </form>
                 <table class="storliste">
                     <tr>
                         <th>ID</th>
@@ -31,28 +37,23 @@
                     </tr>
 
                     <%
-                        for (int i = 1; i <= 50; i++) {
-                            if (i <= 5) {
-                                out.print("<tr style=\"background: yellow;\">");
-                            } else {
-                                out.print("<tr>");
+                        ArrayList<Building> list = (ArrayList<Building>) session.getAttribute("al");
+
+                        if (list != null) {
+
+                            for (int i = 0; i < list.size(); i++) {
+                                out.println("<tr><td>"
+                                        + list.get(i).getbID()
+                                        + "</td><td>"
+                                        + list.get(i).getbName() + "</td><td>"
+                                        + list.get(i).getbAddress() + "</td><td>"
+                                        + list.get(i).getParcelNr() + "</td><td>"
+                                        + list.get(i).getbSize() + "</td><td>"
+                                        + list.get(i).getBfPlan() + "</td><td>"
+                                        + list.get(i).getCondLvl() + "</td></tr>");
+                                        
                             }
-                            out.print("<td>" + i + "</td>");
-                            out.print("<td>Placeholder</td>");
-                            out.print("<td>Placeholder</td>");
-                            out.print("<td>" + ((i + 2) * i) + "</td>");
-                            out.print("<td>3</td>");
-                            out.print("<td>Placeholder</th>");
-                            out.print("<td>");
-                            if ((i / 2) * 2 == i) {
-                                out.print("<div class=\"cndGood\">Good</div>");
-                            } else {
-                                out.print("<div class=\"cndBad\">Bad</div>");
-                            }
-                            out.print("</td>");
-                            out.print("</tr>");
                         }
-                        out.print("</table>");
                     %>
                 </table>
             </div>
