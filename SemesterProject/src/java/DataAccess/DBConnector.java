@@ -21,11 +21,11 @@ public class DBConnector {
         private static Connection con;
 
         public static Connection getConnection() {
-        if (con == null) {
+        if (con == null) { // hvis der ikke er connection
             try {
-                Class.forName(driver);
+                Class.forName(driver); //kigger den efter driver 
             } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
+                ex.printStackTrace(); //hvis ikke den findes smides en ClassNotFoundException
             }
         }
         try {
