@@ -6,8 +6,12 @@
 package DataAccess.Datamappers;
 
 import DataAccess.DBConnector;
+import Service.Entity.User;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -51,5 +55,28 @@ public class UserMapper {
             return false;
         }
         return true;
+    }
+
+    public List<User> getUsers() throws SQLException { //Med denne metode, laver vi en liste af Users, som vi hiver ud af databasen.
+        List<User> users = new ArrayList<>();          // Laver en ny liste ved navn users
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM ´Users´ SORTED BY ´uID´");
+                                                       // ^Forbereder statement fra databasen, hvor vi hiver alle users ud og sorterer efter userID'et,        
+        ResultSet rs = pstmt.executeQuery();           // og laver et resultset (rs) ud af det.
+
+        while (rs.next())                              //Så længe vi ikke er nået til slutningen..
+        {
+            int uID = rs.getInt("uID");
+            String uFName = rs.getString("uFName");
+            String uLName = rs.getString("uLName");
+            String upw = rs.getString("upw");
+            String email = rs.getString("email");
+            String userRole = rs.getString("userRole");
+            int FK_cuID = rs.getInt("FK_cuID");
+
+            User user = new User(uID, uFName, uLName, upw, email, userRole, FK_cuID); 
+                                                       // ..laver vi en ny bruger..
+            users.add(user);                           //.. og tilføjer til vores liste, som vi lavede i starten,..^
+        }
+        return users;                                  //.. og retunerer listen.
     }
 }
