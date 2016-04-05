@@ -5,9 +5,7 @@ package Service.Interface;
  * Interface consisting of Prototype methods for dataAccess
  */
 public interface ICreate {
-    boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl);
-    boolean createCustomer(String cFname, String cLname, String cpw, int eID, int FK_eID, int FK_cID);
-    boolean createUser(String userName, String upw, String userRole);
-    boolean createEmployee(String eFname, String eLname, String epw, int FK_uID);
-    boolean createCheckup(String decay, int FK_bID, int FK_eID);
+    boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID);
+    boolean createUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID);
+    boolean createCheckup(String decay, int FK_uID, int FK_bID);
 }
