@@ -52,7 +52,7 @@
                                         + list.get(i).getbSize() + "</td><td>"
                                         + list.get(i).getBfPlan() + "</td><td>"
                                         + list.get(i).getCondLvl() + "</td>"
-                                        + "<td><form action=\"buildingservlet\" name=\"job\" value=\"remove\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=" + i + "><input type=\"Submit\" value=\"Remove\"></form></td></tr>");
+                                        + "<td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + i + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></tr>");
                             }
                         }
                     %>

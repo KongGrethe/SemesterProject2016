@@ -25,9 +25,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author Lasse
  */
+
 @WebServlet(name = "buildingservlet", urlPatterns = {"/buildingservlet"})
 public class buildingservlet extends HttpServlet {
-    
+
+
     ResultSet rs = null;
     Statement statement = null;
     Connection connection = null;
@@ -46,8 +48,8 @@ public class buildingservlet extends HttpServlet {
         HttpSession session = request.getSession(true);
 
         String job = request.getParameter("job");
-        
-        int bID = -5;
+
+        //int bID = -5;
         String bName = "placeholder";
         String bAddress = "placeholder";
         int parcelNr = -5;
@@ -55,42 +57,41 @@ public class buildingservlet extends HttpServlet {
         int bfPlan = 3;
         int condLvl = 5;
         int FK_uID = 10;
-        
 
-       /* DataAccess da = new DataAccess();
+
+        /* DataAccess da = new DataAccess();
         UserClass tmp = da.getUser(un, pw);
-*/
-       
+         */
         //ArrayList<CupcakeClass> cl = new ArrayList<>();
         String nextJSP = null;
-        
+
         ArrayList<Building> al = new ArrayList<>();
 
         try {
 //rs.next første gang kan bruges til at checke om det er true eller false
 
-            switch(job) {
+            switch (job) {
                 case "add":
-                    if(session.getAttribute("al") == null) {
+                    if (session.getAttribute("al") == null) {
                         session.setAttribute("al", al);
                         System.out.println("Kom til A");
                     } else {
                         al = (ArrayList<Building>) session.getAttribute("al");
-                        al.add(new Building(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID));
+                        al.add(new Building(0, "navn", "addresse", 0, 0, 0, 0, 0));
                         session.setAttribute("al", al);
                         System.out.println("Kom til B");
                     }
                     break;
                 case "remove":
-                    //String nr = request.getParameter("removeNr");
+                    String nr = request.getParameter("removeNr");
                     al = (ArrayList<Building>) session.getAttribute("al");
-                    //al.remove(2);
+                    al.remove(parseInt(nr));
                     session.setAttribute("al", al);
                     break;
                 default:
                     break;
             }
-            
+
             nextJSP = "/bygningsliste.jsp";
         } catch (Exception ee) {
             System.out.println("fail");
