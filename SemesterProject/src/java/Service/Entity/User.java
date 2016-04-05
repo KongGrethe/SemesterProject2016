@@ -6,8 +6,8 @@ package Service.Entity;
  */
 public class User {
     
-    int uID, FK_cuID;
-    String uFName, uLName, upw, email, userRole;
+    private int uID, FK_cuID;
+    private String uFName, uLName, upw, email, userRole;
     
     public User(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         this.uID = uID;
