@@ -5,9 +5,9 @@ package Service.Entity;
  * This class is for the Building object within the database.
  */
 public class Building {
-    int bID, parcelNr, bfPlan, condLvl, FK_uID;
-    String bName, bAddress;
-    double bSize;
+    private int bID, parcelNr, bfPlan, condLvl, FK_uID;
+    private String bName, bAddress;
+    private double bSize;
     
     public Building(int bID, String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         this.bID = bID;

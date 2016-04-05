@@ -6,8 +6,8 @@ package Service.Entity;
  */
 public class Checkup {
     
-    String decay;
-    int FK_uID, FK_bID;
+    private String decay;
+    private int FK_uID, FK_bID;
     
     public Checkup(String decay, int FK_uID, int FK_bID) {
         this.decay = decay;
