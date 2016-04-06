@@ -1,6 +1,13 @@
---USE semesterproject;
+USE semesterproject;
 
--- Disse virker ikke og skal følge formen som grundbrugerne i SemesterProjektStruktur.sql
+-- Hernede har jeg indsat nogle eksempelbrugere.
+-- Da USERS cirkulært refererer til sig selv SKAL der være en begyndelsesbruger som alle kan henvise til, ellers virker det ikke.
+-- Derfor skal i ikke slette Aron.
+-- Den første værdi er 0, for AUTO_INCREMENT tager sig af den.
+-- Lasse
 
---INSERT INTO users VALUES(3, "Michael", 123, 'employee');
---INSERT INTO users VALUES(5, "Christian", 122, 'customer');
+INSERT INTO users VALUES (0, 'Aron', 'Jensen', '124', 'a@b.dk', 'employee', '1');
+insert into users values(0,'Kurt','Koben','1234','z@y.com','customer','1');
+insert into users values(0,'Anette','Kodstrup','jsp','a@x.co.uk','customer','2');
+
+SELECT * FROM users;
