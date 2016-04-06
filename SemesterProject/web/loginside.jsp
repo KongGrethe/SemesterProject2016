@@ -19,7 +19,7 @@
             <img src="http://www.polygongroup.com/UI/build/svg/polygon-logo.svg" style="padding: 5% 0px 2% 0px; max-width: 80%;"/>
             <div>Der er ikke kode til at logge ind endnu. <a href="bygningsliste.jsp">Bygningsliste</a>.</div><br>
             <table>
-                <form method="post">
+                <form action="loginctrl" method="post">
                     <tr>
                         <th>ID</th>
                         <td><input type="text" name="username" autocomplete="off"></td>
