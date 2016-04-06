@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import DataAccess.Datamappers.BuildingMapper;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author christian
+ * @author Joachim E. Christensen
  */
 public class Testtest {
     
-    public static void main(String[] args) {
-        System.out.println(System.getProperty("user.name"));
+    @Test
+    public void addBuilding() {
+        BuildingMapper bm = new BuildingMapper();
+        assertTrue(bm.createBuilding("test", "testvej", 0, 0, 0, 0, 0));
     }
     
     
