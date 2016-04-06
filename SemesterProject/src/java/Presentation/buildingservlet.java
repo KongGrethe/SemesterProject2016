@@ -5,9 +5,11 @@
  */
 package Presentation;
 
+import DataAccess.Datamappers.BuildingMapper;
 import Service.Entity.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,10 +27,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Lasse
  */
-
 @WebServlet(name = "buildingservlet", urlPatterns = {"/buildingservlet"})
 public class buildingservlet extends HttpServlet {
-
 
     ResultSet rs = null;
     Statement statement = null;
@@ -50,13 +50,13 @@ public class buildingservlet extends HttpServlet {
         String job = request.getParameter("job");
 
         //int bID = -5;
-        String bName = "placeholder";
-        String bAddress = "placeholder";
-        int parcelNr = -5;
-        double bSize = 100;
-        int bfPlan = 3;
-        int condLvl = 5;
-        int FK_uID = 10;
+        String bName = request.getParameter("bName");
+        String bAddress = request.getParameter("bAddress");
+        int parcelNr = parseInt(request.getParameter("parcelNr"));
+        double bSize = parseDouble(request.getParameter("bSize"));
+        int bfPlan = parseInt(request.getParameter("bfPlan"));
+        int condLvl = -1;//Vi har ikke dette endnu
+        int FK_uID = 1;//vi har ikke dette endnu
 
 
         /* DataAccess da = new DataAccess();
@@ -69,30 +69,21 @@ public class buildingservlet extends HttpServlet {
 
         try {
 //rs.next første gang kan bruges til at checke om det er true eller false
-
+            BuildingMapper bm = new BuildingMapper();
             switch (job) {
                 case "add":
-                    if (session.getAttribute("al") == null) {
-                        session.setAttribute("al", al);
-                        System.out.println("Kom til A");
-                    } else {
-                        al = (ArrayList<Building>) session.getAttribute("al");
-                        al.add(new Building(0, "navn", "addresse", 0, 0, 0, 0, 0));
-                        session.setAttribute("al", al);
-                        System.out.println("Kom til B");
-                    }
+                    bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
+                    nextJSP = "/BygningsOprettelse.jsp";
                     break;
                 case "remove":
                     String nr = request.getParameter("removeNr");
-                    al = (ArrayList<Building>) session.getAttribute("al");
-                    al.remove(parseInt(nr));
-                    session.setAttribute("al", al);
+                    System.out.println("prøver at fjerne " + nr);
+                    bm.deleteBuilding(parseInt(nr));
+                    nextJSP = "/bygningsliste.jsp";
                     break;
                 default:
                     break;
             }
-
-            nextJSP = "/bygningsliste.jsp";
         } catch (Exception ee) {
             System.out.println("fail");
             System.err.println(ee);

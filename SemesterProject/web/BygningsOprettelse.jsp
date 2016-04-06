@@ -16,9 +16,33 @@
     <body>
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
-            
+
             <div>Du kan oprette en bygning her.</div>
-            
+            <form action="buildingservlet" method="post">
+                <table>
+                    <tr>
+                        <td>bName</td>
+                        <td><input type="text" name="bName"></td>   
+                    </tr>
+                    <tr>
+                        <td>bAddress</td>
+                        <td><input type="text" name="bAddress"></td>   
+                    </tr>
+                    <tr>
+                        <td>parcelNr</td>
+                        <td><input type="text" name="parcelNr"></td>   
+                    </tr>
+                    <tr>
+                        <td>bSize</td>
+                        <td><input type="text" name="bSize"></td>   
+                    </tr>
+                    <tr>
+                        <td>bfPlan</td>
+                        <td><input type="text" name="bfPlan"></td>   
+                    </tr>
+                    <button name="job" value="add">Opret</button>
+                </table>
+            </form>
         </fieldset>
     </body>
 </html>

@@ -4,6 +4,7 @@
     Author     : Lasse
 --%>
 
+<%@page import="DataAccess.Datamappers.BuildingMapper"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Service.Entity.Building"%>
 
@@ -22,9 +23,7 @@
             <legend> <img src="polygon-logo-small.png"/></legend>
             <div align="center">
                 <h1>Bygningsliste</h1>
-                <form action="buildingservlet" method="post">
-                    <input type="submit" name="job" value="add">
-                </form>
+                <a href="BygningsOprettelse.jsp">Opret bygning</a>
                 <table class="storliste">
                     <tr>
                         <th>ID</th>
@@ -38,8 +37,12 @@
                     </tr>
 
                     <%
-                        ArrayList<Building> list = (ArrayList<Building>) session.getAttribute("al");
-
+                        
+                        BuildingMapper bm = new BuildingMapper();
+                        
+                        ArrayList<Building> list = (ArrayList<Building>) bm.getBuildings();
+                        
+                        
                         if (list != null) {
 
                             for (int i = 0; i < list.size(); i++) {
@@ -52,7 +55,7 @@
                                         + list.get(i).getbSize() + "</td><td>"
                                         + list.get(i).getBfPlan() + "</td><td>"
                                         + list.get(i).getCondLvl() + "</td>"
-                                        + "<td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + i + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></tr>");
+                                        + "<td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + list.get(i).getbID() + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></tr>");
                             }
                         }
                     %>
