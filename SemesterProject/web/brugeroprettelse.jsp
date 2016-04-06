@@ -20,7 +20,15 @@
         <div align="center">
             <h1>Brugeroprettelse</h1>
             <a href="adminside.jsp">Tilbage til adminsiden</a><br><br>
-            <form>
+            <%
+                String em = (String) session.getAttribute("errormsg");
+                if(em == null) {
+                    out.print("<div>Beskeden er null.</div>");
+                } else {
+                    out.print("<div>Beskeden er: " + em + "</div>");
+                }
+            %>
+            <form method="post" action="userservlet">
                 <table>
                     <tr>
                         <td>First name</td>
@@ -40,7 +48,7 @@
                     </tr>
                     <tr>
                          <td><input type="checkbox" name="accounttype" value="admin">Admin</input></td>
-                        <td><input type="submit" name="Submit" value="Opret"></td>
+                         <td><button name="job" value="add">Opret</button></td>
                     </tr>
                 </table>
                 <div align="center" style="padding: 2em; color: grey;">Note: Your ID [ID] will be logged for making this user.</div>

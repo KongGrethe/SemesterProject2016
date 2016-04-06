@@ -21,7 +21,7 @@
         <a href="#" style="color: red;">Usage traffic</a><br>
         <a href="#" style="color: red;">Pending checkupreports</a> <span>(x pending)</span><br>
         <a href="#" style="color: red;">Emails</a><br>
-        <a href="#" style="color: red;">List all users</a><br>
+        <a href="brugerliste.jsp">List all users</a><br>
         <a href="brugeroprettelse.jsp">Create new user</a><br>
     </body>
 </html>
