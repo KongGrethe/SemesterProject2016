@@ -12,8 +12,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="newcss.css">
         <title>Opret Bygning</title>
+
+        <script>
+            function main() {
+                var msg = "<% out.print(session.getAttribute("besked"));%>";
+                if (msg != "null") {
+                    alert(msg);
+                }
+            }
+        </script>
+
     </head>
-    <body>
+    <body onload="main()">
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
 
@@ -42,6 +52,7 @@
                     </tr>
                     <button name="job" value="add">Opret</button>
                 </table>
+                <a href="bygningsliste.jsp">Gå til bygningslisten</a>
             </form>
         </fieldset>
     </body>

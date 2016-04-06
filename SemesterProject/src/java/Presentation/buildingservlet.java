@@ -46,36 +46,29 @@ public class buildingservlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
+        //session bruges ikke endnu men den skal vi bruge til at logge brugerID'et
 
         String job = request.getParameter("job");
 
-        //int bID = -5;
-
-
-        /* DataAccess da = new DataAccess();
-        UserClass tmp = da.getUser(un, pw);
-         */
-        //ArrayList<CupcakeClass> cl = new ArrayList<>();
         String nextJSP = null;
+        
+        session.setAttribute("besked", "null");
 
         try {
 //rs.next første gang kan bruges til at checke om det er true eller false
             BuildingMapper bm = new BuildingMapper();
             switch (job) {
                 case "add":
-                    System.out.println("kom til add");
-
                     String bName = request.getParameter("bName");
                     String bAddress = request.getParameter("bAddress");
-
+                    //variabelsetups er fordelt på cases, ellers opstår nullpointer exceptions
                     int parcelNr = parseInt(request.getParameter("parcelNr"));
                     double bSize = parseDouble(request.getParameter("bSize"));
                     int bfPlan = parseInt(request.getParameter("bfPlan"));
-
                     int condLvl = -1;//Vi har ikke dette endnu
                     int FK_uID = 1;//vi har ikke dette endnu
-
                     bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
+                    session.setAttribute("besked", "Det lykkedes at oprette en bygning.");
                     nextJSP = "/BygningsOprettelse.jsp";
                     break;
                 case "remove":
