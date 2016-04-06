@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import DataAccess.DBConnector;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -11,11 +12,14 @@ import static org.junit.Assert.*;
  *
  * @author christian
  */
-public class Testtest {
+public class ConnectionTest {
     
-    public static void main(String[] args) {
-        System.out.println(System.getProperty("user.name"));
+    @Test
+    public ConnectionTest() {
+        DBConnector dbc = new DBConnector();
+        
+        
+        
     }
-    
-    
+     
 }
