@@ -50,13 +50,6 @@ public class buildingservlet extends HttpServlet {
         String job = request.getParameter("job");
 
         //int bID = -5;
-        String bName = request.getParameter("bName");
-        String bAddress = request.getParameter("bAddress");
-        int parcelNr = parseInt(request.getParameter("parcelNr"));
-        double bSize = parseDouble(request.getParameter("bSize"));
-        int bfPlan = parseInt(request.getParameter("bfPlan"));
-        int condLvl = -1;//Vi har ikke dette endnu
-        int FK_uID = 1;//vi har ikke dette endnu
 
 
         /* DataAccess da = new DataAccess();
@@ -65,19 +58,30 @@ public class buildingservlet extends HttpServlet {
         //ArrayList<CupcakeClass> cl = new ArrayList<>();
         String nextJSP = null;
 
-        ArrayList<Building> al = new ArrayList<>();
-
         try {
 //rs.next første gang kan bruges til at checke om det er true eller false
             BuildingMapper bm = new BuildingMapper();
             switch (job) {
                 case "add":
+                    System.out.println("kom til add");
+
+                    String bName = request.getParameter("bName");
+                    String bAddress = request.getParameter("bAddress");
+
+                    int parcelNr = parseInt(request.getParameter("parcelNr"));
+                    double bSize = parseDouble(request.getParameter("bSize"));
+                    int bfPlan = parseInt(request.getParameter("bfPlan"));
+
+                    int condLvl = -1;//Vi har ikke dette endnu
+                    int FK_uID = 1;//vi har ikke dette endnu
+
                     bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
                     nextJSP = "/BygningsOprettelse.jsp";
                     break;
                 case "remove":
                     String nr = request.getParameter("removeNr");
-                    System.out.println("prøver at fjerne " + nr);
+                    System.out.println("kom til remove");
+                    System.out.println("skal remove " + nr);
                     bm.deleteBuilding(parseInt(nr));
                     nextJSP = "/bygningsliste.jsp";
                     break;

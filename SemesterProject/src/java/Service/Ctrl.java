@@ -61,7 +61,7 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean deleteBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
+    public boolean deleteBuilding(int bID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -22,23 +22,23 @@
                 <table>
                     <tr>
                         <td>bName</td>
-                        <td><input type="text" name="bName"></td>   
+                        <td><input type="text" name="bName" autocomplete="off"></td>   
                     </tr>
                     <tr>
                         <td>bAddress</td>
-                        <td><input type="text" name="bAddress"></td>   
+                        <td><input type="text" name="bAddress" autocomplete="off"></td>   
                     </tr>
                     <tr>
                         <td>parcelNr</td>
-                        <td><input type="text" name="parcelNr"></td>   
+                        <td><input type="text" name="parcelNr" autocomplete="off"></td>   
                     </tr>
                     <tr>
                         <td>bSize</td>
-                        <td><input type="text" name="bSize"></td>   
+                        <td><input type="text" name="bSize" autocomplete="off"></td>   
                     </tr>
                     <tr>
                         <td>bfPlan</td>
-                        <td><input type="text" name="bfPlan"></td>   
+                        <td><input type="text" name="bfPlan" autocomplete="off"></td>   
                     </tr>
                     <button name="job" value="add">Opret</button>
                 </table>

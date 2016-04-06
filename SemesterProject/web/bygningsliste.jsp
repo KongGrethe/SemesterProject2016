@@ -55,7 +55,7 @@
                                         + list.get(i).getbSize() + "</td><td>"
                                         + list.get(i).getBfPlan() + "</td><td>"
                                         + list.get(i).getCondLvl() + "</td>"
-                                        + "<td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + list.get(i).getbID() + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></tr>");
+                                        + "<td><form action=\"buildingservlet\" method=\"get\"><input type=\"hidden\" name=\"removeNr\" value=\"" + list.get(i).getbID() + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></tr>");
                             }
                         }
                     %>

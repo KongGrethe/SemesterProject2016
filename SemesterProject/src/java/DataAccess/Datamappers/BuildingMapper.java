@@ -34,6 +34,7 @@ public class BuildingMapper {
     }
 
     public boolean deleteBuilding(int bID) {
+        System.out.println("hej" + bID);
         try {
             String sql = "DELETE FROM buildings WHERE bID=" + bID;
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
