@@ -51,8 +51,6 @@ public class buildingservlet extends HttpServlet {
         String job = request.getParameter("job");
 
         String nextJSP = null;
-        
-        session.setAttribute("besked", "null");
 
         try {
 //rs.next første gang kan bruges til at checke om det er true eller false
@@ -68,7 +66,6 @@ public class buildingservlet extends HttpServlet {
                     int condLvl = -1;//Vi har ikke dette endnu
                     int FK_uID = 1;//vi har ikke dette endnu
                     bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
-                    session.setAttribute("besked", "Det lykkedes at oprette en bygning.");
                     nextJSP = "/BygningsOprettelse.jsp";
                     break;
                 case "remove":

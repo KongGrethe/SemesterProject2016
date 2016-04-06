@@ -13,15 +13,6 @@
         <link rel="stylesheet" href="newcss.css">
         <title>Opret Bygning</title>
 
-        <script>
-            function main() {
-                var msg = "<% out.print(session.getAttribute("besked"));%>";
-                if (msg != "null") {
-                    alert(msg);
-                }
-            }
-        </script>
-
     </head>
     <body onload="main()">
         <fieldset>
