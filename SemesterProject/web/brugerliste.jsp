@@ -16,6 +16,7 @@
     <body>
         <div align="center">
             <h1>Brugerliste</h1>
+            <a href="adminside.jsp">Tilbage til adminside</a><br>
             <table class="storliste">
                 <tr>
                     <th>ID</th>
