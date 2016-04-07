@@ -50,6 +50,8 @@ public class buildingservlet extends HttpServlet {
 
         String job = request.getParameter("job");
 
+        int FK_uID = 1;//Integer.parseInt((String) session.getAttribute("brugerid"));
+        
         String nextJSP = null;
 
         try {
@@ -64,7 +66,7 @@ public class buildingservlet extends HttpServlet {
                     double bSize = parseDouble(request.getParameter("bSize"));
                     int bfPlan = parseInt(request.getParameter("bfPlan"));
                     int condLvl = -1;//Vi har ikke dette endnu
-                    int FK_uID = 1;//vi har ikke dette endnu
+                    
                     bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
                     nextJSP = "/BygningsOprettelse.jsp";
                     break;

@@ -4,7 +4,7 @@
     Author     : Lasse
 --%>
 <%
-    if (session.getAttribute("login") == null) 
+    if (session.getAttribute("brugerid") == null) 
     {
         response.sendRedirect("index.html");
     }
