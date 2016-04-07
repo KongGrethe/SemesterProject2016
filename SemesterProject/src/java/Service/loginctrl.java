@@ -36,15 +36,13 @@ public class loginctrl extends HttpServlet
             DBFacade DBF = new DBFacade();
             String Username = request.getParameter("username");
             String Password = request.getParameter("password");
-            if (DBF.validate(Username, Password))
-            {
-                session.setAttribute("Username", Username);
-                session.setAttribute("Password", Password);
-                forward(request, response,"/bygningsliste.jsp");    
-
-            }
-            else
-            {
+            
+            int check[] = DBF.validate(Username, Password);
+            session.setAttribute("brugerid", check[0]);
+            session.setAttribute("brugertype", check[1]);
+            if(check[0] != 0) {
+                forward(request, response,"/bygningsliste.jsp"); 
+            } else {
                 forward(request, response,"/loginside.jsp");
             }
         }
