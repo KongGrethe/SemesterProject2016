@@ -4,8 +4,7 @@
     Author     : christian
 --%>
 <%
-    if (session.getAttribute("brugerid") == null) 
-    {
+    if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
     }
 %>
@@ -19,7 +18,10 @@
         <title>Opret Bygning</title>
 
     </head>
-    <body onload="main()">
+    <body>
+        <%
+            //out.println(session.getAttribute("brugerid") + "-" + session.getAttribute("brugertype"));
+        %>
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
 
@@ -46,6 +48,12 @@
                         <td>bfPlan</td>
                         <td><input type="text" name="bfPlan" autocomplete="off"></td>   
                     </tr>
+                    <%
+                        //jeg kunne åbenbart ikke få session fra servletten, så jeg generer den som inputtype hidden og tager som parameter
+                        out.print("<input type=\"hidden\" name=\"FK_uID\" value=\"");
+                        out.print(session.getAttribute("brugerid"));
+                        out.print("\"/>");
+                    %>
                     <button name="job" value="add">Opret</button>
                 </table>
                 <a href="bygningsliste.jsp">Gå til bygningslisten</a><br>
