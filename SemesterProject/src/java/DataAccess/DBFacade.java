@@ -78,6 +78,11 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper{
     public boolean deleteBuilding(int bID) {
         return bm.deleteBuilding(bID);
     }
+    
+    @Override
+    public List<Building> getBuildings() throws SQLException {
+        return bm.getBuildings();
+    }
 
     @Override
     public boolean createCheckup(String decay, int FK_uID, int FK_bID) {
@@ -98,5 +103,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper{
     public boolean updateCheckup(String decay, int FK_uID, int FK_bID) {
         return cm.updateCheckup(decay, FK_uID, FK_bID);
     }
+
+    
     
 }
