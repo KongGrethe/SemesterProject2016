@@ -3,6 +3,7 @@ package Service.Interface;
 import Service.Entity.Building;
 import Service.Entity.Checkup;
 import Service.Entity.User;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * Interface consisting of Prototype methods for dataAccess
  */
 public interface ISelect {
-    List<Building> selectBuildings();
-    List<User> selectUsers();
-    List<Checkup> selectCheckups();
+    List<Building> selectBuildings() throws SQLException;
+    List<User> selectUsers() throws SQLException;
+    List<Checkup> selectCheckups() throws SQLException;
 }

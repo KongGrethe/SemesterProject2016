@@ -3,7 +3,12 @@
     Created on : 04-04-2016, 22:29:20
     Author     : Lasse
 --%>
-
+<%
+    if (session.getAttribute("login") == null) 
+    {
+        response.sendRedirect("index.html");
+    }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +21,7 @@
     <body>
         <div align="center">
             <h1>Brugerliste</h1>
+            <a href="adminside.jsp">Tilbage til adminside</a><br>
             <table class="storliste">
                 <tr>
                     <th>ID</th>

@@ -44,6 +44,7 @@ public class loginctrl extends HttpServlet
                 forward(request, response,"/bygningsliste.jsp"); 
             } else {
                 forward(request, response,"/loginside.jsp");
+                session.removeAttribute("login");
             }
         }
     }

@@ -6,6 +6,7 @@
 package Service;
 
 import DataAccess.DBConnector;
+import DataAccess.DBFacade;
 import Service.Entity.Building;
 import Service.Entity.Checkup;
 import Service.Entity.User;
@@ -13,81 +14,66 @@ import Service.Interface.ICreate;
 import Service.Interface.IDelete;
 import Service.Interface.ISelect;
 import Service.Interface.IUpdate;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author christian
  */
 public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
-        Connection con; 
-    public Ctrl() throws ClassNotFoundException, SQLException 
-    {
-        Class.forName(DBConnector.driver);
-        con = DriverManager.getConnection(DBConnector.URL, DBConnector.ID, DBConnector.PW);
-    }
+    DBFacade DBF;
 
     @Override
     public boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
     }
 
     @Override
     public boolean createUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.createUser(FK_cuID, uFName, uLName, upw, email, userRole, FK_cuID);
     }
 
     @Override
     public boolean createCheckup(String decay, int FK_uID, int FK_bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean updateBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean updateUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.createCheckup(decay, FK_uID, FK_bID);
     }
 
     @Override
     public boolean updateCheckup(String decay, int FK_uID, int FK_bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.updateCheckup(decay, FK_uID, FK_bID);
     }
 
     @Override
     public boolean deleteBuilding(int bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.deleteBuilding(bID);
     }
 
     @Override
     public boolean deleteUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.deleteUser(FK_cuID, uFName, uLName, upw, email, userRole, FK_cuID);
     }
 
     @Override
     public boolean deleteCheckup(String decay, int FK_uID, int FK_bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.deleteCheckup(decay, FK_uID, FK_bID);
     }
 
     @Override
-    public List<Building> selectBuildings() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Building> selectBuildings()throws SQLException {
+        return DBF.getBuildings();
     }
 
     @Override
-    public List<User> selectUsers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<User> selectUsers() throws SQLException {
+        return DBF.getUsers();
     }
 
     @Override
-    public List<Checkup> selectCheckups() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Checkup> selectCheckups() throws SQLException {
+        return DBF.getCheckups();
     }
 
    

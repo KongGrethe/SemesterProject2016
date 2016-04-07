@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * @author Joachim E. Christensen
  */
-public class CheckUpMapper {
+public class CheckUpMapper implements ICheckUpMapper {
+    @Override
     public boolean createCheckup(String decay, int FK_uID, int FK_bID) {
         try {
         String sql = "INSERT INTO `checkup` (`decay`, `FK_uID`, `FK_bID`) VALUES (?, ?, ?)";
@@ -27,6 +28,7 @@ public class CheckUpMapper {
         return true;
     }
     
+    @Override
     public boolean updateCheckup(String decay, int FK_uID, int FK_bID) {
         try {
         String sql = "UPDATE `checkup` SET `decay`=? WHERE `FK_uID`=? AND 'FK_bID`=?";
@@ -41,6 +43,7 @@ public class CheckUpMapper {
         }
         return true;
     }
+    @Override
     public boolean deleteCheckup(String decay, int FK_uID, int FK_bID) {
         try {
         String sql = "DELETE FROM `checkup` WHERE `decay`=? AND `FK_uID`=? AND `FK_bID` =?";
@@ -55,6 +58,7 @@ public class CheckUpMapper {
         }
         return true;
     }
+    @Override
     public List<Checkup> getCheckups() throws SQLException{
         List<Checkup> checkups = new ArrayList();
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `checkup` ORDER BY `FK_bID`");

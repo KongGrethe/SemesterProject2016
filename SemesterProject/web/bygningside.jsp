@@ -3,6 +3,12 @@
     Created on : 06-04-2016, 14:51:14
     Author     : Lasse
 --%>
+<%
+    if (session.getAttribute("login") == null) 
+    {
+        response.sendRedirect("index.html");
+    }
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
