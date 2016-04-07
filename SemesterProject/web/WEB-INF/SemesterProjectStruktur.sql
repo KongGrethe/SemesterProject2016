@@ -19,7 +19,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE buildings(
-    bID INT(7) PRIMARY KEY,
+    bID INT(7) PRIMARY KEY AUTO_INCREMENT,
     bName VARCHAR(30),
     bAddress VARCHAR(30),
     parcelNr INT(7),
