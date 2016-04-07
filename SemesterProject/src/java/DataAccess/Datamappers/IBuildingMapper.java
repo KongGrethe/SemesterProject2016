@@ -13,6 +13,6 @@ public interface IBuildingMapper {
 
     boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID);
 
-    boolean deleteBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID);
+    boolean deleteBuilding(int bID);
     
 }

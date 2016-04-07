@@ -15,6 +15,11 @@ import java.util.List;
 import DataAccess.Datamappers.IBuildingMapper;
 import DataAccess.Datamappers.ICheckUpMapper;
 import DataAccess.Datamappers.IUserMapper;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -70,8 +75,8 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper{
     }
 
     @Override
-    public boolean deleteBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
-        return bm.deleteBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
+    public boolean deleteBuilding(int bID) {
+        return bm.deleteBuilding(bID);
     }
 
     @Override
