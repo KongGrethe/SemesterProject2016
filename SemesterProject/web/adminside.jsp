@@ -4,9 +4,9 @@
     Author     : Lasse
 --%>
 <%
-    if (session.getAttribute("login") != "2") 
+    if (session.getAttribute("login") == null) 
     {
-        response.sendRedirect("loginside.jsp");
+        response.sendRedirect("index.html");
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

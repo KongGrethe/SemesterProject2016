@@ -3,6 +3,12 @@
     Created on : 02-04-2016, 17:48:01
     Author     : Lasse
 --%>
+<%
+    if (session.getAttribute("login") == null) 
+    {
+        response.sendRedirect("index.html");
+    }
+%>
 
 <%@page import="DataAccess.Datamappers.BuildingMapper"%>
 <%@page import="java.util.ArrayList"%>

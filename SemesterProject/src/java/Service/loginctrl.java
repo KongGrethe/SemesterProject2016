@@ -40,12 +40,14 @@ public class loginctrl extends HttpServlet
             {
                 session.setAttribute("Username", Username);
                 session.setAttribute("Password", Password);
+                session.setAttribute("login", "2");
                 forward(request, response,"/bygningsliste.jsp");    
 
             }
             else
             {
                 forward(request, response,"/loginside.jsp");
+                session.removeAttribute("login");
             }
         }
     }
