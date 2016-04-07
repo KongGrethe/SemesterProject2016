@@ -26,6 +26,10 @@
     </head>
     <body>
         <fieldset>
+            <a href="brugerside.jsp">Gå til brugerside</a><br>
+            <a href="BygningsOprettelse.jsp">Gå til bygningsoprettelse</a><br><br>
+            <div>Laves mere smart senere</div>
+            <a href="bygningside.jsp">Få informationer om bygningens tilstand her</a>
             <legend> <img src="polygon-logo-small.png"/></legend>
             <div align="center">
                 <h1>Bygningsliste</h1>

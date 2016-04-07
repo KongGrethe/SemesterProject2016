@@ -49,7 +49,7 @@
                     <button name="job" value="add">Opret</button>
                 </table>
                 <a href="bygningsliste.jsp">Gå til bygningslisten</a><br>
-                <a href="brugerside.jsp">Gå til brugerside</a>
+                <a href="brugerside.jsp">Tilbage til brugerside</a>
             </form>
         </fieldset>
     </body>
