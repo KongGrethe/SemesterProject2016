@@ -3,7 +3,12 @@
     Created on : 03-04-2016, 15:40:04
     Author     : Lasse
 --%>
-
+<%
+    if (session.getAttribute("login") != "2") 
+    {
+        response.sendRedirect("loginside.jsp");
+    }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
