@@ -22,7 +22,7 @@ public class UserMapper implements IUserMapper {
     @Override
     public boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         try {
-            String sql = "INSERT INTO ´users´ (`uID`, `uFName`, `uLName`, `upw`, `email`, `userRole`, `FK_cuID` ) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO users (`uID`, `uFName`, `uLName`, `upw`, `email`, `userRole`, `FK_cuID` ) VALUES(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
             pstmt.setInt(1, uID);
             pstmt.setString(2, uFName);

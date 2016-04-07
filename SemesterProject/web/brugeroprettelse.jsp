@@ -37,26 +37,27 @@
                 <table>
                     <tr>
                         <td>First name</td>
-                        <td><input type="text" name="firstname" autocomplete="off"></td>
+                        <td><input type="text" name="uFName" autocomplete="off"></td>
                     </tr>
                     <tr>
                         <td>Last name</td>
-                        <td><input type="text" name="lastname" autocomplete="off"></td>
+                        <td><input type="text" name="uLName" autocomplete="off"></td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="text" name="password" autocomplete="off"></td>
+                        <td><input type="text" name="upw" autocomplete="off"></td>
                     </tr>
                     <tr>
                         <td>Email</td>
                         <td><input type="text" name="email" autocomplete="off"></td>
                     </tr>
                     <tr>
+                    <input type="hidden" name="job" value="add">
                          <td><input type="checkbox" name="accounttype" value="admin">Admin</input></td>
-                         <td><button name="job" value="add">Opret</button></td>
+                         <td><input type="Submit" value="Submit"</input></td>
                     </tr>
                 </table>
-                <div align="center" style="padding: 2em; color: grey;">Note: Your ID [ID] will be logged for making this user.</div>
+                <div align="center" style="padding: 2em; color: grey;">Note: Your ID [<%=session.getAttribute("brugerid")%>] will be logged for making this user.</div>
             </form>
         </div>
     </body>

@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import DataAccess.Datamappers.UserMapper;
 import Service.Entity.Building;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
@@ -26,7 +27,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "userservlet", urlPatterns = {"/userservlet"})
 public class userservlet extends HttpServlet {
-    
+
     ResultSet rs = null;
     Statement statement = null;
     Connection connection = null;
@@ -41,7 +42,6 @@ public class userservlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
 
@@ -49,14 +49,33 @@ public class userservlet extends HttpServlet {
 
         String nextJSP = null;
 
-        ArrayList<Building> al = new ArrayList<>();
+        UserMapper um = new UserMapper();
 
         try {
             switch (job) {
                 case "add":
                     //kode til at oprette bruger, check om findes i forvejen
-                    session.setAttribute("errormsg", "Noget gik galt.");
+                    //um.createUser(0, job, job, job, job, nextJSP, 0)
+                    String uFName = (String) request.getParameter("uFName");
+                    String uLName = (String) request.getParameter("uLName");
+                    String upw = (String) request.getParameter("upw");
+                    String email = (String) request.getParameter("email");
+
+                    String userRole;
+                    
+                    if(request.getParameter("accounttype") == null) {
+                        userRole = "customer";
+                    } else {
+                        userRole = "employee";
+                    }
+
+                    int FK_uID = (int) session.getAttribute("brugerid");
+                    
+                    System.out.println("kunne godt parse");
+                    um.createUser(0, uFName, uLName, upw, email, userRole, FK_uID);
+
                     break;
+
                 case "remove":
                     //kode til at fjerne en bruger
                     break;

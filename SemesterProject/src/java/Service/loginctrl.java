@@ -24,33 +24,35 @@ import javax.servlet.http.HttpSession;
  * @author LoD
  */
 @WebServlet(name = "loginctrl", urlPatterns = {"/loginctrl"})
-public class loginctrl extends HttpServlet 
-{
+public class loginctrl extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException, SQLException, ClassNotFoundException 
-    {
-        response.setContentType("text/html;charset=UTF-8"); 
-        try (PrintWriter out = response.getWriter())
-        {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession(true);
             DBFacade DBF = new DBFacade();
             String Username = request.getParameter("username");
             String Password = request.getParameter("password");
-            
+
             int check[] = DBF.validate(Username, Password);
             session.setAttribute("brugerid", check[0]);
             session.setAttribute("brugertype", check[1]);
-            if(check[0] != 0) {
-                forward(request, response,"/bygningsliste.jsp"); 
+            if (check[0] != 0) {
+
+                if (check[1] == 1) {
+                    forward(request, response, "/brugerside.jsp");
+                } else {
+                    forward(request, response, "/adminside.jsp");
+                }
             } else {
-                forward(request, response,"/loginside.jsp");
+                forward(request, response, "/loginside.jsp");
                 session.removeAttribute("login");
             }
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -80,7 +82,7 @@ public class loginctrl extends HttpServlet
         return "Short description";
     }// </editor-fold>
 
-        protected void forward(HttpServletRequest request, HttpServletResponse response, String url) throws IOException, ServletException {
+    protected void forward(HttpServletRequest request, HttpServletResponse response, String url) throws IOException, ServletException {
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
         requestDispatcher.forward(request, response);
     }
