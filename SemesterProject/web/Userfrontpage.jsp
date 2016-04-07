@@ -3,7 +3,12 @@
     Created on : 04-04-2016, 15:43:27
     Author     : christian
 --%>
-
+<%
+    if (session.getAttribute("login") == null) 
+    {
+        response.sendRedirect("index.html");
+    }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

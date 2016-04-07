@@ -11,7 +11,7 @@ public class DBConnector {
     	public static String driver = "com.mysql.jdbc.Driver";
 	public static String URL    = "jdbc:mysql://localhost/semesterproject"; //"jdbc:mysql://localhost/JDBCWebDB" ;
 	public static String ID     = "root";
-	public static String PW     = "root";
+	public static String PW     = "alfa";
         private static Connection con;
 
         public static Connection getConnection() {
