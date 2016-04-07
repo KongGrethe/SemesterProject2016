@@ -58,7 +58,8 @@
                 </tr>
             </table>
             <br>
-            <img src="cndlevels.png"/>
+            <img src="cndlevels.png"/><br>
+            <a href="bygningsliste.jsp">Gå tilbage til bygningslisten</a><br>
         </div>
     </body>
 </html>
