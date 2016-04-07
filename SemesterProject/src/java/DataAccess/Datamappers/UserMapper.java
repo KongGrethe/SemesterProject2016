@@ -17,8 +17,9 @@ import java.util.List;
  *
  * @author Christian
  */
-public class UserMapper {
+public class UserMapper implements IUserMapper {
 
+    @Override
     public boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         try {
             String sql = "INSERT INTO ´users´ (`uID`, `uFName`, `uLName`, `upw`, `email`, `userRole`, `FK_cuID` ) VALUES(?, ?, ?, ?, ?, ?, ?)";
@@ -38,6 +39,7 @@ public class UserMapper {
         return true;
     }
 
+    @Override
     public boolean deleteUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         try {
             String sql = "DELETE FROM `users` WHERE (`uID`=?, `uFName`=?, `uLName`=?, `upw`=?, `email`=?, `userRole`=?, `FK_cuID`=?)";
@@ -57,6 +59,7 @@ public class UserMapper {
         return true;
     }
 
+    @Override
     public List<User> getUsers() throws SQLException { //Med denne metode, laver vi en liste af Users, som vi hiver ud af databasen.
         List<User> users = new ArrayList<>();          // Laver en ny liste ved navn users
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM ´Users´ SORTED BY ´uID´");
