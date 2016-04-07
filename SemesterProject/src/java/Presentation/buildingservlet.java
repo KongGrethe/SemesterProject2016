@@ -45,12 +45,12 @@ public class buildingservlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession();
         //session bruges ikke endnu men den skal vi bruge til at logge brugerID'et
 
         String job = request.getParameter("job");
 
-        int FK_uID = 1;//Integer.parseInt((String) session.getAttribute("brugerid"));
+        
         
         String nextJSP = null;
 
@@ -66,6 +66,9 @@ public class buildingservlet extends HttpServlet {
                     double bSize = parseDouble(request.getParameter("bSize"));
                     int bfPlan = parseInt(request.getParameter("bfPlan"));
                     int condLvl = -1;//Vi har ikke dette endnu
+                    
+                    int FK_uID = parseInt(request.getParameter("FK_uID"));
+//int FK_uID = Integer.parseInt((String) session.getAttribute("brugerid"));
                     
                     bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
                     nextJSP = "/BygningsOprettelse.jsp";
