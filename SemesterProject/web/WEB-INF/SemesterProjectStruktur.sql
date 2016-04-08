@@ -31,6 +31,7 @@ CREATE TABLE buildings(
 );
 
 CREATE TABLE checkup(
+    checkupid INT(7) PRIMARY_KEY AUTO_INCREMENT NOT_NULL,
     decay VARCHAR(30),
     FK_uID INT(7),
     FK_bID INT(7),
