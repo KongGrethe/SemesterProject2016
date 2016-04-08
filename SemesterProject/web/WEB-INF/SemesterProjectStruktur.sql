@@ -1,5 +1,5 @@
--- DROP DATABASE IF EXISTS semesterproject;
--- CREATE DATABASE semesterproject;
+DROP DATABASE IF EXISTS semesterproject;
+CREATE DATABASE semesterproject;
 
 USE semesterproject;
 DROP TABLE if exists checkup;
@@ -37,3 +37,20 @@ CREATE TABLE checkup(
     FOREIGN KEY(FK_uID) REFERENCES users(uID),
     FOREIGN KEY(FK_bID) REFERENCES buildings(bID)
 );
+
+SELECT * FROM users;
+
+INSERT INTO `semesterproject`.`users` VALUES (0, 'Aron', 'Jensen', '124', 'a@b.dk', 'employee', '1');
+insert into users values(0,'Kurt','Koben','1234','z@y.com','customer','1');
+insert into users values(0,'Anette','Kodstrup','jsp','a@x.co.uk','customer','2');
+
+insert into users values(0,'An','K','vnz','aa@x.co.uk','employee','2');
+
+
+-- insert into buildings values(100,"a","b",1,2,3,4,1);
+
+select * from buildings;
+
+-- DELETE FROM buildings WHERE bID = 1;
+
+SELECT * FROM users;
