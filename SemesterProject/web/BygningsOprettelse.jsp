@@ -29,24 +29,24 @@
             <form action="buildingservlet" method="post">
                 <table>
                     <tr>
-                        <td>bName</td>
+                        <td>Name</td>
                         <td><input type="text" name="bName" autocomplete="off"></td>   
                     </tr>
                     <tr>
-                        <td>bAddress</td>
+                        <td>Address</td>
                         <td><input type="text" name="bAddress" autocomplete="off"></td>   
                     </tr>
                     <tr>
-                        <td>parcelNr</td>
-                        <td><input type="text" name="parcelNr" autocomplete="off"></td>   
+                        <td>Parcel number</td>
+                        <td><input type="text" name="parcelNr" autocomplete="off" pattern="\d*" title="Kun tal"></td>   
                     </tr>
                     <tr>
-                        <td>bSize</td>
-                        <td><input type="text" name="bSize" autocomplete="off"></td>   
+                        <td>Size</td>
+                        <td><input type="text" name="bSize" autocomplete="off" pattern="\d*" title="Kun tal"></td>   
                     </tr>
                     <tr>
-                        <td>bfPlan</td>
-                        <td><input type="text" name="bfPlan" autocomplete="off"></td>   
+                        <td>Floor plan</td>
+                        <td><input type="text" name="bfPlan" autocomplete="off" pattern="\d*" title="Kun tal"></td>   
                     </tr>
                     <%
                         //jeg kunne åbenbart ikke få session fra servletten, så jeg generer den som inputtype hidden og tager som parameter
