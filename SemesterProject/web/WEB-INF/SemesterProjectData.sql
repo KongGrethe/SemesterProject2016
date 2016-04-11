@@ -6,8 +6,8 @@ USE semesterproject;
 -- Den første værdi er 0, for AUTO_INCREMENT tager sig af den.
 -- Lasse
 
-INSERT INTO users VALUES (0, 'Aron', 'Jensen', '124', 'a@b.dk', 'employee', '1');
-insert into users values(0,'Kurt','Koben','1234','z@y.com','customer','1');
-insert into users values(0,'Anette','Kodstrup','jsp','a@x.co.uk','customer','2');
+INSERT INTO users VALUES(0, 'Aron', 'Jensen', '124', 'a@b.dk', 'employee', '1');
+INSERT INTO users VALUES(0, 'Kurt', 'Koben', '1234', 'z@y.com', 'customer', '1');
+INSERT INTO users VALUES(0, 'Anette', 'Kodstrup', 'jsp', 'a@x.co.uk', 'customer', '2');
 
 SELECT * FROM users;

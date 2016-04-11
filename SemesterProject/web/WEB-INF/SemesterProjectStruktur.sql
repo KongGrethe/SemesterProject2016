@@ -1,7 +1,8 @@
-DROP DATABASE IF EXISTS semesterproject;
-CREATE DATABASE semesterproject;
+-- DROP DATABASE IF EXISTS semesterproject;
+-- CREATE DATABASE semesterproject;
 
 USE semesterproject;
+DROP TABLE if exists notification;
 DROP TABLE if exists checkup;
 DROP TABLE if exists buildings;
 DROP TABLE if exists users;
@@ -31,7 +32,7 @@ CREATE TABLE buildings(
 );
 
 CREATE TABLE checkup(
-    checkupid INT(7) PRIMARY_KEY AUTO_INCREMENT NOT_NULL,
+    checkupid INT(7) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     decay VARCHAR(30),
     FK_uID INT(7),
     FK_bID INT(7),
@@ -48,11 +49,11 @@ CREATE TABLE notification(
 
 SELECT * FROM users;
 
-INSERT INTO `semesterproject`.`users` VALUES (0, 'Aron', 'Jensen', '124', 'a@b.dk', 'employee', '1');
-insert into users values(0,'Kurt','Koben','1234','z@y.com','customer','1');
-insert into users values(0,'Anette','Kodstrup','jsp','a@x.co.uk','customer','2');
+-- INSERT INTO `semesterproject`.`users` VALUES (0, 'Aron', 'Jensen', '124', 'a@b.dk', 'employee', '1');
+-- insert into users values(0,'Kurt','Koben','1234','z@y.com','customer','1');
+-- insert into users values(0,'Anette','Kodstrup','jsp','a@x.co.uk','customer','2');
 
-insert into users values(0,'An','K','vnz','aa@x.co.uk','employee','2');
+-- insert into users values(0,'An','K','vnz','aa@x.co.uk','employee','2');
 
 
 -- insert into buildings values(100,"a","b",1,2,3,4,1);
@@ -61,4 +62,5 @@ select * from buildings;
 
 -- DELETE FROM buildings WHERE bID = 1;
 
-SELECT * FROM users;
+SELECT * FROM checkup;
+SELECT * FROM notification;
