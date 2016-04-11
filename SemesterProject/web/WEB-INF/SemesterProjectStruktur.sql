@@ -39,6 +39,13 @@ CREATE TABLE checkup(
     FOREIGN KEY(FK_bID) REFERENCES buildings(bID)
 );
 
+CREATE TABLE notification(
+    nID int(7) PRIMARY KEY AUTO_INCREMENT,
+    content varchar(300),
+    FK_bID int(7),
+    FOREIGN KEY (FK_bID) REFERENCES buildings(bID)
+);
+
 SELECT * FROM users;
 
 INSERT INTO `semesterproject`.`users` VALUES (0, 'Aron', 'Jensen', '124', 'a@b.dk', 'employee', '1');

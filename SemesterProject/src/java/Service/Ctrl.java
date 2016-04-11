@@ -5,10 +5,10 @@
  */
 package Service;
 
-import DataAccess.DBConnector;
 import DataAccess.DBFacade;
 import Service.Entity.Building;
 import Service.Entity.Checkup;
+import Service.Entity.Notification;
 import Service.Entity.User;
 import Service.Interface.ICreate;
 import Service.Interface.IDelete;
@@ -16,8 +16,6 @@ import Service.Interface.ISelect;
 import Service.Interface.IUpdate;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -74,6 +72,26 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     @Override
     public List<Checkup> selectCheckups() throws SQLException {
         return DBF.getCheckups();
+    }
+
+    @Override
+    public boolean createNotification(int nID, String content, int FK_bID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean updateNotification(int nID, String content, int FK_bID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deleteNotification(int nID, String content, int FK_bID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Notification> selectNotification() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    

@@ -2,6 +2,7 @@ package Service.Interface;
 
 import Service.Entity.Building;
 import Service.Entity.Checkup;
+import Service.Entity.Notification;
 import Service.Entity.User;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,4 +15,5 @@ public interface ISelect {
     List<Building> selectBuildings() throws SQLException;
     List<User> selectUsers() throws SQLException;
     List<Checkup> selectCheckups() throws SQLException;
+    List<Notification> selectNotification() throws SQLException;
 }
