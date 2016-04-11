@@ -58,6 +58,25 @@
                 </tr>
             </table>
             <br>
+            
+            <%
+            for(int i = 0; i<5; i++) {
+                out.print("<table>");
+                out.print("<tr>");
+                out.print("<td>brugerid</td><td>brugernavn</td>");
+                out.print("</tr>");
+                
+                out.print("<tr>");
+                out.print("<td colspan=\"2\">tekst tekst tekst:</td>");
+                out.print("</tr>");
+                
+                out.print("<tr>");
+                out.print("<td colspan=\"2\">Vedhæftet fil: ingen</td>");
+                out.print("</tr>");
+                out.print("</table><br>");
+            }
+            %>
+            
             <img src="cndlevels.png"/><br>
             <a href="bygningsliste.jsp">Gå tilbage til bygningslisten</a><br>
         </div>
