@@ -15,5 +15,6 @@ public interface ISelect {
     List<Building> selectBuildings() throws SQLException;
     List<User> selectUsers() throws SQLException;
     List<Checkup> selectCheckups() throws SQLException;
-    List<Notification> selectNotification() throws SQLException;
+    List<Notification> selectAllNotification() throws SQLException;
+    List<Notification> selectBuildingNotification(int FK_bID) throws SQLException;
 }

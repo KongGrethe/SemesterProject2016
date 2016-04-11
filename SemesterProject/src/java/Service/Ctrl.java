@@ -22,6 +22,7 @@ import java.util.List;
  * @author christian
  */
 public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
+    
     DBFacade DBF;
 
     @Override
@@ -76,22 +77,27 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
 
     @Override
     public boolean createNotification(int nID, String content, int FK_bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.createNotification(nID, content, FK_bID);
     }
 
     @Override
     public boolean updateNotification(int nID, String content, int FK_bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBF.updateNotification(nID, content, FK_bID);
     }
 
     @Override
-    public boolean deleteNotification(int nID, String content, int FK_bID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deleteNotification(int nID) {
+        return DBF.deleteNotification(nID);
     }
 
     @Override
-    public List<Notification> selectNotification() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Notification> selectAllNotification() throws SQLException {
+        return DBF.selectAllNotification();
+    }
+
+    @Override
+    public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
+        return DBF.selectBuildingNotification(FK_bID);
     }
 
    
