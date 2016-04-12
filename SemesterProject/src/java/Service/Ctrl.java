@@ -74,6 +74,11 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     public List<Checkup> selectCheckups() throws SQLException {
         return DBF.getCheckups();
     }
+    
+    @Override
+    public List<Building> selectBuildingsByUser() throws SQLException {
+        return DBF.selectBuildingsByUser();
+    }
 
     @Override
     public boolean createNotification(int nID, String content, int FK_bID) {

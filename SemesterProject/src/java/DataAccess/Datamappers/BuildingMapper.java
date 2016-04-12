@@ -65,4 +65,23 @@ public class BuildingMapper {
         }
         return buildings;
     }
+    
+    public List<Building> selectBuildingsByUsers() throws SQLException {
+        List<Building> buildings = new ArrayList();
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `buildings` ORDER BY `FK_uID`");
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            int bID = rs.getInt("bID");
+            String bName = rs.getString("bName");
+            String bAddress = rs.getString("bAddress");
+            int parcelNr = rs.getInt("parcelNr");
+            double bSize = rs.getDouble("bSize");
+            int bfPlan = rs.getInt("bfPlan");
+            int condLvl = rs.getInt("condLvl");
+            int FK_uID = rs.getInt("FK_uID");
+            Building building = new Building(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
+            buildings.add(building);
+        }
+        return buildings;
+    }
 }

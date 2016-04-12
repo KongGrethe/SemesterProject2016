@@ -20,4 +20,6 @@ public interface IBuildingMapper {
     boolean deleteBuilding(int bID);
     
     List<Building> getBuildings() throws SQLException;
+    
+    List<Building> selectBuildingsByUser() throws SQLException;
 }
