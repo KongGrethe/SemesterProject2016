@@ -36,13 +36,13 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean createCheckup(String decay, int FK_uID, int FK_bID) {
-        return DBF.createCheckup(decay, FK_uID, FK_bID);
+    public boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
+        return DBF.createCheckup(checkupID, decay, FK_uID, FK_bID);
     }
 
     @Override
-    public boolean updateCheckup(String decay, int FK_uID, int FK_bID) {
-        return DBF.updateCheckup(decay, FK_uID, FK_bID);
+    public boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
+        return DBF.updateCheckup(checkupID, decay, FK_uID, FK_bID);
     }
 
     @Override
@@ -56,8 +56,8 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean deleteCheckup(String decay, int FK_uID, int FK_bID) {
-        return DBF.deleteCheckup(decay, FK_uID, FK_bID);
+    public boolean deleteCheckup( int checkupID, String decay, int FK_uID, int FK_bID) {
+        return DBF.deleteCheckup(checkupID,decay, FK_uID, FK_bID);
     }
 
     @Override
@@ -73,11 +73,6 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     @Override
     public List<Checkup> selectCheckups() throws SQLException {
         return DBF.getCheckups();
-    }
-    
-    @Override
-    public List<Building> selectBuildingsByUser() throws SQLException {
-        return DBF.selectBuildingsByUser();
     }
 
     @Override
@@ -95,6 +90,7 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
         return DBF.deleteNotification(nID);
     }
 
+    /*
     @Override
     public List<Notification> selectAllNotification() throws SQLException {
         return DBF.selectAllNotification();
@@ -104,6 +100,16 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
         return DBF.selectBuildingNotification(FK_bID);
     }
+*/
 
+    @Override
+    public List<Notification> selectAllNotification() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }

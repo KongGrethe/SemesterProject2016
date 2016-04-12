@@ -34,14 +34,15 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     private BuildingMapper bm = new BuildingMapper();
     private CheckUpMapper cm = new CheckUpMapper();
     private NotificationMapper nm = new NotificationMapper();
+    private Connection con;
 
+    
     public DBFacade() throws ClassNotFoundException, SQLException 
     {
         Class.forName(DBConnector.driver);
         con = DriverManager.getConnection(DBConnector.URL, DBConnector.ID, DBConnector.PW);
     }
     
-    Connection con;
     
     public int[] validate(String Username, String Password) {
         int res[] = new int[2];
@@ -99,18 +100,13 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
     
     @Override
-    public List<Building> selectBuildingsByUser() throws SQLException {
-        return bm.selectBuildingsByUsers();
+    public boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
+        return cm.createCheckup(checkupID, decay, FK_uID, FK_bID);
     }
     
     @Override
-    public boolean createCheckup(String decay, int FK_uID, int FK_bID) {
-        return cm.createCheckup(decay, FK_uID, FK_bID);
-    }
-    
-    @Override
-    public boolean deleteCheckup(String decay, int FK_uID, int FK_bID) {
-        return cm.deleteCheckup(decay, FK_uID, FK_bID);
+    public boolean deleteCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
+        return cm.deleteCheckup(checkupID, decay, FK_uID, FK_bID);
     }
 
     @Override
@@ -119,11 +115,10 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
     
     @Override
-    public boolean updateCheckup(String decay, int FK_uID, int FK_bID) {
-        return cm.updateCheckup(decay, FK_uID, FK_bID);
+    public boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
+        return cm.updateCheckup(checkupID, decay, FK_uID, FK_bID);
     }
 
-    @Override
     public boolean createNotification(int nID, String content, int FK_bID) {
         return nm.createNotification(nID, content, FK_bID);
     }
@@ -147,5 +142,12 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     public boolean updateNotification(int nID, String content, int FK_bID) {
         return nm.updateNotification(nID, content);
     }
- 
+
+    @Override
+    public List<Building> selectBuildingsByUser() throws SQLException {
+        return bm.selectBuildingsByUsers();
+    }
+
+    
+    
 }

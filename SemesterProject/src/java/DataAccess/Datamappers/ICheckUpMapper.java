@@ -15,12 +15,12 @@ import java.util.List;
  */
 public interface ICheckUpMapper {
 
-    boolean createCheckup(String decay, int FK_uID, int FK_bID);
+    boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
 
-    boolean deleteCheckup(String decay, int FK_uID, int FK_bID);
+    boolean deleteCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
 
     List<Checkup> getCheckups() throws SQLException;
 
-    boolean updateCheckup(String decay, int FK_uID, int FK_bID);
+    boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
     
 }

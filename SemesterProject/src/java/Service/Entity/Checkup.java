@@ -7,9 +7,10 @@ package Service.Entity;
 public class Checkup {
     
     private String decay;
-    private int FK_uID, FK_bID;
+    private int checkupID, FK_uID, FK_bID;
     
-    public Checkup(String decay, int FK_uID, int FK_bID) {
+    public Checkup(int checkupID, String decay, int FK_uID, int FK_bID) {
+        this.checkupID = checkupID;
         this.decay = decay;
         this.FK_uID = FK_uID;
         this.FK_bID = FK_bID;

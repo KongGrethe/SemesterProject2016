@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface ISelect {
     List<Building> selectBuildings() throws SQLException;
-    List<Building> selectBuildingsByUser() throws SQLException;
     List<User> selectUsers() throws SQLException;
     List<Checkup> selectCheckups() throws SQLException;
+    //List<Notification> selectNotification() throws SQLException; TÆNKER AT DENNE IKKE SKAL BRUGES???????????
     List<Notification> selectAllNotification() throws SQLException;
     List<Notification> selectBuildingNotification(int FK_bID) throws SQLException;
 }

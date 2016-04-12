@@ -17,7 +17,6 @@
     <body>
         <div align="center">
             <img src="http://www.polygongroup.com/UI/build/svg/polygon-logo.svg" style="padding: 5% 0px 2% 0px; max-width: 80%;"/>
-            <div>Der er ikke kode til at logge ind endnu. <a href="bygningsliste.jsp">Bygningsliste</a>.</div><br>
             <table>
                 <form action="loginctrl" method="post">
                     <tr>
@@ -31,11 +30,15 @@
                     <tr>
                         <td  align="right"><a href="ResetPassword.jsp">Glemt Password?</a></td>
                         <td  align="center"><input type="submit" value="Login"></td>
-                        
-                    
                     </tr>
                 </form>
             </table>
+                    
+                    <%
+                        if (session.getAttribute("error") != null) {
+                            out.println("<br><span class=\"error\">" + session.getAttribute("error") + "</span>");
+                        }
+                    %>
             <div style="padding: 3em; color: grey;">24-timers hotline tilgængelig på 11223344</div>
         </div>
     </body>
