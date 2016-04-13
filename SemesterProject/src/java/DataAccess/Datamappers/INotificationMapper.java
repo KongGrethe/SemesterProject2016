@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface INotificationMapper {
     
-    boolean createNotification (int nID, String content, int FK_bID);
+    boolean createNotification (int nID, String content, int FK_bID, int FK_uID);
     boolean deleteNotification (int nID);
     List<Notification> selectAllNotification() throws SQLException;
     List<Notification> selectBuildingNotification(int FK_bID) throws SQLException;
-    boolean updateNotification (int nID, String content, int FK_bID);
+    boolean updateNotification (int nID, String content);
 }

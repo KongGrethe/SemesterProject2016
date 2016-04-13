@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class NotificationMapper {
     
-    public boolean createNotification (int nID, String content, int FK_bID) {
+    public boolean createNotification (int nID, String content, int FK_bID, int FK_uID) {
         try {
-            String sql = "INSERT INTO `notification`(`nID`, `content`,`FK_bID`) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO `notification`(`nID`, `content`,`FK_bID`,`FK_uID`) VALUES(?, ?, ?, ?)";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
             pstmt.setInt(1, nID);
             pstmt.setString(2, content);

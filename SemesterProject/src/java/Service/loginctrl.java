@@ -46,7 +46,7 @@ public class loginctrl extends HttpServlet {
                     forward(request, response, "/adminside.jsp");
                 }
             } else {
-                session.setAttribute("error", "Your username or password was incorrect, please try again!");
+                session.setAttribute("error", "Dit brugernavn eller password var forkert, prøv igen!");
                 forward(request, response, "/loginside.jsp");
                 session.setAttribute("error", null);
                 

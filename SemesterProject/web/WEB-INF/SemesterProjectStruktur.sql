@@ -51,7 +51,7 @@ CREATE TABLE notification(
 );
 
 CREATE TABLE files(
-	fName VARCHAR(50),
+    fName VARCHAR(50),
     FK_bID INT(7),
     FK_uID INT(7),
     FOREIGN KEY (FK_bID) REFERENCES buildings(bid),
