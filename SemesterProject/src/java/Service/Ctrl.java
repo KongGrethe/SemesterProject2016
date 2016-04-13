@@ -90,7 +90,7 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
         return DBF.deleteNotification(nID);
     }
 
-    /*
+    
     @Override
     public List<Notification> selectAllNotification() throws SQLException {
         return DBF.selectAllNotification();
@@ -100,16 +100,4 @@ public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
     public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
         return DBF.selectBuildingNotification(FK_bID);
     }
-*/
-
-    @Override
-    public List<Notification> selectAllNotification() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
 }

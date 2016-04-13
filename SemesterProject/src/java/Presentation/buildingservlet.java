@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -34,6 +35,7 @@ public class buildingservlet extends HttpServlet {
     Statement statement = null;
     Connection connection = null;
     ResultSet rsc = null;
+    boolean isValid;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -59,6 +61,7 @@ public class buildingservlet extends HttpServlet {
             BuildingMapper bm = new BuildingMapper();
             switch (job) {
                 case "add":
+                    
                     String bName = request.getParameter("bName");
                     String bAddress = request.getParameter("bAddress");
                     //variabelsetups er fordelt på cases, ellers opstår nullpointer exceptions
@@ -66,12 +69,12 @@ public class buildingservlet extends HttpServlet {
                     double bSize = parseDouble(request.getParameter("bSize"));
                     int bfPlan = parseInt(request.getParameter("bfPlan"));
                     int condLvl = -1;//Vi har ikke dette endnu
-                    
                     int FK_uID = parseInt(request.getParameter("FK_uID"));
 //int FK_uID = Integer.parseInt((String) session.getAttribute("brugerid"));
                     
                     bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
                     nextJSP = "/BygningsOprettelse.jsp";
+                   
                     break;
                 case "remove":
                     String nr = request.getParameter("removeNr");
