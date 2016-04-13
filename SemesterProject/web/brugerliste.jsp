@@ -1,7 +1,7 @@
 <%-- 
     Document   : brugerliste
     Created on : 04-04-2016, 22:29:20
-    Author     : Lasse
+    Author     : Michael
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Service.Entity.User"%>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : bygningsliste
     Created on : 02-04-2016, 17:48:01
-    Author     : Lasse
+    Author     : Michael
 --%>
 <%
     if (session.getAttribute("brugerid") == null) 
