@@ -2,6 +2,7 @@
 -- CREATE DATABASE semesterproject;
 
 USE semesterproject;
+DROP TABLE if exists files;
 DROP TABLE if exists notification;
 DROP TABLE if exists checkup;
 DROP TABLE if exists buildings;
@@ -42,9 +43,19 @@ CREATE TABLE checkup(
 
 CREATE TABLE notification(
     nID int(7) PRIMARY KEY AUTO_INCREMENT,
-    content varchar(300),
+    content varchar(500),
     FK_bID int(7),
-    FOREIGN KEY (FK_bID) REFERENCES buildings(bID)
+    FK_uID int(7),
+    FOREIGN KEY (FK_bID) REFERENCES buildings(bID),
+    FOREIGN KEY (FK_uID) REFERENCES users(uID)
+);
+
+CREATE TABLE files(
+	fName VARCHAR(50),
+    FK_bID INT(7),
+    FK_uID INT(7),
+    FOREIGN KEY (FK_bID) REFERENCES buildings(bid),
+    FOREIGN KEY (FK_uID) REFERENCES users(uID)
 );
 
 SELECT * FROM users;
@@ -58,9 +69,10 @@ SELECT * FROM users;
 
 -- insert into buildings values(100,"a","b",1,2,3,4,1);
 
-select * from buildings;
+SELECT * FROM buildings;
 
 -- DELETE FROM buildings WHERE bID = 1;
 
 SELECT * FROM checkup;
 SELECT * FROM notification;
+SELECT * FROM files;

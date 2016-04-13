@@ -26,7 +26,7 @@
     </head>
     <body>
         <fieldset>
-            <a href="brugerside.jsp">Gå til brugerside</a><br>
+            <a href="brugerliste.jsp">Gå til brugerliste</a><br>
             <a href="BygningsOprettelse.jsp">Gå til bygningsoprettelse</a><br><br>
             <div>Laves mere smart senere</div>
             <a href="bygningside.jsp">Få informationer om bygningens tilstand her</a>
@@ -43,7 +43,7 @@
                         <th>Size</th>
                         <th>Plan</th>
                         <th>Condition</th>
-                        <th></th>
+                        <th>UserID</th>
                     </tr>
 
                     <%
@@ -64,8 +64,9 @@
                                         + list.get(i).getParcelNr() + "</td><td>"
                                         + list.get(i).getbSize() + "</td><td>"
                                         + list.get(i).getBfPlan() + "</td><td>"
-                                        + list.get(i).getCondLvl() + "</td>"
-                                        + "<td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + list.get(i).getbID() + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></tr>");
+                                        + list.get(i).getCondLvl() + "</td><td><a href=\"bygningside.jsp?id=" + list.get(i).getFK_uID() + "\">"
+                                        + list.get(i).getFK_uID() + "</a></td>"
+                                        + "<td><td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + list.get(i).getbID() + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></td></tr>");
                             }
                         }
                     %>

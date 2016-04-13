@@ -23,7 +23,14 @@
     <body>
         <div align="center">
             <h1>Brugerliste</h1>
-            <a href="adminside.jsp">Tilbage til adminside</a><br>
+            <%
+                System.out.println(session.getAttribute("brugertype"));
+                Integer bt = (Integer) session.getAttribute("brugertype");
+                if(bt == 2) {
+                    out.print("<a href=\"adminside.jsp\">tilbage til adminside</a>");
+                }
+            %><br>
+            <a href="bygningsliste.jsp">Bygningslisten</a>
             <table class="storliste">
                 <tr>
                     <th>ID</th>
