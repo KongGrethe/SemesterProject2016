@@ -22,7 +22,7 @@
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
         <h1>Velkommen til</h1>
-        <div>This is the customer page.</div><br>
+        <div>Dette er kundesiden..</div><br>
         <a href="BygningsOprettelse.jsp">Opret bygning</a><br>
         <a href="bygningsliste.jsp">Se bygningslisten</a><br>
         </fieldset>

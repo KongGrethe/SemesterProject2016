@@ -7,6 +7,7 @@ package DataAccess;
 
 import DataAccess.Datamappers.BuildingMapper;
 import DataAccess.Datamappers.CheckUpMapper;
+import DataAccess.Datamappers.FileMapper;
 import DataAccess.Datamappers.UserMapper;
 import Service.Entity.Building;
 import Service.Entity.Checkup;
@@ -14,6 +15,7 @@ import Service.Entity.User;
 import java.util.List;
 import DataAccess.Datamappers.IBuildingMapper;
 import DataAccess.Datamappers.ICheckUpMapper;
+import DataAccess.Datamappers.IFileMapper;
 import DataAccess.Datamappers.INotificationMapper;
 import DataAccess.Datamappers.IUserMapper;
 import DataAccess.Datamappers.NotificationMapper;
@@ -28,12 +30,14 @@ import java.sql.Statement;
  *
  * @author Christian
  */
-public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, INotificationMapper{
+public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, INotificationMapper, IFileMapper{
     
     private UserMapper um = new UserMapper();
     private BuildingMapper bm = new BuildingMapper();
     private CheckUpMapper cm = new CheckUpMapper();
     private NotificationMapper nm = new NotificationMapper();
+    private FileMapper fm = new FileMapper();
+    
     private Connection con;
 
     
@@ -146,6 +150,16 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     @Override
     public List<Building> selectBuildingsByUser() throws SQLException {
         return bm.selectBuildingsByUsers();
+    }
+
+    @Override
+    public boolean createFile(String fName, int FK_bID, int FK_uID) {
+        return fm.createFile(fName, FK_bID, FK_uID);
+    }
+
+    @Override
+    public boolean deleteFile(String fName) {
+        return fm.deleteFile(fName);
     }
 
     

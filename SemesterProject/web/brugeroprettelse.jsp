@@ -36,11 +36,11 @@
             <form method="post" action="userservlet">
                 <table>
                     <tr>
-                        <td>First name</td>
+                        <td>Fornavn</td>
                         <td><input type="text" name="uFName" autocomplete="off"></td>
                     </tr>
                     <tr>
-                        <td>Last name</td>
+                        <td>Efternavn</td>
                         <td><input type="text" name="uLName" autocomplete="off"></td>
                     </tr>
                     <tr>

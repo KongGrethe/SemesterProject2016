@@ -100,4 +100,16 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
         return DBF.selectBuildingNotification(FK_bID);
     }
+
+    @Override
+    public boolean createFile(String fName, int FK_bID, int FK_uID) {
+        return DBF.createFile(fName, FK_bID, FK_uID);
+    }
+
+    @Override
+    public boolean deleteFile(String fName) {
+        return DBF.deleteFile(fName);
+    }
+    
+    
 }

@@ -9,4 +9,5 @@ public interface ICreate {
     boolean createUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID);
     boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
     boolean createNotification (int nID, String content, int FK_bID, int FK_uID);
+    boolean createFile(String fName, int FK_bID, int FK_uID);
 }

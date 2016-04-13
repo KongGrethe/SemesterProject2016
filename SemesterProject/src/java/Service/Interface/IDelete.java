@@ -9,4 +9,5 @@ public interface IDelete {
     boolean deleteUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID);
     boolean deleteCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
     boolean deleteNotification (int nID);
+    boolean deleteFile(String fName);
 }
