@@ -4,8 +4,7 @@
     Author     : Lasse
 --%>
 <%
-    if (session.getAttribute("brugerid") == null) 
-    {
+    if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
     }
 %>
@@ -22,63 +21,92 @@
     <body>
         <div align="center">
             <h1>Bygning #23456765</h1>
-            <div>Bygningsegenskaber:</div>
+            <a href="bygningsliste.jsp">Gå tilbage til bygningslisten</a><br><br>
             <table>
                 <tr>
-                    <td>ID</td>
+                    <th>ID</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <td>Parcel nummber</td>
+                    <th>Parcel nummber</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <td>Floor plan</td>
+                    <th>Floor plan</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <td>Condition</td>
+                    <th>Condition</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <td>Created by</td>
+                    <th>Created by</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <td>Name</td>
+                    <th>Name</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <td>Address</td>
+                    <th>Address</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <td>Size</td>
+                    <th>Size</th>
                     <td>placeholder</td>
                 </tr>
             </table>
             <br>
-            
-            <%
-            for(int i = 0; i<5; i++) {
-                out.print("<table>");
-                out.print("<tr>");
-                out.print("<td>brugerid</td><td>brugernavn</td>");
-                out.print("</tr>");
-                
-                out.print("<tr>");
-                out.print("<td colspan=\"2\">tekst tekst tekst:</td>");
-                out.print("</tr>");
-                
-                out.print("<tr>");
-                out.print("<td colspan=\"2\">Vedhæftet fil: ingen</td>");
-                out.print("</tr>");
-                out.print("</table><br>");
-            }
-            %>
-            
+            <hr>
+            <br>
+            <table>
+                <tr>
+                    <th>Filnavn</th>
+                    <th>Bruger</th>
+                </tr>
+                <tr>
+                    <td>sample.jpg</td>
+                    <td>(1) Aron</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background: #eee;">
+                        <form action="perbygningservlet" enctype="multipart/form-data" method="post">
+                            <input type="hidden" name="job" value="file">
+                            <input type="file" name="file" id="file">
+                            <input type="submit">
+                        </form>
+                    </td>
+                </tr>
+                <%
+                    if(session.getAttribute("besked") != null) {
+                        out.print("<div>" + session.getAttribute("besked") + "</div>");
+                        session.setAttribute("besked", null);
+                    }
+                %>
+            </table>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th>Bruger</th>
+                    <th>Besked</th>
+                </tr>
+                <tr>
+                    <td>Aron (1)</td>
+                    <td>hejsa denne bygning styrer</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background: #eee;">
+                        <form action="NotificationServlet" method="post">
+                            <input type="text" name="content">
+                            <input type="submit">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <hr>
             <img src="cndlevels.png"/><br>
-            <a href="bygningsliste.jsp">Gå tilbage til bygningslisten</a><br>
         </div>
     </body>
 </html>
