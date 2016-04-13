@@ -1,7 +1,7 @@
 <%-- 
     Document   : bygningsliste
     Created on : 02-04-2016, 17:48:01
-    Author     : Lasse
+    Author     : Michael
 --%>
 <%
     if (session.getAttribute("brugerid") == null) 
@@ -26,8 +26,21 @@
     </head>
     <body>
         <fieldset>
-            <a href="brugerliste.jsp">Gå til brugerliste</a><br>
-            <a href="BygningsOprettelse.jsp">Gå til bygningsoprettelse</a><br><br>
+            <%
+                    System.out.println(session.getAttribute("brugertype"));
+                    Integer bt = (Integer) session.getAttribute("brugertype");
+                    if (bt == 2) {
+                        out.print("<a href=\"bygningsliste.jsp\">tilbage til adminside</a>");
+                    }
+                %><br>
+            <a href="BygningsOprettelse.jsp">Gå til bygningsoprettelse</a><br>
+            <%
+                    System.out.println(session.getAttribute("brugertype"));
+                    Integer bt1 = (Integer) session.getAttribute("brugertype");
+                    if (bt1 == 1) {
+                        out.print("<a href=\"brugerside.jsp\">Tilbage til brugerside</a>");
+                    }
+            %><br><br>
             <div>Laves mere smart senere</div>
             <a href="bygningside.jsp">Få informationer om bygningens tilstand her</a>
             <legend> <img src="polygon-logo-small.png"/></legend>
