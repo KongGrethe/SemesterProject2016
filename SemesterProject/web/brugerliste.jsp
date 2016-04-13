@@ -21,49 +21,52 @@
         <link rel="stylesheet" href="newcss.css">
     </head>
     <body>
-        <div align="center">
-            <h1>Brugerliste</h1>
+        <fieldset>
+            <legend> <img src="polygon-logo-small.png"/></legend>
             <%
-                System.out.println(session.getAttribute("brugertype"));
-                Integer bt = (Integer) session.getAttribute("brugertype");
-                if(bt == 2) {
-                    out.print("<a href=\"adminside.jsp\">tilbage til adminside</a>");
-                }
-            %><br>
-            <a href="bygningsliste.jsp">Bygningslisten</a>
-            <table class="storliste">
-                <tr>
-                    <th>ID</th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>Userrole</th>
-                    <th>Creator</th>
-                </tr>
-
-                <%
-                    UserMapper um = new UserMapper();
-
-                    ArrayList<User> list = (ArrayList<User>) um.getUsers();
-
-                    if (list != null) {
-
-                        for (int i = 0; i < list.size(); i++) {
-                            out.println("<tr><td>"
-                                    + list.get(i).getuID()
-                                    + "</td><td>"
-                                    + list.get(i).getuFName() + "</td><td>"
-                                    + list.get(i).getuLName() + "</td><td>"
-                                    + list.get(i).getUpw() + "</td><td>"
-                                    + list.get(i).getEmail() + "</td><td>"
-                                    + list.get(i).getUserRole() + "</td><td>"
-                                    + list.get(i).getFK_cuID() + "</td>"
-                                    + "<td><form action=\"userservlet\" method=\"post\">");
-                        }
+                    System.out.println(session.getAttribute("brugertype"));
+                    Integer bt = (Integer) session.getAttribute("brugertype");
+                    if (bt == 2) {
+                        out.print("<a href=\"adminside.jsp\">tilbage til adminside</a>");
                     }
-                %>
-            </table>
-        </div>
+                %><br>
+                <a href="bygningsliste.jsp">Bygningslisten</a>
+            <div align="center">
+                <h1>Brugerliste</h1>
+                <table class="storliste">
+                    <tr>
+                        <th>ID</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Userrole</th>
+                        <th>Creator</th>
+                    </tr>
+
+                    <%
+                        UserMapper um = new UserMapper();
+
+                        ArrayList<User> list = (ArrayList<User>) um.getUsers();
+
+                        if (list != null) {
+
+                            for (int i = 0; i < list.size(); i++) {
+                                out.println("<tr><td>"
+                                        + list.get(i).getuID()
+                                        + "</td><td>"
+                                        + list.get(i).getuFName() + "</td><td>"
+                                        + list.get(i).getuLName() + "</td><td>"
+                                        + list.get(i).getUpw() + "</td><td>"
+                                        + list.get(i).getEmail() + "</td><td>"
+                                        + list.get(i).getUserRole() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td>"
+                                        + "<td><form action=\"userservlet\" method=\"post\">");
+                            }
+                        }
+                    %>
+                </table>
+            </div>
+        </fieldset>
     </body>
 </html>
