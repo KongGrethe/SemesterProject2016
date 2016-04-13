@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author christian
  */
-public class Ctrl implements ICreate, IUpdate, IDelete, ISelect{
+public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     
     DBFacade DBF;
 
