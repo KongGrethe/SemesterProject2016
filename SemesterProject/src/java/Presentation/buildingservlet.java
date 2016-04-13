@@ -6,9 +6,7 @@
 package Presentation;
 
 import DataAccess.Datamappers.BuildingMapper;
-import Service.Entity.Building;
 import java.io.IOException;
-import java.io.PrintWriter;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.Connection;
@@ -22,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.InputMismatchException;
 
 /**
  *
@@ -52,16 +49,14 @@ public class buildingservlet extends HttpServlet {
 
         String job = request.getParameter("job");
 
-        
-        
         String nextJSP = null;
 
         try {
-//rs.next første gang kan bruges til at checke om det er true eller false
+            //rs.next første gang kan bruges til at checke om det er true eller false
             BuildingMapper bm = new BuildingMapper();
             switch (job) {
                 case "add":
-                    
+
                     String bName = request.getParameter("bName");
                     String bAddress = request.getParameter("bAddress");
                     //variabelsetups er fordelt på cases, ellers opstår nullpointer exceptions
@@ -70,11 +65,11 @@ public class buildingservlet extends HttpServlet {
                     int bfPlan = parseInt(request.getParameter("bfPlan"));
                     int condLvl = -1;//Vi har ikke dette endnu
                     int FK_uID = parseInt(request.getParameter("FK_uID"));
-//int FK_uID = Integer.parseInt((String) session.getAttribute("brugerid"));
-                    
+                    //int FK_uID = Integer.parseInt((String) session.getAttribute("brugerid"));
+
                     bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
                     nextJSP = "/BygningsOprettelse.jsp";
-                   
+
                     break;
                 case "remove":
                     String nr = request.getParameter("removeNr");
