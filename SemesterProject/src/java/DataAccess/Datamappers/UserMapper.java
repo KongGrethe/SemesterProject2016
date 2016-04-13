@@ -62,7 +62,7 @@ public class UserMapper implements IUserMapper {
     @Override
     public List<User> getUsers() throws SQLException { //Med denne metode, laver vi en liste af Users, som vi hiver ud af databasen.
         List<User> users = new ArrayList<>();          // Laver en ny liste ved navn users
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM ´Users´ SORTED BY ´uID´");
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `Users` ORDER BY `uID`");
                                                        // ^Forbereder statement fra databasen, hvor vi hiver alle users ud og sorterer efter userID'et,        
         ResultSet rs = pstmt.executeQuery();           // og laver et resultset (rs) ud af det.
 

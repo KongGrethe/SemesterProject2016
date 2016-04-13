@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="text" name="upw" autocomplete="off"></td>
+                        <td><input type="password" name="upw" autocomplete="off"></td>
                     </tr>
                     <tr>
                         <td>Email</td>

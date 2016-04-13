@@ -3,9 +3,11 @@
     Created on : 04-04-2016, 22:29:20
     Author     : Lasse
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Service.Entity.User"%>
+<%@page import="DataAccess.Datamappers.UserMapper"%>
 <%
-    if (session.getAttribute("brugerid") == null) 
-    {
+    if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
     }
 %>
@@ -34,18 +36,25 @@
                 </tr>
 
                 <%
-                    for (int i = 1; i <= 50; i++) {
-                        out.print("<tr>");
-                        out.print("<td>" + i + "</td>");
-                        out.print("<td>Placeholder</td>");
-                        out.print("<td>Placeholder</td>");
-                        out.print("<td>Placeholder</td>");
-                        out.print("<td>Placeholder@hotmail.com</td>");
-                        out.print("<td>Customer</th>");
-                        out.print("<td>" + i + "</td>");
-                        out.print("</tr>");
+                    UserMapper um = new UserMapper();
+
+                    ArrayList<User> list = (ArrayList<User>) um.getUsers();
+
+                    if (list != null) {
+
+                        for (int i = 0; i < list.size(); i++) {
+                            out.println("<tr><td>"
+                                    + list.get(i).getuID()
+                                    + "</td><td>"
+                                    + list.get(i).getuFName() + "</td><td>"
+                                    + list.get(i).getuLName() + "</td><td>"
+                                    + list.get(i).getUpw() + "</td><td>"
+                                    + list.get(i).getEmail() + "</td><td>"
+                                    + list.get(i).getUserRole() + "</td><td>"
+                                    + list.get(i).getFK_cuID() + "</td>"
+                                    + "<td><form action=\"userservlet\" method=\"post\">");
+                        }
                     }
-                    out.print("</table>");
                 %>
             </table>
         </div>
