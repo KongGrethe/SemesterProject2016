@@ -8,6 +8,7 @@ package Service;
 import DataAccess.DBFacade;
 import Service.Entity.Building;
 import Service.Entity.Checkup;
+import Service.Entity.Files;
 import Service.Entity.Notification;
 import Service.Entity.User;
 import Service.Interface.ICreate;
@@ -114,5 +115,9 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     public boolean deleteFile(String fName) {
         return DBF.deleteFile(fName);
     }
-    
+
+    @Override
+    public List<Files> selectAllFiles() throws SQLException {
+        return DBF.selectAllFiles();
+    }
 }
