@@ -29,8 +29,8 @@
             <%
                     System.out.println(session.getAttribute("brugertype"));
                     Integer bt = (Integer) session.getAttribute("brugertype");
-                    if (bt == 2) {
-                        out.print("<a href=\"bygningsliste.jsp\">tilbage til adminside</a>");
+                    if (bt !=1 ) {
+                        out.print("<a href=\"adminside.jsp\">tilbage til adminside</a>");
                     }
                 %><br>
             <a href="BygningsOprettelse.jsp">Gå til bygningsoprettelse</a><br>

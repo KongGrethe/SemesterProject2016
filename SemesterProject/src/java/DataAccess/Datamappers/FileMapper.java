@@ -20,8 +20,8 @@ public class FileMapper implements IFileMapper {
            String sql = "INSERT INTO `files`(`fName`, `FK_bID`,`FK_uID`) VALUES(?,?,?)"; 
            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
            pstmt.setString(1, fName);
-           pstmt.setInt(2, FK_uID);
-           pstmt.setInt(3, FK_bID);
+           pstmt.setInt(2, FK_bID);
+           pstmt.setInt(3, FK_uID);
            pstmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
