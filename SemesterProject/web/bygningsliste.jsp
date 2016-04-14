@@ -36,8 +36,8 @@
             <a href="BygningsOprettelse.jsp">Gå til bygningsoprettelse</a><br>
             <%
                     System.out.println(session.getAttribute("brugertype"));
-                    Integer bt1 = (Integer) session.getAttribute("brugertype");
-                    if (bt1 == 1) {
+                    bt = (Integer) session.getAttribute("brugertype");
+                    if (bt == 1) {
                         out.print("<a href=\"brugerside.jsp\">Tilbage til brugerside</a>");
                     }
             %><br><br>
