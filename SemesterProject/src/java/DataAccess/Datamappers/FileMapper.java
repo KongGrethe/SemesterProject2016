@@ -7,6 +7,7 @@ package DataAccess.Datamappers;
 
 import DataAccess.DBConnector;
 import Service.Entity.Files;
+import Service.Entity.Notification;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,19 +68,19 @@ public class FileMapper implements IFileMapper {
     }
             */
 
-    @Override
-    public List<Files> selectAllFiles(int FK_bID) throws SQLException{
-        List<Files> files = new ArrayList();
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `files` WHERE `FK_bID =?`");
+     @Override
+    public List<Files> selectAllFiles(int FK_bID) throws SQLException {
+        List<Files> list = new ArrayList();
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM files WHERE FK_bID=?");
         pstmt.setInt(1, FK_bID);
         ResultSet rs = pstmt.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             String fName = rs.getString("fName");
-            FK_bID = rs.getInt("FK_bID");
-            int FK_uID = rs.getInt("FK_uID");
-            Files file = new Files(fName, FK_bID, FK_uID);
-            files.add(file);
+            int bid = rs.getInt(2);
+            int uid = rs.getInt(3);
+            Files file = new Files(fName, bid, uid);
+            list.add(file);
         }
-        return files;
+        return list;
     }
 }

@@ -43,7 +43,7 @@ public class NotificationMapper {
     
     public List<Notification> selectAllNotification() throws SQLException {
         List<Notification> notifications = new ArrayList();
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `notifications` ORDER BY `nID`");
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `notification` ORDER BY `nID`");
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
             int nID = rs.getInt("nID");
@@ -57,7 +57,7 @@ public class NotificationMapper {
     
     public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
         List<Notification> notifications = new ArrayList();
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `notifications` WHERE `FK_bID`=? ORDER BY `nID`");
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM notification WHERE FK_bID=? ORDER BY nID");
         pstmt.setInt(1, FK_bID);
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
