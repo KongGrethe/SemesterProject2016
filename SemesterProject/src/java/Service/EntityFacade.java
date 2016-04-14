@@ -117,7 +117,7 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public List<Files> selectAllFiles() throws SQLException {
-        return DBF.selectAllFiles();
+    public List<Files> selectAllFiles(int FK_bID) throws SQLException {
+        return DBF.selectAllFiles(FK_bID);
     }
 }
