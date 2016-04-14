@@ -1,5 +1,6 @@
 package Presentation;
 
+import DataAccess.DBFacade;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,6 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -24,11 +28,12 @@ import javax.servlet.http.Part;
 @WebServlet(name = "perbygningservlet", urlPatterns = {"/perbygningservlet"})
 public class perbygningservlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         HttpSession session = request.getSession();
         String job = request.getParameter("job");
         String fname = null;
 
+        DBFacade dbf = new DBFacade();
         switch (job) {
             case "file":
                 final Part filePart = request.getPart("file");
@@ -53,6 +58,11 @@ public class perbygningservlet extends HttpServlet {
                     while ((read = fileContent.read(bytes)) != -1) {
                         out.write(bytes, 0, read);
                     }
+                    
+                    int uid = Integer.parseInt((String) request.getParameter("uid"));
+                    int bid = Integer.parseInt((String) request.getParameter("bid"));
+                    
+                    dbf.createFile(files + "_" + fname, bid, uid);
                 } catch (FileNotFoundException fne) {
                     System.out.println(fne.getMessage());
                 } finally {
@@ -87,7 +97,13 @@ public class perbygningservlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -101,7 +117,13 @@ public class perbygningservlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

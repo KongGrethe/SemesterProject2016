@@ -19,8 +19,14 @@
         <link rel="stylesheet" href="newcss.css">
     </head>
     <body>
+        
         <div align="center">
-            <h1>Bygning #23456765</h1>
+            <h1>Bygning <%
+            out.print(request.getParameter("bid"));
+        %></h1>
+        <%
+        out.print("<b>" + session.getAttribute("bid") + "</b>");
+        %>
             <a href="bygningsliste.jsp">Gå tilbage til bygningslisten</a><br><br>
             <table>
                 <tr>
@@ -73,6 +79,11 @@
                         <form action="perbygningservlet" enctype="multipart/form-data" method="post">
                             <input type="hidden" name="job" value="file">
                             <input type="file" name="file" id="file">
+                            
+                            <%
+                            out.print("<input type=\"hidden\" name=\"bid\" value=\"" + session.getAttribute("bid") + "\">");
+                            out.print("<input type=\"uid\" name=\"uid\" value=\"" + session.getAttribute("brugerid") + "\">");
+                            %>
                             <input type="submit">
                         </form>
                     </td>
@@ -88,8 +99,8 @@
             <br>
             <table>
                 <tr>
-                    <th>Bruger</th>
                     <th>Besked</th>
+                    <th>Bruger</th>
                 </tr>
                 <tr>
                     <td>Aron (1)</td>
@@ -97,8 +108,10 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="background: #eee;">
-                        <form action="NotificationServlet" method="post">
-                            <input type="text" name="content">
+                        <form action="perbygningservlet" method="get">
+                            <input type="hidden" name="job" value="msg">
+                            <input type="hidden" name="FK_bID" value="1">
+                            <input type="text" name="content" autocomplete="off">
                             <input type="submit">
                         </form>
                     </td>
@@ -106,7 +119,7 @@
             </table>
             <br>
             <hr>
-            <img src="cndlevels.png"/><br>
+            <img src="cndlevels.png" style="max-width: 100%;">
         </div>
     </body>
 </html>
