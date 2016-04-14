@@ -2,6 +2,7 @@ package Service.Interface;
 
 import Service.Entity.Building;
 import Service.Entity.Checkup;
+import Service.Entity.Files;
 import Service.Entity.Notification;
 import Service.Entity.User;
 import java.sql.SQLException;
@@ -18,5 +19,5 @@ public interface ISelect {
     //List<Notification> selectNotification() throws SQLException; TÆNKER AT DENNE IKKE SKAL BRUGES???????????
     List<Notification> selectAllNotification() throws SQLException;
     List<Notification> selectBuildingNotification(int FK_bID) throws SQLException;
-    
+    List<Files> selectAllFiles() throws SQLException;
 }
