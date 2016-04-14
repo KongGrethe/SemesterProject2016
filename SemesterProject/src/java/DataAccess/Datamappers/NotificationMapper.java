@@ -20,6 +20,7 @@ public class NotificationMapper {
             pstmt.setInt(1, nID);
             pstmt.setString(2, content);
             pstmt.setInt(3, FK_bID);
+            pstmt.setInt(4, FK_uID);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

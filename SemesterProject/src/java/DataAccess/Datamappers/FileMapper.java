@@ -6,7 +6,10 @@
 package DataAccess.Datamappers;
 
 import DataAccess.DBConnector;
+import Service.Entity.Files;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -45,4 +48,37 @@ public class FileMapper implements IFileMapper {
     }
     
     
+    
+    /*
+            @Override
+    public List<Checkup> getCheckups() throws SQLException{
+        List<Checkup> checkups = new ArrayList();
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `checkup` ORDER BY `checkupID`");
+        ResultSet rs = pstmt.executeQuery();
+        while(rs.next()){
+            int checkupID = rs.getInt("checkupID");
+            String decay = rs.getString("decay");
+            int FK_uID = rs.getInt("FK_uID");
+            int FK_bID = rs.getInt("FK_bID");
+            Checkup checkup = new Checkup(checkupID, decay, FK_uID, FK_bID);
+            checkups.add(checkup);
+        }
+        return checkups;
+    }
+            */
+
+    @Override
+    public List<Files> selectAllFiles() throws SQLException{
+        List<Files> files = new ArrayList();
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `files` WHERE `FK_bID =?`");
+        ResultSet rs = pstmt.executeQuery();
+        while(rs.next()){
+            String fName = rs.getString("fName");
+            int FK_bID = rs.getInt("FK_bID");
+            int FK_uID = rs.getInt("FK_uID");
+            Files file = new Files(fName, FK_bID, FK_uID);
+            files.add(file);
+        }
+        return files;
+    }
 }

@@ -5,6 +5,10 @@
  */
 package DataAccess.Datamappers;
 
+import Service.Entity.Files;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author christian
@@ -12,6 +16,7 @@ package DataAccess.Datamappers;
 public interface IFileMapper {
     boolean createFile(String fName, int FK_bID, int FK_uID);
     boolean deleteFile(String fName);
+    List<Files> selectAllFiles() throws SQLException; 
     
 //    fName VARCHAR(50),
 //    FK_bID INT(7),

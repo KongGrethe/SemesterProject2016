@@ -19,6 +19,7 @@ import DataAccess.Datamappers.IFileMapper;
 import DataAccess.Datamappers.INotificationMapper;
 import DataAccess.Datamappers.IUserMapper;
 import DataAccess.Datamappers.NotificationMapper;
+import Service.Entity.Files;
 import Service.Entity.Notification;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -160,6 +161,11 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     @Override
     public boolean deleteFile(String fName) {
         return fm.deleteFile(fName);
+    }
+
+    @Override
+    public List<Files> selectAllFiles() throws SQLException {
+        return fm.selectAllFiles();
     }
 
     
