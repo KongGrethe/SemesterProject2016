@@ -166,8 +166,8 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public List<Files> selectAllFiles() throws SQLException {
-        return fm.selectAllFiles();
+    public List<Files> selectAllFiles(int FK_bID) throws SQLException {
+        return fm.selectAllFiles(FK_bID);
     }
 
     

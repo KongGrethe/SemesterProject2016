@@ -68,13 +68,14 @@ public class FileMapper implements IFileMapper {
             */
 
     @Override
-    public List<Files> selectAllFiles() throws SQLException{
+    public List<Files> selectAllFiles(int FK_bID) throws SQLException{
         List<Files> files = new ArrayList();
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `files` WHERE `FK_bID =?`");
+        pstmt.setInt(1, FK_bID);
         ResultSet rs = pstmt.executeQuery();
         while(rs.next()){
             String fName = rs.getString("fName");
-            int FK_bID = rs.getInt("FK_bID");
+            FK_bID = rs.getInt("FK_bID");
             int FK_uID = rs.getInt("FK_uID");
             Files file = new Files(fName, FK_bID, FK_uID);
             files.add(file);
