@@ -1,12 +1,16 @@
 package Presentation;
 
+import DataAccess.DBFacade;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -24,27 +28,36 @@ import javax.servlet.http.Part;
 @WebServlet(name = "perbygningservlet", urlPatterns = {"/perbygningservlet"})
 public class perbygningservlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         HttpSession session = request.getSession();
+        request.setCharacterEncoding("UTF-8");
         String job = request.getParameter("job");
         String fname = null;
+
+        DBFacade dbf = new DBFacade();
+
+        int bid = 0;
+
+        ServletContext sc = getServletContext();
+        String cp = sc.getRealPath(File.separator);
+        System.out.println(cp);
 
         switch (job) {
             case "file":
                 final Part filePart = request.getPart("file");
                 OutputStream out = null;
                 InputStream fileContent = null;
-                
-                int files = (int) Math.floor(Math.random()*100000);
+
+                int files = (int) Math.floor(Math.random() * 100000);
 
                 try {
                     String navn = filePart.getSubmittedFileName();
                     System.out.println(navn);
                     fname = navn.substring(navn.lastIndexOf("\\") + 1);
                     //if mac: fname = navn.substring(navn.lastIndexOf("/") + 1);
-                    
+
                     //overvej en anden mappe end C:/Mappe
-                    out = new FileOutputStream(new File("C:/mappe/" + files + "_" + fname));
+                    out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
                     //if mac: out = new FileOutputStream(new File("/Users/christianst-jacobsen/Desktop/FilerFraHovedprojekt/" + files + "_" + fname));
                     fileContent = filePart.getInputStream();
 
@@ -53,6 +66,11 @@ public class perbygningservlet extends HttpServlet {
                     while ((read = fileContent.read(bytes)) != -1) {
                         out.write(bytes, 0, read);
                     }
+
+                    int uid = Integer.parseInt((String) request.getParameter("uid"));
+                    bid = Integer.parseInt((String) request.getParameter("bid"));
+
+                    dbf.createFile(files + "_" + fname, bid, uid);
                 } catch (FileNotFoundException fne) {
                     System.out.println(fne.getMessage());
                 } finally {
@@ -62,17 +80,17 @@ public class perbygningservlet extends HttpServlet {
                     if (fileContent != null) {
                         fileContent.close();
                     }
-                    
-                    //her skal der være et entity-kald som linker filen ind i databasen
-                    session.setAttribute("besked", "Uploadet som: " + files + "_" + fname);
                 }
                 break;
-            case "msg":
-                //entitykald til indsættelse af beskeden i notificaitonstabellen
+            case "msg":;
+                String msg = request.getParameter("content");
+                int uid = Integer.parseInt((String) request.getParameter("uid"));
+                bid = Integer.parseInt((String) request.getParameter("bid"));
+                dbf.createNotification(0, msg, bid, uid);
                 break;
         }
-        
-        response.sendRedirect("bygningside.jsp");
+
+        response.sendRedirect("bygningside.jsp?bid=" + bid);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -87,7 +105,13 @@ public class perbygningservlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -101,7 +125,13 @@ public class perbygningservlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

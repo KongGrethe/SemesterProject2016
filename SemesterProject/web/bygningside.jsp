@@ -3,6 +3,10 @@
     Created on : 06-04-2016, 14:51:14
     Author     : Lasse
 --%>
+<%@page import="Service.Entity.Notification"%>
+<%@page import="java.util.List"%>
+<%@page import="Service.Entity.Files"%>
+<%@page import="DataAccess.DBFacade"%>
 <%
     if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
@@ -19,8 +23,14 @@
         <link rel="stylesheet" href="newcss.css">
     </head>
     <body>
+
         <div align="center">
-            <h1>Bygning #23456765</h1>
+            <h1>Bygning <%
+                out.print(request.getParameter("bid"));
+                %></h1>
+                <%
+                    out.print("<b>" + session.getAttribute("bid") + "</b>");
+                %>
             <a href="bygningsliste.jsp">Gå tilbage til bygningslisten</a><br><br>
             <table>
                 <tr>
@@ -64,41 +74,62 @@
                     <th>Filnavn</th>
                     <th>Bruger</th>
                 </tr>
-                <tr>
-                    <td>sample.jpg</td>
-                    <td>(1) Aron</td>
-                </tr>
+                <%
+                    DBFacade dbf = new DBFacade();
+                    List<Files> hej = dbf.selectAllFiles(Integer.parseInt(request.getParameter("bid")));
+
+                    System.out.println(hej.size());
+                    for (int i = 0; i < hej.size(); i++) {
+                        out.print("<tr>");
+
+                        out.print("<td><a href=\"test/" + hej.get(i).getfName() + "\">" + hej.get(i).getfName() + "</a>" + "</td><td>" + hej.get(i).getFK_uID() + "</td>");
+                        out.print("</tr>");
+                    }
+
+                %>
                 <tr>
                     <td colspan="2" style="background: #eee;">
                         <form action="perbygningservlet" enctype="multipart/form-data" method="post">
                             <input type="hidden" name="job" value="file">
                             <input type="file" name="file" id="file">
+
+                            <%                                out.print("<input type=\"hidden\" name=\"bid\" value=\"" + request.getParameter("bid") + "\">");
+                                out.print("<input type=\"hidden\" name=\"uid\" value=\"" + session.getAttribute("brugerid") + "\">");
+                            %>
                             <input type="submit">
                         </form>
                     </td>
                 </tr>
-                <%
-                    if(session.getAttribute("besked") != null) {
-                        out.print("<div>" + session.getAttribute("besked") + "</div>");
-                        session.setAttribute("besked", null);
-                    }
-                %>
             </table>
             <br>
             <br>
             <table>
                 <tr>
-                    <th>Bruger</th>
                     <th>Besked</th>
+                    <th>Bruger</th>
                 </tr>
-                <tr>
-                    <td>Aron (1)</td>
-                    <td>hejsa denne bygning styrer</td>
-                </tr>
+                <%
+                    List<Notification> hejsa = dbf.selectBuildingNotification(2);
+
+                    for (int i = 0; i < hejsa.size(); i++) {
+                        out.print("<tr>");
+                        out.print("<td>");
+                        out.print(hejsa.get(i).getContent());
+                        out.print("</td>");
+                        out.print("<td>");
+                        out.print(hejsa.get(i).getFK_bID());
+                        out.print("</td>");
+                        out.print("</tr>");
+                    }
+                %>
                 <tr>
                     <td colspan="2" style="background: #eee;">
-                        <form action="NotificationServlet" method="post">
-                            <input type="text" name="content">
+                        <form action="perbygningservlet" method="get">
+                            <input type="hidden" name="job" value="msg">
+                            <%                                out.print("<input type=\"hidden\" name=\"bid\" value=\"" + request.getParameter("bid") + "\">");
+                                out.print("<input type=\"hidden\" name=\"uid\" value=\"" + session.getAttribute("brugerid") + "\">");
+                            %>
+                            <input type="text" name="content" autocomplete="off">
                             <input type="submit">
                         </form>
                     </td>
@@ -106,7 +137,7 @@
             </table>
             <br>
             <hr>
-            <img src="cndlevels.png"/><br>
+            <img src="cndlevels.png" style="max-width: 100%;">
         </div>
     </body>
 </html>
