@@ -21,7 +21,7 @@
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
         <h1>Velkommen admin</h1>
-        <div>This is the administrator page.</div>
+        <div>Dette er adminstrator siden.</div>
         <a href="#" style="color: red;">Usage traffic</a><br>
         <a href="#" style="color: red;">Pending checkupreports</a> <span>(x pending)</span><br>
         <a href="#" style="color: red;">Emails</a><br>

@@ -36,12 +36,12 @@
                 <table class="storliste">
                     <tr>
                         <th>ID</th>
-                        <th>First name</th>
-                        <th>Last name</th>
+                        <th>Fornavn</th>
+                        <th>Efternavn</th>
                         <th>Password</th>
                         <th>Email</th>
-                        <th>Userrole</th>
-                        <th>Creator</th>
+                        <th>Rolle</th>
+                        <th>Oprettet af</th>
                     </tr>
 
                     <%

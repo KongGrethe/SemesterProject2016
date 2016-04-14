@@ -19,5 +19,5 @@ public interface ISelect {
     //List<Notification> selectNotification() throws SQLException; TÆNKER AT DENNE IKKE SKAL BRUGES???????????
     List<Notification> selectAllNotification() throws SQLException;
     List<Notification> selectBuildingNotification(int FK_bID) throws SQLException;
-    List<Files> selectAllFiles(int FK_bID) throws SQLException;
+    List<Files> selectAllFiles(int plID) throws SQLException;
 }

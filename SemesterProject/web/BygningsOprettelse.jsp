@@ -29,23 +29,23 @@
             <form action="buildingservlet" method="post">
                 <table>
                     <tr>
-                        <td>Name</td>
+                        <td>Navn</td>
                         <td><input type="text" name="bName" autocomplete="off"></td>   
                     </tr>
                     <tr>
-                        <td>Address</td>
+                        <td>Adresse</td>
                         <td><input type="text" name="bAddress" autocomplete="off"></td>   
                     </tr>
                     <tr>
-                        <td>Parcel number</td>
+                        <td>Parcelnummer</td>
                         <td><input type="text" name="parcelNr" autocomplete="off" pattern="\d*" title="Kun tal"></td>   
                     </tr>
                     <tr>
-                        <td>Size</td>
+                        <td>Størrelse</td>
                         <td><input type="text" name="bSize" autocomplete="off" pattern="\d*" title="Kun tal"></td>   
                     </tr>
                     <tr>
-                        <td>Floor plan</td>
+                        <td>Etager</td>
                         <td><input type="text" name="bfPlan" autocomplete="off" pattern="\d*" title="Kun tal"></td>   
                     </tr>
                     <%

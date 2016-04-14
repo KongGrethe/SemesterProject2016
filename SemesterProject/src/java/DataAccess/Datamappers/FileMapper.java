@@ -68,18 +68,34 @@ public class FileMapper implements IFileMapper {
             */
 
     @Override
-    public List<Files> selectAllFiles(int FK_bID) throws SQLException{
+    public List<Files> selectAllFiles(int plID) throws SQLException{
         List<Files> files = new ArrayList();
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `files` WHERE `FK_bID =?`");
-        pstmt.setInt(1, FK_bID);
+        pstmt.setInt(1, plID);
         ResultSet rs = pstmt.executeQuery();
         while(rs.next()){
             String fName = rs.getString("fName");
-            FK_bID = rs.getInt("FK_bID");
+            int FK_bID = rs.getInt("FK_bID");
             int FK_uID = rs.getInt("FK_uID");
             Files file = new Files(fName, FK_bID, FK_uID);
             files.add(file);
         }
         return files;
     }
+    
+    /*
+    public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
+        List<Notification> notifications = new ArrayList();
+        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `notifications` WHERE `FK_bID`=? ORDER BY `nID`");
+        pstmt.setInt(1, FK_bID);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            int nID = rs.getInt("nID");
+            String content = rs.getString("content");
+            Notification notification = new Notification(nID, content, FK_bID);
+            notifications.add(notification);
+        }
+        return notifications;
+    }
+    */
 }
