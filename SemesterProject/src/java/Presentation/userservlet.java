@@ -7,6 +7,7 @@ package Presentation;
 
 import DataAccess.Datamappers.UserMapper;
 import Service.Entity.Building;
+import Service.EntityFacade;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.sql.Connection;
@@ -49,11 +50,10 @@ public class userservlet extends HttpServlet {
 
         String nextJSP = null;
 
-        UserMapper um = new UserMapper();
-
         try {
             switch (job) {
                 case "add":
+                    EntityFacade ef = new EntityFacade();
                     //kode til at oprette bruger, check om findes i forvejen
                     //um.createUser(0, job, job, job, job, nextJSP, 0)
                     String uFName = (String) request.getParameter("uFName");
@@ -72,7 +72,7 @@ public class userservlet extends HttpServlet {
                     int FK_uID = (int) session.getAttribute("brugerid");
                     
                     System.out.println("kunne godt parse");
-                    um.createUser(0, uFName, uLName, upw, email, userRole, FK_uID);
+                    ef.createUser(0, uFName, uLName, upw, email, userRole, FK_uID);
 
                     break;
 
