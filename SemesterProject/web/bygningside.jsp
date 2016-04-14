@@ -28,31 +28,31 @@
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <th>Parcel nummber</th>
+                    <th>Parcelnummer</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <th>Floor plan</th>
+                    <th>EtagePlan</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <th>Condition</th>
+                    <th>Tilstand</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <th>Created by</th>
+                    <th>Oprettet af</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <th>Name</th>
+                    <th>Navn</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <th>Address</th>
+                    <th>Adresse</th>
                     <td>placeholder</td>
                 </tr>
                 <tr>
-                    <th>Size</th>
+                    <th>Størrelse</th>
                     <td>placeholder</td>
                 </tr>
             </table>
