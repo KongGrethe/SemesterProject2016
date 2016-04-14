@@ -68,12 +68,13 @@ public class NotificationMapper {
         return notifications;
     }
     
-    public boolean updateNotification (int nID, String content) {
+    public boolean updateNotification (int nID, String content, int FK_bID) {
         try {
         String sql = "UPDATE `notification` SET `content`=? WHERE `nID`=?";
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
-        pstmt.setString(1, content);
-        pstmt.setInt(2, nID);
+        pstmt.setInt(1, nID);
+        pstmt.setString(2, content);
+        pstmt.setInt(3, FK_bID);
         pstmt.executeUpdate();
         } catch(SQLException ex) {
             ex.printStackTrace();

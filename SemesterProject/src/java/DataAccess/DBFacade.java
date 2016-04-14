@@ -143,8 +143,8 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public boolean updateNotification(int nID, String content) {
-        return nm.updateNotification(nID, content);
+    public boolean updateNotification(int nID, String content, int FK_bID) {
+        return nm.updateNotification(nID, content, FK_bID);
     }
 
     @Override

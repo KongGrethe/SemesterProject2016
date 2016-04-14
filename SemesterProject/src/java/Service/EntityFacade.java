@@ -81,8 +81,8 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean updateNotification(int nID, String content) {
-        return DBF.updateNotification(nID, content);
+    public boolean updateNotification(int nID, String content, int FK_bID) {
+        return DBF.updateNotification(nID, content, FK_bID);
     }
 
     @Override

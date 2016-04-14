@@ -6,5 +6,5 @@ package Service.Interface;
  */
 public interface IUpdate {
     boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
-    boolean updateNotification (int nID, String content);
+    boolean updateNotification (int nID, String content, int FK_bID);
 }

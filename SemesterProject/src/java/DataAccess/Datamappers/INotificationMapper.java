@@ -13,5 +13,5 @@ public interface INotificationMapper {
     boolean deleteNotification (int nID);
     List<Notification> selectAllNotification() throws SQLException;
     List<Notification> selectBuildingNotification(int FK_bID) throws SQLException;
-    boolean updateNotification (int nID, String content);
+    boolean updateNotification (int nID, String content, int FK_bID);
 }
