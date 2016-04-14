@@ -25,6 +25,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,7 +43,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     private Connection con;
 
     
-    public DBFacade() throws ClassNotFoundException, SQLException 
+    public DBFacade() throws SQLException, ClassNotFoundException 
     {
         Class.forName(DBConnector.driver);
         con = DriverManager.getConnection(DBConnector.URL, DBConnector.ID, DBConnector.PW);

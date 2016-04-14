@@ -16,14 +16,19 @@ import Service.Interface.ISelect;
 import Service.Interface.IUpdate;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author christian
  */
 public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
-    
-    DBFacade DBF;
+        DBFacade DBF;
+
+    public EntityFacade() throws ClassNotFoundException, SQLException {
+            DBF = new DBFacade();
+    }
 
     @Override
     public boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
