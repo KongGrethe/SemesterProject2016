@@ -89,7 +89,6 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     public boolean deleteNotification(int nID) {
         return DBF.deleteNotification(nID);
     }
-
     
     @Override
     public List<Notification> selectAllNotification() throws SQLException {
@@ -110,6 +109,4 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     public boolean deleteFile(String fName) {
         return DBF.deleteFile(fName);
     }
-    
-    
 }

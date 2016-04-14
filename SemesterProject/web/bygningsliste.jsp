@@ -19,7 +19,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Bygningsliste</title>
         <!-- JSP autogenererer ikke den nedenunderske linje, som er nødvendig for at få et korrekt zoomniveau på telefoner -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="newcss.css">
@@ -50,13 +50,13 @@
                 <table class="storliste">
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Parcel ID</th>
-                        <th>Size</th>
-                        <th>Plan</th>
-                        <th>Condition</th>
-                        <th>UserID</th>
+                        <th>Navn</th>
+                        <th>Adresse</th>
+                        <th>Parcelnummer</th>
+                        <th>Størrelse</th>
+                        <th>Etager</th>
+                        <th>Tilstand</th>
+                        <th>BrugerID</th>
                     </tr>
 
                     <%

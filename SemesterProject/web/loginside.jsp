@@ -20,7 +20,7 @@
             <table>
                 <form action="loginctrl" method="post">
                     <tr>
-                        <th>ID</th>
+                        <th>Brugernavn</th>
                         <td><input type="text" name="username" autocomplete="off"></td>
                     </tr>
                     <tr>
@@ -39,7 +39,7 @@
                             out.println("<br><span class=\"error\">" + session.getAttribute("error") + "</span>");
                         }
                     %>
-            <div style="padding: 3em; color: grey;">24-timers hotline tilgængelig på 11223344</div>
+            <div style="padding: 3em; color: grey;">Fang os døgnet rundt på tlf.11223344</div>
         </div>
     </body>
 </html>
