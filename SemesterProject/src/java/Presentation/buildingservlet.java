@@ -5,7 +5,7 @@
  */
 package Presentation;
 
-import DataAccess.Datamappers.BuildingMapper;
+import Service.EntityFacade;
 import java.io.IOException;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -53,7 +53,8 @@ public class buildingservlet extends HttpServlet {
 
         try {
             //rs.next første gang kan bruges til at checke om det er true eller false
-            BuildingMapper bm = new BuildingMapper();
+            EntityFacade ef = new EntityFacade();
+            //BuildingMapper bm = new BuildingMapper();
             switch (job) {
                 case "add":
 
@@ -67,7 +68,7 @@ public class buildingservlet extends HttpServlet {
                     int FK_uID = parseInt(request.getParameter("FK_uID"));
                     //int FK_uID = Integer.parseInt((String) session.getAttribute("brugerid"));
 
-                    bm.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
+                    ef.createBuilding(bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
                     nextJSP = "/BygningsOprettelse.jsp";
 
                     break;
@@ -75,7 +76,7 @@ public class buildingservlet extends HttpServlet {
                     String nr = request.getParameter("removeNr");
                     System.out.println("kom til remove");
                     System.out.println("skal remove " + nr);
-                    bm.deleteBuilding(parseInt(nr));
+                    ef.deleteBuilding(parseInt(nr));
                     nextJSP = "/bygningsliste.jsp";
                     break;
                 default:
