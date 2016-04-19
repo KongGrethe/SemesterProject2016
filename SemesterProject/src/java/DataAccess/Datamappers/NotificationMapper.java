@@ -11,8 +11,9 @@ import java.util.List;
 /**
  * @author Joachim E. Christensen
  */
-public class NotificationMapper {
+public class NotificationMapper implements INotificationMapper{
     
+    @Override
     public boolean createNotification (int nID, String content, int FK_bID, int FK_uID) {
         try {
             String sql = "INSERT INTO `notification`(`nID`, `content`,`FK_bID`,`FK_uID`) VALUES(?, ?, ?, ?)";
@@ -29,6 +30,7 @@ public class NotificationMapper {
         return true;
     }
     
+    @Override
     public boolean deleteNotification (int nID) {
         try {
             String sql = "DELETE FROM buildings WHERE nID=" + nID;
@@ -41,6 +43,7 @@ public class NotificationMapper {
         return true;
     }
     
+    @Override
     public List<Notification> selectAllNotification() throws SQLException {
         List<Notification> notifications = new ArrayList();
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `notification` ORDER BY `nID`");
@@ -55,6 +58,7 @@ public class NotificationMapper {
         return notifications;
     }
     
+    @Override
     public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
         List<Notification> notifications = new ArrayList();
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM notification WHERE FK_bID=? ORDER BY nID");
@@ -69,6 +73,7 @@ public class NotificationMapper {
         return notifications;
     }
     
+    @Override
     public boolean updateNotification (int nID, String content, int FK_bID) {
         try {
         String sql = "UPDATE `notification` SET `content`=? WHERE `nID`=?";

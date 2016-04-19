@@ -11,8 +11,9 @@ import java.util.List;
 /**
  * @author Joachim E. Christensen
  */
-public class BuildingMapper {
+public class BuildingMapper implements IBuildingMapper{
 
+    @Override
     public boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         try {
             String sql = "INSERT INTO `buildings`(`bID`, `bName`,`bAddress`, `parcelNr`, `bSize`, `bfPlan`, `condLvl`, `FK_uID`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -33,6 +34,7 @@ public class BuildingMapper {
         return true;
     }
 
+    @Override
     public boolean deleteBuilding(int bID) {
         System.out.println("hej" + bID);
         try {
@@ -47,6 +49,7 @@ public class BuildingMapper {
         return true;
     }
 
+    @Override
     public List<Building> getBuildings() throws SQLException {
         List<Building> buildings = new ArrayList();
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `buildings` ORDER BY `bID`");
@@ -66,7 +69,8 @@ public class BuildingMapper {
         return buildings;
     }
     
-    public List<Building> selectBuildingsByUsers() throws SQLException {
+    @Override
+    public List<Building> selectBuildingsByUser() throws SQLException {
         List<Building> buildings = new ArrayList();
         PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `buildings` ORDER BY `FK_uID`");
         ResultSet rs = pstmt.executeQuery();
