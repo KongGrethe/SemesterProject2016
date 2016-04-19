@@ -77,7 +77,7 @@
                                         + list.get(i).getParcelNr() + "</td><td>"
                                         + list.get(i).getbSize() + "</td><td>"
                                         + list.get(i).getBfPlan() + "</td><td>"
-                                        + list.get(i).getCondLvl() + "</td><td><a href=\"bygningside.jsp?id=" + list.get(i).getFK_uID() + "\">"
+                                        + list.get(i).getCondLvl() + "</td><td><a href=\"bygningside.jsp?bid=" + list.get(i).getFK_uID() + "\">"
                                         + list.get(i).getFK_uID() + "</a></td>"
                                         + "<td><td><form action=\"buildingservlet\" method=\"post\"><input type=\"hidden\" name=\"removeNr\" value=\"" + list.get(i).getbID() + "\"><input type=\"Submit\" name=\"job\" value=\"remove\"></form></td></td></tr>");
                             }

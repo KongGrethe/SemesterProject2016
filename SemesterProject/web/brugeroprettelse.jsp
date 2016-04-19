@@ -20,7 +20,7 @@
         <title>Opret bruger</title>
     </head>
     <body>
-
+        <fieldset><legend> <img src="polygon-logo-small.png"/></legend>
         <!-- her skal også være plads til en fejlbesked om at brugernavnet er taget -->
         <div align="center">
             <h1>Brugeroprettelse</h1>
@@ -54,11 +54,12 @@
                     <tr>
                     <input type="hidden" name="job" value="add">
                          <td><input type="checkbox" name="accounttype" value="admin">Admin</input></td>
-                         <td><input type="Submit" value="Submit"</input></td>
+                         <td><input type="Submit" value="Submit"></input></td>
                     </tr>
                 </table>
                 <div align="center" style="padding: 2em; color: grey;">Note: Your ID [<%=session.getAttribute("brugerid")%>] will be logged for making this user.</div>
             </form>
         </div>
+        </fieldset>
     </body>
 </html>

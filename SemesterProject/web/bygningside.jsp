@@ -23,7 +23,8 @@
         <link rel="stylesheet" href="newcss.css">
     </head>
     <body>
-
+        <fieldset>
+        <legend> <img src="polygon-logo-small.png"/></legend>
         <div align="center">
             <h1>Bygning <%
                 out.print(request.getParameter("bid"));
@@ -139,5 +140,6 @@
             <hr>
             <img src="cndlevels.png" style="max-width: 100%;">
         </div>
+        </fieldset>
     </body>
 </html>
