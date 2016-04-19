@@ -72,6 +72,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
         } catch (SQLException ex) {
             res[0] = 0;
             res[1] = 0;
+            ex.printStackTrace();
         }
         return res;
     }
