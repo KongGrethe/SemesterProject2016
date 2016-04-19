@@ -127,6 +127,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
         return cm.updateCheckup(checkupID, decay, FK_uID, FK_bID);
     }
 
+    @Override
     public boolean createNotification(int nID, String content, int FK_bID, int FK_uID) {
         return nm.createNotification(nID, content, FK_bID, FK_uID);
     }
@@ -153,7 +154,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
 
     @Override
     public List<Building> selectBuildingsByUser() throws SQLException {
-        return bm.selectBuildingsByUsers();
+        return bm.selectBuildingsByUser();
     }
 
     @Override
