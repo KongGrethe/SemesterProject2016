@@ -4,6 +4,7 @@
 USE semesterproject;
 DROP TABLE if exists files;
 DROP TABLE if exists notification;
+DROP TABLE if exists room;
 DROP TABLE if exists checkup;
 DROP TABLE if exists buildings;
 DROP TABLE if exists users;
@@ -11,10 +12,10 @@ DROP TABLE if exists users;
 
 CREATE TABLE users(
     uID INT(7) PRIMARY KEY AUTO_INCREMENT,
-    uFName VARCHAR(30),
-    uLName VARCHAR(30),
-    upw VARCHAR(30),
-    email VARCHAR(15),
+    uFName VARCHAR(50),
+    uLName VARCHAR(50),
+    upw VARCHAR(50),
+    email VARCHAR(50),
     userRole ENUM('employee', 'customer'),
     FK_cuID INT(7) NOT NULL,
     FOREIGN KEY (FK_cuID) REFERENCES users(uID)
@@ -22,8 +23,8 @@ CREATE TABLE users(
 
 CREATE TABLE buildings(
     bID INT(7) PRIMARY KEY AUTO_INCREMENT,
-    bName VARCHAR(30),
-    bAddress VARCHAR(30),
+    bName VARCHAR(50),
+    bAddress VARCHAR(50),
     parcelNr INT(7),
     bSize DOUBLE(7,2),
     bfPlan INT(7),
@@ -34,11 +35,44 @@ CREATE TABLE buildings(
 
 CREATE TABLE checkup(
     checkupid INT(7) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    decay VARCHAR(30),
+    checkDecay VARCHAR(2),
+    checkName VARCHAR(50),
+    checkAddress VARCHAR(50),
+    checkPostnr VARCHAR(50),
+    checkdato VARCHAR(50),
+    checkFileName VARCHAR(50),
+    checkBygÅr VARCHAR(50),
+    checkBygAreal VARCHAR(50),
+    checkFormål VARCHAR(50),
+    checkTag VARCHAR(50),
+    checkYderVæg VARCHAR(50),
+    TagFilNavn VARCHAR(50),
+    yVægFilNavn VARCHAR(50),
     FK_uID INT(7),
     FK_bID INT(7),
     FOREIGN KEY(FK_uID) REFERENCES users(uID),
     FOREIGN KEY(FK_bID) REFERENCES buildings(bID)
+);
+
+CREATE TABLE room(
+    rName VARCHAR(50),
+    rDato VARCHAR(50),
+    rWhere VARCHAR(50),
+    rHappened VARCHAR(50),
+    rHasBeenDone VARCHAR(50),
+    rDamageType VARCHAR(50),
+    rWallNotes VARCHAR(50),
+    rCeilingNotes VARCHAR(50),
+    rFloorNotes VARCHAR(50),
+    rWindowNotes VARCHAR(50),
+    rWallName VARCHAR(50),
+    rCeilingName VARCHAR(50),
+    rFloorName VARCHAR(50),
+    rWindowDoorName VARCHAR(50),
+    rMoistScan VARCHAR(50),
+    rMeasuringPoint VARCHAR(50),
+    FK_checkupid INT(7),
+    FOREIGN KEY (FK_checkupid) REFERENCES checkup(checkupid)
 );
 
 CREATE TABLE notification(
@@ -76,3 +110,4 @@ SELECT * FROM buildings;
 SELECT * FROM checkup;
 SELECT * FROM notification;
 SELECT * FROM files;
+SELECT * FROM room;

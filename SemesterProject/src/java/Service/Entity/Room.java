@@ -166,6 +166,4 @@ public class Room {
     public void setMeasuringPoint(String measuringPoint) {
         this.measuringPoint = measuringPoint;
     }
-    
-    
 }
