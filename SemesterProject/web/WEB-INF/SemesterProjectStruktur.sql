@@ -35,7 +35,6 @@ CREATE TABLE buildings(
 
 CREATE TABLE checkup(
     checkupid INT(7) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    checkDecay VARCHAR(2),
     checkName VARCHAR(50),
     checkAddress VARCHAR(50),
     checkPostnr VARCHAR(50),
@@ -48,6 +47,9 @@ CREATE TABLE checkup(
     checkYderVæg VARCHAR(50),
     TagFilNavn VARCHAR(50),
     yVægFilNavn VARCHAR(50),
+    checkDecay VARCHAR(2),
+    checkUdfør VARCHAR(50),
+    checkAnsvar VARCHAR(50),
     FK_uID INT(7),
     FK_bID INT(7),
     FOREIGN KEY(FK_uID) REFERENCES users(uID),
