@@ -1,11 +1,11 @@
 package Service.Interface;
 
+import Service.DataException;
 import Service.Entity.Building;
 import Service.Entity.Checkup;
 import Service.Entity.Files;
 import Service.Entity.Notification;
 import Service.Entity.User;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -13,11 +13,10 @@ import java.util.List;
  * Interface consisting of Prototype methods for dataAccess
  */
 public interface ISelect {
-    List<Building> selectBuildings() throws SQLException;
-    List<User> selectUsers() throws SQLException;
-    List<Checkup> selectCheckups() throws SQLException;
-    //List<Notification> selectNotification() throws SQLException; TÆNKER AT DENNE IKKE SKAL BRUGES???????????
-    List<Notification> selectAllNotification() throws SQLException;
-    List<Notification> selectBuildingNotification(int FK_bID) throws SQLException;
-    List<Files> selectAllFiles(int plID) throws SQLException;
+    List<Building> selectBuildings() throws DataException;
+    List<User> selectUsers() throws DataException;
+    List<Checkup> selectCheckups() throws DataException;
+    List<Notification> selectAllNotification() throws DataException;
+    List<Notification> selectBuildingNotification(int FK_bID) throws DataException;
+    List<Files> selectAllFiles(int plID) throws DataException;
 }

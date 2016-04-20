@@ -6,6 +6,7 @@
 
 
 import DataAccess.DBConnector;
+import Service.DataException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
  * @author Michael
  */
 public class Tester {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DataException {
         try {
          //DBFacade dbf = DBFacade.getInstance();
          Connection con = DBConnector.getConnection();
@@ -33,7 +34,7 @@ public class Tester {
          System.out.println(uID + "\t" + uFName + "\t" + uLName + "\t" + upw + "\t" + email + "\t" + userRole + "\t" + cuID);
          }
          } catch (SQLException ex) {
-         ex.printStackTrace();
+             throw new DataException();
          }
     }
 }

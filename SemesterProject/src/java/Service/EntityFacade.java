@@ -15,10 +15,7 @@ import Service.Interface.ICreate;
 import Service.Interface.IDelete;
 import Service.Interface.ISelect;
 import Service.Interface.IUpdate;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +24,7 @@ import java.util.logging.Logger;
 public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
         DBFacade DBF;
 
-    public EntityFacade() throws ClassNotFoundException, SQLException {
+    public EntityFacade() throws DataException {
             DBF = new DBFacade();
     }
 
@@ -67,17 +64,17 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public List<Building> selectBuildings()throws SQLException {
+    public List<Building> selectBuildings()throws DataException{
         return DBF.getBuildings();
     }
 
     @Override
-    public List<User> selectUsers() throws SQLException {
+    public List<User> selectUsers() throws DataException {
         return DBF.getUsers();
     }
 
     @Override
-    public List<Checkup> selectCheckups() throws SQLException {
+    public List<Checkup> selectCheckups() throws DataException {
         return DBF.getCheckups();
     }
 
@@ -97,12 +94,12 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
     
     @Override
-    public List<Notification> selectAllNotification() throws SQLException {
+    public List<Notification> selectAllNotification() throws DataException {
         return DBF.selectAllNotification();
     }
 
     @Override
-    public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
+    public List<Notification> selectBuildingNotification(int FK_bID) throws DataException {
         return DBF.selectBuildingNotification(FK_bID);
     }
 
@@ -117,7 +114,7 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public List<Files> selectAllFiles(int FK_bID) throws SQLException {
+    public List<Files> selectAllFiles(int FK_bID) throws DataException {
         return DBF.selectAllFiles(FK_bID);
     }
 }

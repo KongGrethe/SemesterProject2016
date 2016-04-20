@@ -5,21 +5,21 @@
  */
 package DataAccess.Datamappers;
 
+import Service.DataException;
 import Service.Entity.Checkup;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
  * @author christian
  */
-public interface ICheckUpMapper {
+public interface ICheckUpMapper{
 
     boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
 
     boolean deleteCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
 
-    List<Checkup> getCheckups() throws SQLException;
+    List<Checkup> getCheckups() throws DataException;
 
     boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
     

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package Presentation;
 
 import DataAccess.DBFacade;
+import Service.DataException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -31,27 +32,31 @@ public class loginctrl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession(true);
-            DBFacade DBF = new DBFacade();
-            String Username = request.getParameter("username");
-            String Password = request.getParameter("password");
+            DBFacade DBF;
+            try {
+                DBF = new DBFacade();
+                String Username = request.getParameter("username");
+                String Password = request.getParameter("password");
 
-            int check[] = DBF.validate(Username, Password);
-            session.setAttribute("brugerid", check[0]);
-            session.setAttribute("brugertype", check[1]);
-            if (check[0] != 0) {
+                int check[] = DBF.validate(Username, Password);
+                session.setAttribute("brugerid", check[0]);
+                session.setAttribute("brugertype", check[1]);
+                if (check[0] != 0) {
 
-                if (check[1] == 1) {
-                    forward(request, response, "/brugerside.jsp");
+                    if (check[1] == 1) {
+                        forward(request, response, "/brugerside.jsp");
+                    } else {
+                        forward(request, response, "/adminside.jsp");
+                    }
                 } else {
-                    forward(request, response, "/adminside.jsp");
+                    session.setAttribute("error", "Dit brugernavn eller password var forkert, prøv igen!");
+                    forward(request, response, "/loginside.jsp");
+                    System.out.println("HA! DU ER STADIG IKKE LOGGET IND!");
                 }
-            } else {
-                session.setAttribute("error", "Dit brugernavn eller password var forkert, prøv igen!");
-                forward(request, response, "/loginside.jsp");
-                session.setAttribute("error", null);
-                
-                System.out.println("HA! DU ER STADIG IKKE LOGGET IND!");
-            }
+            } catch (DataException ex) {
+                session.setAttribute("error", "Databasen fejlede, prøv igen senere!");
+                    forward(request, response, "/loginside.jsp");
+            }   
         }
     }
 

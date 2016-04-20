@@ -5,51 +5,50 @@
  */
 package DataAccess.Datamappers;
 
+import Service.DataException;
 import DataAccess.DBConnector;
 import Service.Entity.Files;
 import Service.Entity.Notification;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author christian
  */
-public class FileMapper implements IFileMapper {
+public class FileMapper {
 
-    @Override
     public boolean createFile(String fName, int FK_bID, int FK_uID) {
         try {
-           String sql = "INSERT INTO `files`(`fName`, `FK_bID`,`FK_uID`) VALUES(?,?,?)"; 
-           PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
-           pstmt.setString(1, fName);
-           pstmt.setInt(2, FK_bID);
-           pstmt.setInt(3, FK_uID);
-           pstmt.executeUpdate();
-        } catch (SQLException ex) {
+            String sql = "INSERT INTO `files`(`fName`, `FK_bID`,`FK_uID`) VALUES(?,?,?)";
+            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
+            pstmt.setString(1, fName);
+            pstmt.setInt(2, FK_bID);
+            pstmt.setInt(3, FK_uID);
+            pstmt.executeUpdate();
+        } catch (SQLException | DataException ex) {
             ex.printStackTrace();
             return false;
         }
-      return true;
+        return true;
     }
 
-    @Override
     public boolean deleteFile(String fName) {
         try {
-        String sql = "DELETE FROM `files` WHERE (`fname=?`)";
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
-        pstmt.setString(1,fName);
-        pstmt.executeUpdate();
-        } catch (SQLException ex) {
+            String sql = "DELETE FROM `files` WHERE (`fname=?`)";
+            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
+            pstmt.setString(1, fName);
+            pstmt.executeUpdate();
+        } catch (SQLException | DataException ex) {
             ex.printStackTrace();
             return false;
         }
-       return true;
+        return true;
     }
-    
-    
-    
+
     /*
             @Override
     public List<Checkup> getCheckups() throws SQLException{
@@ -66,24 +65,26 @@ public class FileMapper implements IFileMapper {
         }
         return checkups;
     }
-            */
-
-     @Override
-    public List<Files> selectAllFiles(int FK_bID) throws SQLException {
+     */
+    public List<Files> selectAllFiles(int FK_bID) throws DataException {
         List<Files> list = new ArrayList();
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM files WHERE FK_bID=?");
-        pstmt.setInt(1, FK_bID);
-        ResultSet rs = pstmt.executeQuery();
-        while (rs.next()) {
-            String fName = rs.getString("fName");
-            int bid = rs.getInt(2);
-            int uid = rs.getInt(3);
-            Files file = new Files(fName, bid, uid);
-            list.add(file);
+        try {
+            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM files WHERE FK_bID=?");
+            pstmt.setInt(1, FK_bID);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String fName = rs.getString("fName");
+                int bid = rs.getInt(2);
+                int uid = rs.getInt(3);
+                Files file = new Files(fName, bid, uid);
+                list.add(file);
+            }
+        } catch (SQLException ex) {
+            throw new DataException();
         }
         return list;
     }
-    
+
     /*
     public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
         List<Notification> notifications = new ArrayList();
@@ -98,5 +99,5 @@ public class FileMapper implements IFileMapper {
         }
         return notifications;
     }
-    */
+     */
 }

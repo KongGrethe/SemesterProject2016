@@ -1,6 +1,7 @@
 package Presentation;
 
 import DataAccess.DBFacade;
+import Service.DataException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,68 +30,74 @@ import javax.servlet.http.Part;
 public class perbygningservlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
-        HttpSession session = request.getSession();
-        request.setCharacterEncoding("UTF-8");
-        String job = request.getParameter("job");
-        String fname = null;
-
-        DBFacade dbf = new DBFacade();
-
-        int bid = 0;
-
-        ServletContext sc = getServletContext();
-        String cp = sc.getRealPath(File.separator);
-        System.out.println(cp);
-
-        switch (job) {
-            case "file":
-                final Part filePart = request.getPart("file");
-                OutputStream out = null;
-                InputStream fileContent = null;
-
-                int files = (int) Math.floor(Math.random() * 100000);
-
-                try {
-                    String navn = filePart.getSubmittedFileName();
-                    System.out.println(navn);
-                    fname = navn.substring(navn.lastIndexOf("\\") + 1);
-                    //fname = navn.substring(navn.lastIndexOf("/") + 1);
-
-                    //overvej en anden mappe end C:/Mappe
-                    out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
-                    //out = new FileOutputStream(new File("/test/" + files + "_" + fname));
-                    fileContent = filePart.getInputStream();
-
-                    int read = 0;
-                    final byte[] bytes = new byte[1024];
-                    while ((read = fileContent.read(bytes)) != -1) {
-                        out.write(bytes, 0, read);
+        try {
+            HttpSession session = request.getSession();
+            request.setCharacterEncoding("UTF-8");
+            String job = request.getParameter("job");
+            String fname = null;
+            
+            DBFacade dbf = new DBFacade();
+            
+            int bid = 0;
+            
+            ServletContext sc = getServletContext();
+            String cp = sc.getRealPath(File.separator);
+            System.out.println(cp);
+            
+            switch (job) {
+                case "file":
+                    final Part filePart = request.getPart("file");
+                    OutputStream out = null;
+                    InputStream fileContent = null;
+                    
+                    int files = (int) Math.floor(Math.random() * 100000);
+                    
+                    try {
+                        String navn = filePart.getSubmittedFileName();
+                        System.out.println(navn);
+                        fname = navn.substring(navn.lastIndexOf("\\") + 1);
+                        //fname = navn.substring(navn.lastIndexOf("/") + 1);
+                        
+                        //overvej en anden mappe end C:/Mappe
+                        out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
+                        //out = new FileOutputStream(new File("/test/" + files + "_" + fname));
+                        fileContent = filePart.getInputStream();
+                        
+                        int read = 0;
+                        final byte[] bytes = new byte[1024];
+                        while ((read = fileContent.read(bytes)) != -1) {
+                            out.write(bytes, 0, read);
+                        }
+                        
+                        int uid = Integer.parseInt((String) request.getParameter("uid"));
+                        bid = Integer.parseInt((String) request.getParameter("bid"));
+                        
+                        dbf.createFile(files + "_" + fname, bid, uid);
+                    } catch (FileNotFoundException fne) {
+                        System.out.println(fne.getMessage());
+                    } finally {
+                        if (out != null) {
+                            out.close();
+                        }
+                        if (fileContent != null) {
+                            fileContent.close();
+                        }
                     }
-
-                    int uid = Integer.parseInt((String) request.getParameter("uid"));
-                    bid = Integer.parseInt((String) request.getParameter("bid"));
-
-                    dbf.createFile(files + "_" + fname, bid, uid);
-                } catch (FileNotFoundException fne) {
-                    System.out.println(fne.getMessage());
-                } finally {
-                    if (out != null) {
-                        out.close();
-                    }
-                    if (fileContent != null) {
-                        fileContent.close();
-                    }
-                }
-                break;
-            case "msg":;
+                    break;
+                case "msg":;
                 String msg = request.getParameter("content");
                 int uid = Integer.parseInt((String) request.getParameter("uid"));
                 bid = Integer.parseInt((String) request.getParameter("bid"));
                 dbf.createNotification(0, msg, bid, uid);
                 break;
+            }
+            
+            response.sendRedirect("bygningside.jsp?bid=" + bid);
+        } catch (DataException ex) {
+            System.out.println("Tjek databaseFacaden");
+            ex.getMessage();
+            response.getOutputStream().print("Der blev smidt en DataException");
         }
-
-        response.sendRedirect("bygningside.jsp?bid=" + bid);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,6 +1,7 @@
 package DataAccess.Datamappers;
 
 import DataAccess.DBConnector;
+import Service.DataException;
 import Service.Entity.Building;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,9 +12,9 @@ import java.util.List;
 /**
  * @author Joachim E. Christensen
  */
-public class BuildingMapper implements IBuildingMapper{
 
-    @Override
+public class BuildingMapper {
+
     public boolean createBuilding(String bName, String bAddress, int parcelNr, double bSize, int bfPlan, int condLvl, int FK_uID) {
         try {
             String sql = "INSERT INTO `buildings`(`bID`, `bName`,`bAddress`, `parcelNr`, `bSize`, `bfPlan`, `condLvl`, `FK_uID`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -27,14 +28,13 @@ public class BuildingMapper implements IBuildingMapper{
             pstmt.setInt(7, condLvl);
             pstmt.setInt(8, FK_uID);
             pstmt.executeUpdate();
-        } catch (SQLException ex) {
+        } catch (SQLException | DataException ex) {
             ex.printStackTrace();
             return false;
         }
         return true;
     }
 
-    @Override
     public boolean deleteBuilding(int bID) {
         System.out.println("hej" + bID);
         try {
@@ -42,50 +42,56 @@ public class BuildingMapper implements IBuildingMapper{
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
 
             pstmt.executeUpdate();
-        } catch (SQLException ex) {
+        } catch (SQLException | DataException ex) {
             ex.printStackTrace();
             return false;
         }
         return true;
     }
 
-    @Override
-    public List<Building> getBuildings() throws SQLException {
-        List<Building> buildings = new ArrayList();
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `buildings` ORDER BY `bID`");
-        ResultSet rs = pstmt.executeQuery();
-        while (rs.next()) {
-            int bID = rs.getInt("bID");
-            String bName = rs.getString("bName");
-            String bAddress = rs.getString("bAddress");
-            int parcelNr = rs.getInt("parcelNr");
-            double bSize = rs.getDouble("bSize");
-            int bfPlan = rs.getInt("bfPlan");
-            int condLvl = rs.getInt("condLvl");
-            int FK_uID = rs.getInt("FK_uID");
-            Building building = new Building(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
-            buildings.add(building);
+    public List<Building> getBuildings() throws DataException {
+        try {
+            List<Building> buildings = new ArrayList();
+            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `buildings` ORDER BY `bID`");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int bID = rs.getInt("bID");
+                String bName = rs.getString("bName");
+                String bAddress = rs.getString("bAddress");
+                int parcelNr = rs.getInt("parcelNr");
+                double bSize = rs.getDouble("bSize");
+                int bfPlan = rs.getInt("bfPlan");
+                int condLvl = rs.getInt("condLvl");
+                int FK_uID = rs.getInt("FK_uID");
+                Building building = new Building(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
+                buildings.add(building);
+            }
+            return buildings;
+        } catch (SQLException ex) {
+            throw new DataException();
         }
-        return buildings;
     }
-    
-    @Override
-    public List<Building> selectBuildingsByUser() throws SQLException {
-        List<Building> buildings = new ArrayList();
-        PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `buildings` ORDER BY `FK_uID`");
-        ResultSet rs = pstmt.executeQuery();
-        while (rs.next()) {
-            int bID = rs.getInt("bID");
-            String bName = rs.getString("bName");
-            String bAddress = rs.getString("bAddress");
-            int parcelNr = rs.getInt("parcelNr");
-            double bSize = rs.getDouble("bSize");
-            int bfPlan = rs.getInt("bfPlan");
-            int condLvl = rs.getInt("condLvl");
-            int FK_uID = rs.getInt("FK_uID");
-            Building building = new Building(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
-            buildings.add(building);
+
+    public List<Building> selectBuildingsByUser() throws DataException {
+        try {
+            List<Building> buildings = new ArrayList();
+            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM `buildings` ORDER BY `FK_uID`");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int bID = rs.getInt("bID");
+                String bName = rs.getString("bName");
+                String bAddress = rs.getString("bAddress");
+                int parcelNr = rs.getInt("parcelNr");
+                double bSize = rs.getDouble("bSize");
+                int bfPlan = rs.getInt("bfPlan");
+                int condLvl = rs.getInt("condLvl");
+                int FK_uID = rs.getInt("FK_uID");
+                Building building = new Building(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID);
+                buildings.add(building);
+            }
+            return buildings;
+        } catch (SQLException ex) {
+            throw new DataException();
         }
-        return buildings;
     }
 }

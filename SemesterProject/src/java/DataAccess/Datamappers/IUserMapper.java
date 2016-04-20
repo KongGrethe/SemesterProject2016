@@ -5,6 +5,7 @@
  */
 package DataAccess.Datamappers;
 
+import Service.DataException;
 import Service.Entity.User;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,12 +14,13 @@ import java.util.List;
  *
  * @author christian
  */
-public interface IUserMapper {
+public interface IUserMapper{
 
-    boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID);
+    boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) throws DataException;
 
-    boolean deleteUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID);
+    boolean deleteUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) throws DataException;
 
-    List<User> getUsers() throws SQLException;
+    List<User> getUsers() throws DataException;
     
+    int[] validate(String Username, String Password) throws DataException;
 }

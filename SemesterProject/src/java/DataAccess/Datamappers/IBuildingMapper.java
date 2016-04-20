@@ -5,8 +5,8 @@
  */
 package DataAccess.Datamappers;
 
+import Service.DataException;
 import Service.Entity.Building;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ public interface IBuildingMapper {
 
     boolean deleteBuilding(int bID);
     
-    List<Building> getBuildings() throws SQLException;
+    List<Building> getBuildings() throws DataException;
     
-    List<Building> selectBuildingsByUser() throws SQLException;
+    List<Building> selectBuildingsByUser() throws DataException;
 }

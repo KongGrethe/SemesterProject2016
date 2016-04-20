@@ -19,15 +19,9 @@ import DataAccess.Datamappers.IFileMapper;
 import DataAccess.Datamappers.INotificationMapper;
 import DataAccess.Datamappers.IUserMapper;
 import DataAccess.Datamappers.NotificationMapper;
+import Service.DataException;
 import Service.Entity.Files;
 import Service.Entity.Notification;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -40,55 +34,24 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     private CheckUpMapper cm = new CheckUpMapper();
     private NotificationMapper nm = new NotificationMapper();
     private FileMapper fm = new FileMapper();
-    
-    private Connection con;
 
     
-    public DBFacade() throws SQLException, ClassNotFoundException 
+    public DBFacade() throws DataException //Skal denne Constructor overhovedet være der?
     {
-        Class.forName(DBConnector.driver);
-        con = DriverManager.getConnection(DBConnector.URL, DBConnector.ID, DBConnector.PW);
+              
     }
-    
-    
-    public int[] validate(String Username, String Password) {
-        int res[] = new int[2];
-        System.out.println("kom her til" + Username);
-        try {            
-            Statement stat = con.createStatement();
-            String query = "select * from users where uFName='" + Username
-                    + "' and upw='" + Password + "'";
-            ResultSet rs = stat.executeQuery(query);
-            if (rs.next()) {
-                res[0] = rs.getInt(1);
-                if(rs.getString(6).equals("employee")) {
-                    res[1] = 2;
-                } else {
-                    res[1] = 1;
-                }
-                System.out.println(res[0]);
-                System.out.println(res[1]);
-            }
-        } catch (SQLException ex) {
-            res[0] = 0;
-            res[1] = 0;
-            ex.printStackTrace();
-        }
-        return res;
-    }
-
     @Override
-    public boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
+    public boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID){
         return um.createUser(uID, uFName, uLName, upw, email, userRole, FK_cuID);
     }
     
     @Override
-    public boolean deleteUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
+    public boolean deleteUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) { // Skal der også være en exception her?
         return um.deleteUser(uID, uFName, uLName, upw, email, userRole, FK_cuID);
     }
     
     @Override
-    public List<User> getUsers() throws SQLException {
+    public List<User> getUsers() throws DataException{
         return um.getUsers();
     }
     
@@ -103,7 +66,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
     
     @Override
-    public List<Building> getBuildings() throws SQLException {
+    public List<Building> getBuildings() throws DataException {
         return bm.getBuildings();
     }
     
@@ -118,7 +81,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public List<Checkup> getCheckups() throws SQLException {
+    public List<Checkup> getCheckups() throws DataException {
         return cm.getCheckups();
     }
     
@@ -138,12 +101,12 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public List<Notification> selectAllNotification() throws SQLException {
+    public List<Notification> selectAllNotification() throws DataException {
         return nm.selectAllNotification();
     }
 
     @Override
-    public List<Notification> selectBuildingNotification(int FK_bID) throws SQLException {
+    public List<Notification> selectBuildingNotification(int FK_bID) throws DataException {
         return nm.selectBuildingNotification(FK_bID);
     }
 
@@ -153,7 +116,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public List<Building> selectBuildingsByUser() throws SQLException {
+    public List<Building> selectBuildingsByUser() throws DataException {
         return bm.selectBuildingsByUser();
     }
 
@@ -168,8 +131,13 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public List<Files> selectAllFiles(int FK_bID) throws SQLException {
+    public List<Files> selectAllFiles(int FK_bID) throws DataException {
         return fm.selectAllFiles(FK_bID);
+    }
+
+    @Override
+    public int[] validate(String Username, String Password) throws DataException {
+        return um.validate(Username, Password);
     }
 
     
