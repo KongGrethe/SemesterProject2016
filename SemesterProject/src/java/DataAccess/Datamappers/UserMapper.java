@@ -42,17 +42,11 @@ public class UserMapper{
         return true;
     }
 
-    public boolean deleteUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID){
+    public boolean deleteUser(int uID){
         try {
-            String sql = "DELETE FROM `users` WHERE (`uID`=?, `uFName`=?, `uLName`=?, `upw`=?, `email`=?, `userRole`=?, `FK_cuID`=?)";
+            String sql = "DELETE FROM `users` WHERE `uID`=?";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
             pstmt.setInt(1, uID);
-            pstmt.setString(2, uFName);
-            pstmt.setString(3, uLName);
-            pstmt.setString(4, upw);
-            pstmt.setString(5, email);
-            pstmt.setString(6, userRole);
-            pstmt.setInt(7, FK_cuID);
             pstmt.executeUpdate();
         return true;
         } catch (SQLException | DataException ex) {

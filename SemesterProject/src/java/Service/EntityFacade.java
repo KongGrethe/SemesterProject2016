@@ -54,8 +54,8 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean deleteUser(String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
-        return DBF.deleteUser(FK_cuID, uFName, uLName, upw, email, userRole, FK_cuID);
+    public boolean deleteUser(int uID) {
+        return DBF.deleteUser(uID);
     }
 
     @Override

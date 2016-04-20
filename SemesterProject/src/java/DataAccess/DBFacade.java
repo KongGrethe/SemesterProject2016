@@ -46,8 +46,8 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
     
     @Override
-    public boolean deleteUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) { // Skal der også være en exception her?
-        return um.deleteUser(uID, uFName, uLName, upw, email, userRole, FK_cuID);
+    public boolean deleteUser(int uID) {
+        return um.deleteUser(uID);
     }
     
     @Override
