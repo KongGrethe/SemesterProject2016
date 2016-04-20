@@ -1,12 +1,12 @@
 <%-- 
-    Document   : brugerliste
-    Created on : 04-04-2016, 22:29:20
+    Document   : checkupliste
+    Created on : 20-04-2016, 15:02:11
     Author     : Michael
 --%>
+
+<%@page import="Service.Entity.Checkup"%>
 <%@page import="Service.EntityFacade"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Service.Entity.User"%>
-<%@page import="DataAccess.Datamappers.UserMapper"%>
 <%
     if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
@@ -25,38 +25,47 @@
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
             <%
-                    System.out.println(session.getAttribute("brugertype"));
-                    Integer bt = (Integer) session.getAttribute("brugertype");
-                    if (bt == 2) {
-                        out.print("<a href=\"adminside.jsp\">tilbage til adminside</a>");
-                    }
-                %><br>
-                <a href="bygningsliste.jsp">Bygningslisten</a>
+                System.out.println(session.getAttribute("brugertype"));
+                Integer bt = (Integer) session.getAttribute("brugertype");
+                if (bt == 2) {
+                    out.print("<a href=\"adminside.jsp\">tilbage til adminside</a>");
+                }
+            %><br>
+            <a href="adminside.jsp">Adminsiden</a>
             <div align="center">
-                <h1>Brugerliste</h1>
+                <h1>Checkup rapport liste</h1>
                 <table class="storliste">
                     <tr>
                         <th>ID</th>
-                        <th>Fornavn</th>
-                        <th>Efternavn</th>
-                        <th>Password</th>
-                        <th>Email</th>
-                        <th>Rolle</th>
-                        <th>Oprettet af</th>
+                        <th>Navn</th>
+                        <th>Addresse</th>
+                        <th>Post-Nummer</th>
+                        <th>Dato</th>
+                        <th>Filnavn</th>
+                        <th>Bygge år</th>
+                        <th>Bygge areal</th>
+                        <th>Formål</th>
+                        <th>Tag</th>
+                        <th>Ydervæg</th>
+                        <th>Forfald</th>
+                        <th>Tag filnavn</th>
+                        <th>Ydervæg filnavn</th>
+                        <th>Checkup udfører</th>
+                        <th>Bygningsansvarlig</th>
                     </tr>
 
                     <%
                         EntityFacade ef = new EntityFacade();
 
-                        ArrayList<User> list = (ArrayList<User>) ef.selectUsers();
+                        ArrayList<Checkup> list = (ArrayList<Checkup>) ef.selectCheckups();
 
                         if (list != null) {
 
                             for (int i = 0; i < list.size(); i++) {
                                 out.println("<tr><td>"
-                                        + list.get(i).getuID()
+                                        + list.get(i).getcheckupID()
                                         + "</td><td>"
-                                        + list.get(i).getuFName() + "</td><td>"
+                                        + list.get(i).getDecay() + "</td><td>"
                                         + list.get(i).getuLName() + "</td><td>"
                                         + list.get(i).getUpw() + "</td><td>"
                                         + list.get(i).getEmail() + "</td><td>"

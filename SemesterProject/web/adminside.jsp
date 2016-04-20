@@ -37,7 +37,8 @@
             <div ID="menu">
                 <ul>
                     <li><a href="bygningside.jsp?bid=1">Genvej til Bygningside</a></li>
-                    <li><a href="brugerliste.jsp">List all users</a></li>
+                    <li><a href="brugerliste.jsp">Liste af alle brugere</a></li>
+                    <li><a href="checkupliste.jsp">Liste af alle checkup rapporter</a></li>
                     <li><a href="brugeroprettelse.jsp">Create new user</a></li>
                 </ul>
             </div>

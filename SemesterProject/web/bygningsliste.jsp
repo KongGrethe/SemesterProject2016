@@ -3,6 +3,7 @@
     Created on : 02-04-2016, 17:48:01
     Author     : Michael
 --%>
+<%@page import="Service.EntityFacade"%>
 <%
     if (session.getAttribute("brugerid") == null) 
     {
@@ -61,9 +62,9 @@
 
                     <%
                         
-                        BuildingMapper bm = new BuildingMapper();
+                        EntityFacade ef = new EntityFacade();
                         
-                        ArrayList<Building> list = (ArrayList<Building>) bm.getBuildings();
+                        ArrayList<Building> list = (ArrayList<Building>) ef.selectBuildings();
                         
                         
                         if (list != null) {
