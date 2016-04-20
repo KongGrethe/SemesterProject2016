@@ -5,13 +5,16 @@
  */
 package Presentation;
 
+import Service.Entity.Room;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,12 +25,37 @@ public class reportservlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        HttpSession session = request.getSession();
         String job = request.getParameter("job");
+
+        ArrayList<Room> loclist = new ArrayList<Room>();
 
         switch (job) {
             case "addRoom":
                 System.out.println("tilføj rum");
+                if (session.getAttribute("loclist") != null) {
+                    loclist = (ArrayList<Room>) session.getAttribute("loclist");
+                }
+
+                Room nr = new Room(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -1); //sidste er FK_checkupID
+                /*if(request.getParameter("rname") == null) {
+                    nr.setRoom(null);
+                    System.out.println("rummet er null");
+                } else {
+                    nr.setRoom((String) request.getParameter("rname"));
+                    System.out.println("rummet er ikke null");
+                }*/
+
+                nr.setRoom((String) request.getParameter("rname"));
+                nr.setRoomDesc((String) request.getParameter("rdesc"));
+                nr.setWhere((String) request.getParameter("rwhere"));
+                nr.setWhatHappened((String) request.getParameter("rhappened"));
+                nr.setWhatHasBeenDone((String) request.getParameter("rdone"));
+                nr.setDamageType((String) request.getParameter("rdamagetype"));
+                
+                loclist.add(nr);
+
+                session.setAttribute("loclist", loclist);
                 break;
             case "createReport":
                 System.out.println("skab rapport");

@@ -12,7 +12,7 @@ import javax.servlet.http.Part;
  * @author Lasse
  */
 public class Room {
-    private String room, date, where, whatHappened, whatHasBeenDone, damageType;
+    private String room, date, where, whatHappened, whatHasBeenDone, damageType, roomDesc;
     
     private String wallNotes, ceilingNotes, floorNotes, windowDoorNotes;
     private Part wallPart, ceilingPart, floorPart, windowDoorPart;//kan det være rigtigt at det skal være en SERVLET part? skal det overhovedet være her?
@@ -20,7 +20,7 @@ public class Room {
     
     String moistScan, measuringPoint;
 
-    public Room(String room, String date, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_checkupID) {
+    public Room(String room, String date, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, String roomDesc , int FK_checkupID) {
         this.room = room;
         this.date = date;
         this.where = where;
@@ -38,6 +38,7 @@ public class Room {
         this.moistScan = moistScan;
         this.measuringPoint = measuringPoint;
         this.FK_checkupID = FK_checkupID;
+        this.roomDesc = roomDesc;
     }
 
     public String getRoom() {
@@ -174,6 +175,14 @@ public class Room {
 
     public void setFK_checkupID(int FK_checkupID) {
         this.FK_checkupID = FK_checkupID;
+    }
+
+    public String getRoomDesc() {
+        return roomDesc;
+    }
+
+    public void setRoomDesc(String roomDesc) {
+        this.roomDesc = roomDesc;
     }
 
 }

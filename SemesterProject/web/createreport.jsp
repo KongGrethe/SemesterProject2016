@@ -4,6 +4,8 @@
     Author     : Lasse
 --%>
 
+<%@page import="Service.Entity.Room"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,25 +17,130 @@
     </head>
     <body>
     <center>
-        <h1>Opret checkupreport</h1>
+        <h2>Lokaleoprettelse</h2>
+        <form action="reportservlet" method="post">
+            <input type="hidden" name="job" value="addRoom">
+            <table>
+                <tr>
+                    <td>Lokale</td>
+                    <td><input type="text" name="rname"></td>
+                </tr>
+                <tr>
+                    <td>Beskrivelse af eventuel lokaleskade</td>
+                    <td><input type="text" name="rdesc"></td>
+                </tr>
+                <tr>
+                    <td>Hvor</td><td><input type="text" name="rwhere"></td>
+                </tr>
+                <tr>
+                    <td>Hvad er sket</td><td><input type="text" name="rhappened"></td>
+                </tr>
+                <tr>
+                    <td>Hvad er gjort ved det</td><td><input type="text" name="rdone"></td>
+                </tr>
+                <tr>
+                    <td>Skadetype</td><td><input type="text" name="rdamagetype"></td>
+                </tr>
+            </table>
+            <p>Disse hører også til dynamiske tabeller</p>
+            <table>
+                <tr>
+                    <th>Område</th>
+                    <th>Bemærkninger</th>
+                    <th>Billede</th>
+                </tr>
+                <tr>
+                    <td>Vægge</td>
+                    <td><input type="text" name="rwalldesc"></td>
+                    <td><input type="file"></td>
+                </tr>
+                <tr>
+                    <td>Loft</td>
+                    <td><input type="text" name="rceilingdesc"></td>
+                    <td><input type="file"></td>
+                </tr>
+                <tr>
+                    <td>Gulv</td>
+                    <td><input type="text" name="rfloordesc"></td>
+                    <td><input type="file"></td>
+                </tr>
+                <tr>
+                    <td>Vinduer og døre</td>
+                    <td><input type="text" name="rwindowsdesc"></td>
+                    <td><input type="file"></td>
+                </tr>
+            </table>
+            <p>hej</p>
+            <table>
+                <tr>
+                    <td>Fugtskanning</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Målepunkt</td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+            <p>Anbefaling</p>
+            <input type="text">
+
+            <input type="Submit" name="Submit">
+        </form>
+
+        <hr>
+
+        <h2>Oprettede lokaler</h2>
+        <%
+            if (session.getAttribute("loclist") != null) {
+                ArrayList<Room> loclist = (ArrayList<Room>) session.getAttribute("loclist");
+
+                out.print("<table>");
+                out.print("<tr style=\"background: #EEE;\">");
+                out.print("<th>Room</th>");
+                out.print("<th>Desc</th>");
+                out.print("<th>Where</th>");
+                out.print("<th>Happened</th>");
+                out.print("<th>Done</th>");
+                out.print("<th>DType</th>");
+                out.print("</tr>");
+                for (int i = 0; i < loclist.size(); i++) {
+                    out.print("<tr>");
+                    out.print("<td>" + loclist.get(i).getRoom() + "</td>");
+                    out.print("<td>" + loclist.get(i).getRoomDesc() + "</td>");
+                    out.print("<td>" + loclist.get(i).getWhere() + "</td>");
+                    out.print("<td>" + loclist.get(i).getWhatHappened() + "</td>");
+                    out.print("<td>" + loclist.get(i).getWhatHasBeenDone() + "</td>");
+                    out.print("<td>" + loclist.get(i).getDamageType() + "</td>");
+                }
+
+                out.print("</table>");
+            } else {
+                out.print("<p>Der er intet her at vise endnu.</p>");
+            }
+        %>
+
+        <hr>
+        <h2>Opret checkupreport</h2>
+        <span style="background: pink; border: 1px solid red; padding: 0.25em;">Lav rummene først, og udfyld derefter disse felter for at gemme og sende!</span><br><br>
+
         <form action="reportservlet" method="post">
             <input type="hidden" name="job" value="createReport">
             <table>
                 <tr>
-                    <td>Navn på bygning</td><td><input type="text"></td>
+                    <td>Navn på bygning</td><td><input type="text" name="bname"></td>
                 </tr>
                 <tr>
-                    <td>Addresse</td><td><input type="text"></td>
+                    <td>Addresse</td><td><input type="text" name="baddress"></td>
                 </tr>
                 <tr>
-                    <td>Postnr</td><td><input type="text"></td>
+                    <td>Postnr</td><td><input type="text" name="bnumber"></td>
                 </tr>
                 <tr>
-                    <td>Dato (DD-MM-YYYY)</td><td><input type="text"></td>
+                    <td>Dato (DD-MM-YYYY)</td><td><input type="text" name="bdate"></td>
                 </tr>
             </table>
             <br>
-            <h3>Generel information om bygning</h3>
+            <h2>Generel information om bygning</h2>
             Billede af bygning udefra<br><input type="file">
             <br><br>
             <table>
@@ -48,7 +155,7 @@
                 </tr>
             </table>
             <br>
-            <h3>Gennemgang af bynging udvendig</h3>
+            <h2>Gennemgang af bynging udvendig</h2>
             <table>
                 <tr>
                     <th>Område</th>
@@ -69,31 +176,26 @@
             <br>
             <table>
                 <tr>
-                    <td>Tilstand</td>
                     <td>Beskrivelse</td>
                     <td>Funktion</td>
                     <td>Vurderet tilstand</td>
                 </tr>
                 <tr>
-                    <td>Tilstandsgrad 0</td>
                     <td>Bygningsdelen er ny og som bygget</td>
                     <td>Funktionen er som beskrevet</td>
                     <td><input type="radio" name="tilstand" value="0"></td>
                 </tr>
                 <tr>
-                    <td>Tilstandsgrad 1</td>
                     <td>Bygningsdelen er intakt, men med begyndende slid og synlige skader(kun kosmetiske skader)</td>
                     <td>Funktionen er som beskrevet</td>
                     <td><input type="radio" name="tilstand" value="1"></td>
                 </tr>
                 <tr>
-                    <td>Tilstandsgrad 2</td>
                     <td>Bygningsdelen er begyndt at forfalde, med enkelte defekte komponenter</td>
                     <td>Funktionen er nedsat –fare for følgeskader</td>
                     <td><input type="radio" name="tilstand" value="2"></td>
                 </tr>
                 <tr>
-                    <td>Tilstandsgrad 3</td>
                     <td>Bygningsdelen er nedbrudt og skal udskiftes</td>
                     <td>Funktionen er ophørt –fare for følgeskader</td>
                     <td><input type="radio" name="tilstand" value="3"></td>
@@ -106,79 +208,7 @@
                     <td>Bygningsansvarlig:</td><td><input type="text"></td>
                 </tr>
             </table>
-            <input type="Submit" name="Submit">
-        </form>
-        <hr>
-        <h3>Dynamiske lokaletabeller (disse skal være deres egen form)</h3>
-        <form action="reportservlet" method="post">
-            <input type="hidden" name="job" value="addRoom">
-            <table>
-                <tr>
-                    <th>Lokale</th><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Beskrivelse af eventuel lokaleskade</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Hvornår (DD-MM-YYYY)</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Hvor</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Hvad er sket</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Hvad er gjort ved det</td><td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Skadetype</td><td><input type="text"></td>
-                </tr>
-            </table>
-            <p>Disse hører også til dynamiske tabeller</p>
-            <table>
-                <tr>
-                    <th>Område</th>
-                    <th>Bemærkninger</th>
-                    <th>Billede</th>
-                </tr>
-                <tr>
-                    <td>Vægge</td>
-                    <td><input type="text"></td>
-                    <td><input type="file"></td>
-                </tr>
-                <tr>
-                    <td>Loft</td>
-                    <td><input type="text"></td>
-                    <td><input type="file"></td>
-                </tr>
-                <tr>
-                    <td>Gulv</td>
-                    <td><input type="text"></td>
-                    <td><input type="file"></td>
-                </tr>
-                <tr>
-                    <td>Vinduer og døre</td>
-                    <td><input type="text"></td>
-                    <td><input type="file"></td>
-                </tr>
-            </table>
-            <p>hej</p>
-            <table>
-                <tr>
-                    <td>Fugtskanning</td>
-                    <td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Målepunkt</td>
-                    <td><input type="text"></td>
-                </tr>
-            </table>
-            <p>Anbefaling</p>
-            <input type="text">
-            <hr>
-            <h3>Konklusion</h3>
-            <p>Her skal være en informationstabel genereret ud fra data i session.</p>
+            <br>
             <input type="Submit" name="Submit">
         </form>
     </center>
