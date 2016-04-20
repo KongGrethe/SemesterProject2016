@@ -12,15 +12,15 @@ import javax.servlet.http.Part;
  * @author Lasse
  */
 public class Room {
-    String room, date, where, whatHappened, whatHasBeenDone, damageType;
+    private String room, date, where, whatHappened, whatHasBeenDone, damageType;
     
-    String wallNotes, ceilingNotes, floorNotes, windowDoorNotes;
-    Part wallPart, ceilingPart, floorPart, windowDoorPart;//kan det være rigtigt at det skal være en SERVLET part? skal det overhovedet være her?
-    //skal der også være en FK_checkupID?
+    private String wallNotes, ceilingNotes, floorNotes, windowDoorNotes;
+    private Part wallPart, ceilingPart, floorPart, windowDoorPart;//kan det være rigtigt at det skal være en SERVLET part? skal det overhovedet være her?
+    private int FK_checkupID;
     
     String moistScan, measuringPoint;
 
-    public Room(String room, String date, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint) {
+    public Room(String room, String date, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_checkupID) {
         this.room = room;
         this.date = date;
         this.where = where;
@@ -37,6 +37,7 @@ public class Room {
         this.windowDoorPart = windowDoorPart;
         this.moistScan = moistScan;
         this.measuringPoint = measuringPoint;
+        this.FK_checkupID = FK_checkupID;
     }
 
     public String getRoom() {
@@ -166,4 +167,13 @@ public class Room {
     public void setMeasuringPoint(String measuringPoint) {
         this.measuringPoint = measuringPoint;
     }
+    
+    public int getFK_checkupID() {
+        return FK_checkupID;
+    }
+
+    public void setFK_checkupID(int FK_checkupID) {
+        this.FK_checkupID = FK_checkupID;
+    }
+
 }

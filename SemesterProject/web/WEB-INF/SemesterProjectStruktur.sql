@@ -56,7 +56,6 @@ CREATE TABLE checkup(
 
 CREATE TABLE room(
     rName VARCHAR(50),
-    rDato VARCHAR(50),
     rWhere VARCHAR(50),
     rHappened VARCHAR(50),
     rHasBeenDone VARCHAR(50),

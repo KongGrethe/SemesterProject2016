@@ -17,24 +17,27 @@ import DataAccess.Datamappers.IBuildingMapper;
 import DataAccess.Datamappers.ICheckUpMapper;
 import DataAccess.Datamappers.IFileMapper;
 import DataAccess.Datamappers.INotificationMapper;
+import DataAccess.Datamappers.IRoomMapper;
 import DataAccess.Datamappers.IUserMapper;
 import DataAccess.Datamappers.NotificationMapper;
+import DataAccess.Datamappers.RoomMapper;
 import Service.DataException;
 import Service.Entity.Files;
 import Service.Entity.Notification;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Christian
  */
-public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, INotificationMapper, IFileMapper{
+public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, INotificationMapper, IFileMapper, IRoomMapper{
     
     private UserMapper um = new UserMapper();
     private BuildingMapper bm = new BuildingMapper();
     private CheckUpMapper cm = new CheckUpMapper();
     private NotificationMapper nm = new NotificationMapper();
     private FileMapper fm = new FileMapper();
-
+    private RoomMapper rm = new RoomMapper();
     
     public DBFacade() throws DataException //Skal denne Constructor overhovedet være der?
     {
@@ -138,6 +141,11 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     @Override
     public int[] validate(String Username, String Password) throws DataException {
         return um.validate(Username, Password);
+    }
+
+    @Override
+    public boolean createRoom(String room, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_checkupID) {
+        return rm.createRoom(room, where, whatHappened, whatHasBeenDone, damageType, wallNotes, ceilingNotes, floorNotes, windowDoorNotes, wallPart, ceilingPart, floorPart, windowDoorPart, moistScan, measuringPoint, FK_checkupID);
     }
 
     
