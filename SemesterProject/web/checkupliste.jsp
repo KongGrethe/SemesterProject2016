@@ -42,16 +42,6 @@
                         <th>Post-Nummer</th>
                         <th>Dato</th>
                         <th>Filnavn</th>
-                        <th>Bygge år</th>
-                        <th>Bygge areal</th>
-                        <th>Formål</th>
-                        <th>Tag</th>
-                        <th>Ydervæg</th>
-                        <th>Forfald</th>
-                        <th>Tag filnavn</th>
-                        <th>Ydervæg filnavn</th>
-                        <th>Checkup udfører</th>
-                        <th>Bygningsansvarlig</th>
                         <th>UsersID</th>
                         <th>BuildingsID</th>
                     </tr>
@@ -72,16 +62,6 @@
                                         + list.get(i).getCheckPostnr() + "</td><td>"
                                         + list.get(i).getCheckdato() + "</td><td>"
                                         + list.get(i).getCheckFileName() + "</td><td>"
-                                        + list.get(i).getCheckBygÅr() + "</td><td>"
-                                        + list.get(i).getCheckBygAreal() + "</td><td>"
-                                        + list.get(i).getCheckFormål() + "</td><td>"
-                                        + list.get(i).getCheckTag() + "</td><td>"
-                                        + list.get(i).getCheckYderVæg() + "</td><td>"
-                                        + list.get(i).getCheckDecay() + "</td><td>"
-                                        + list.get(i).getTagFilNavn() + "</td><td>"
-                                        + list.get(i).getyVægFilNavn() + "</td><td"
-                                        + list.get(i).getCheckUdfør() + "</td><td>"
-                                        + list.get(i).getCheckAnsvar() + "</td><td>"
                                         + list.get(i).getFK_uID() + "</td><td>"
                                         + list.get(i).getFK_bID() + "</td>"
                                         + "<td><form action=\"userservlet\" method=\"post\">");
