@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CheckUpMapper {
 
-    public boolean createCheckup(int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, String checkDato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) {
+    public boolean createCheckup(int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, String checkDato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String checkAnsvar, int FK_uID, int FK_bID) {
         try {
             String sql = "INSERT INTO `checkup` (`checkupid`, `checkDecay`, `checkName`, `checkAddress`, `checkPostnr`, `checkDato`, `checkFileName`, `checkBygÅr`, `checkBygAreal`, `checkFormål`, `checkTag`, `checkYderVæg`, `TagFilNavn`, `yVægFilNavn`, `checkUdfør`, `checkAnsvar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
@@ -32,7 +32,7 @@ public class CheckUpMapper {
             pstmt.setString(13, TagFilNavn);
             pstmt.setString(14, yVægFilNavn);
             pstmt.setString(15, checkUdfør);
-            pstmt.setString(16, chekAnsvar);
+            pstmt.setString(16, checkAnsvar);
             pstmt.setInt(17, FK_uID);
             pstmt.setInt(18, FK_bID);
             pstmt.executeUpdate();

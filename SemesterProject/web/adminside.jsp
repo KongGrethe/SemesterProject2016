@@ -39,7 +39,8 @@
                     <li><a href="bygningside.jsp?bid=1">Genvej til Bygningside</a></li>
                     <li><a href="brugerliste.jsp">Liste af alle brugere</a></li>
                     <li><a href="checkupliste.jsp">Liste af alle checkup rapporter</a></li>
-                    <li><a href="brugeroprettelse.jsp">Create new user</a></li>
+                    <li><a href="brugeroprettelse.jsp">Opret Bruger</a></li>
+                    <li><a href="createreport.jsp">Opret Rapport</a></li>
                 </ul>
             </div>
         </div>
