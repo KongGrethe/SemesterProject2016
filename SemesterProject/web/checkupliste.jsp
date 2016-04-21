@@ -70,6 +70,15 @@
                                         + list.get(i).getUpw() + "</td><td>"
                                         + list.get(i).getEmail() + "</td><td>"
                                         + list.get(i).getUserRole() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
+                                        + list.get(i).getFK_cuID() + "</td><td"
+                                        + list.get(i).getFK_cuID() + "</td><td>"
                                         + list.get(i).getFK_cuID() + "</td>"
                                         + "<td><form action=\"userservlet\" method=\"post\">");
                             }
