@@ -10,21 +10,25 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Lasse
  */
+@MultipartConfig
 @WebServlet(name = "reportservlet", urlPatterns = {"/reportservlet"})
 public class reportservlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         String job = request.getParameter("job");
 
@@ -45,6 +49,7 @@ public class reportservlet extends HttpServlet {
                     nr.setRoom((String) request.getParameter("rname"));
                     System.out.println("rummet er ikke null");
                 }*/
+                
 
                 nr.setRoom((String) request.getParameter("rname"));
                 nr.setRoomDesc((String) request.getParameter("rdesc"));
@@ -52,6 +57,21 @@ public class reportservlet extends HttpServlet {
                 nr.setWhatHappened((String) request.getParameter("rhappened"));
                 nr.setWhatHasBeenDone((String) request.getParameter("rdone"));
                 nr.setDamageType((String) request.getParameter("rdamagetype"));
+                
+                nr.setWallNotes((String) request.getParameter("rwalldesc"));
+                nr.setWallPart((Part) request.getPart("rwallfile"));
+                
+                nr.setCeilingNotes((String) request.getParameter("rceilingdesc"));
+                nr.setCeilingPart((Part) request.getPart("rceilingfile"));
+
+                nr.setFloorNotes((String) request.getParameter("rfloordesc"));
+                nr.setFloorPart((Part) request.getPart("rfloorfile"));
+                
+                nr.setWindowDoorNotes((String) request.getParameter("rwindowsdesc"));
+                nr.setWindowDoorPart((Part) request.getPart("rwindowsfile"));
+                
+                nr.setMoistScan("x");
+                nr.setMeasuringPoint("x");
                 
                 loclist.add(nr);
 
