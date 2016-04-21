@@ -163,7 +163,7 @@
         <h2>Opret checkupreport</h2>
         <span style="background: pink; border: 1px solid red; padding: 0.25em;">Lav rummene først, og udfyld derefter disse felter for at gemme og sende!</span><br><br>
 
-        <form action="reportservlet" method="post">
+        <form action="reportservlet" enctype="multipart/form-data" method="post">
             <input type="hidden" name="job" value="createReport">
             <table>
                 <tr>
@@ -181,17 +181,17 @@
             </table>
             <br>
             <h2>Generel information om bygning</h2>
-            Billede af bygning udefra<br><input type="file">
+            Billede af bygning udefra<br><input type="file" name="bfrontpic">
             <br><br>
             <table>
                 <tr>
-                    <td>Byggeår</td><td><input type="text"></td>
+                    <td>Byggeår</td><td><input type="text" name="byear"></td>
                 </tr>
                 <tr>
-                    <td>Bygningsareal</td><td><input type="text"></td>
+                    <td>Bygningsareal</td><td><input type="text" name="barea"></td>
                 </tr>
                 <tr>
-                    <td>Formål</td><td><input type="text"></td>
+                    <td>Formål</td><td><input type="text" name="bpurpose"></td>
                 </tr>
             </table>
             <br>
@@ -204,13 +204,13 @@
                 </tr>
                 <tr>
                     <td>Tag</td>
-                    <td><input type="text"></td>
-                    <td><input type="file"></td>
+                    <td><input type="text" name="broofdesc"></td>
+                    <td><input type="file" name="brooffile"></td>
                 </tr>
                 <tr>
                     <td>Ydervægge</td>
-                    <td><input type="text"></td>
-                    <td><input type="file"></td>
+                    <td><input type="text" name="bouterwallsdesc"></td>
+                    <td><input type="file" name="bouterwallsfile"></td>
                 </tr>
             </table>
             <br>
@@ -223,7 +223,7 @@
                 <tr>
                     <td>Bygningsdelen er ny og som bygget</td>
                     <td>Funktionen er som beskrevet</td>
-                    <td><input type="radio" name="tilstand" value="0"></td>
+                    <td><input type="radio" name="tilstand" value="0" checked></td>
                 </tr>
                 <tr>
                     <td>Bygningsdelen er intakt, men med begyndende slid og synlige skader(kun kosmetiske skader)</td>
@@ -244,8 +244,8 @@
             <br>
             <table>
                 <tr>
-                    <td>Checkupudfører:</td><td><input type="text"></td>
-                    <td>Bygningsansvarlig:</td><td><input type="text"></td>
+                    <td>Checkupudfører:</td><td><input type="text" name="checkupperformer"></td>
+                    <td>Bygningsansvarlig:</td><td><input type="text" name="accountableofbuilding"></td>
                 </tr>
             </table>
             <br>

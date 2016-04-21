@@ -27,7 +27,7 @@ import javax.servlet.http.Part;
 public class reportservlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        //response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         String job = request.getParameter("job");
@@ -41,15 +41,7 @@ public class reportservlet extends HttpServlet {
                     loclist = (ArrayList<Room>) session.getAttribute("loclist");
                 }
 
-                Room nr = new Room(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -1); //sidste er FK_checkupID
-                /*if(request.getParameter("rname") == null) {
-                    nr.setRoom(null);
-                    System.out.println("rummet er null");
-                } else {
-                    nr.setRoom((String) request.getParameter("rname"));
-                    System.out.println("rummet er ikke null");
-                }*/
-                
+                Room nr = new Room(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -1); //sidste er FK_checkupID              
 
                 nr.setRoom((String) request.getParameter("rname"));
                 nr.setRoomDesc((String) request.getParameter("rdesc"));
@@ -78,7 +70,37 @@ public class reportservlet extends HttpServlet {
                 session.setAttribute("loclist", loclist);
                 break;
             case "createReport":
-                System.out.println("skab rapport");
+                System.out.println("opretter rapport");
+                String bname = (String) request.getParameter("bname");
+                
+                if(bname == null) {
+                    System.out.println("bname er null");
+                }
+                if(bname.equals("")) {
+                    System.out.println("bname er ikke null, men et tomt tekstfelt");
+                }
+                
+                String baddress = (String ) request.getParameter("baddress");
+                String bnumber = (String) request.getParameter("bnumber");
+                String bdate = (String) request.getParameter("bdate");
+                
+                System.out.println("kom her til");
+                Part bfrontpic = (Part) request.getPart("bfrontpic");
+                
+                String byear = (String) request.getParameter("byear");
+                String barea = (String) request.getParameter("barea");
+                String bpurpose = (String) request.getParameter("bpurpose");
+                
+                String broofdesc = (String) request.getParameter("broofdesc");
+                Part brooffile = (Part) request.getPart("brooffile");
+                
+                String bouterwallsdesc = (String) request.getParameter("bouterwallsdesc");
+                Part boutherwallsfile = (Part) request.getPart("bouterwallsfile");
+                
+                
+                String tilstand = (String) request.getParameter("tilstand");
+                String checkupperformer = (String) request.getParameter("checkupperformer");
+                String accountableofbuilding = (String) request.getParameter("accountableofbuilding");
                 break;
         }
         response.sendRedirect("createreport.jsp");
