@@ -74,24 +74,16 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
     
     @Override
-    public boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
-        return cm.createCheckup(checkupID, decay, FK_uID, FK_bID);
+    public boolean createCheckup(int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) {
+        return cm.createCheckup(checkupid, checkDecay,checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg,TagFilNavn,yVægFilNavn, checkUdfør, chekAnsvar,FK_uID,FK_bID);
     }
     
-    @Override
-    public boolean deleteCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
-        return cm.deleteCheckup(checkupID, decay, FK_uID, FK_bID);
-    }
 
     @Override
     public List<Checkup> getCheckups() throws DataException {
         return cm.getCheckups();
     }
     
-    @Override
-    public boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
-        return cm.updateCheckup(checkupID, decay, FK_uID, FK_bID);
-    }
 
     @Override
     public boolean createNotification(int nID, String content, int FK_bID, int FK_uID) {
