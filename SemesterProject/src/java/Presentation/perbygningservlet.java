@@ -61,6 +61,7 @@ public class perbygningservlet extends HttpServlet {
                         //overvej en anden mappe end C:/Mappe
                         //out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
                         out = new FileOutputStream(new File(cp + "/test/" + files + "_" + fname));
+                        System.out.println(cp);
                         fileContent = filePart.getInputStream();
                         
                         int read = 0;

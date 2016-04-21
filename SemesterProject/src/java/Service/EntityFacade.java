@@ -40,11 +40,12 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean createCheckup(int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, 
+    public boolean createCheckup(int checkupid,  String checkName, String checkAddress, String checkPostnr, 
             String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, 
-            String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) 
+            String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay,String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) 
     {
-        return DBF.createCheckup(checkupid, checkDecay,checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg,TagFilNavn,yVægFilNavn,checkUdfør,chekAnsvar, FK_uID,FK_bID);
+        return DBF.createCheckup(checkupid, checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal, checkFormål, 
+                checkTag, checkYderVæg, TagFilNavn, yVægFilNavn, checkDecay,checkUdfør, chekAnsvar, FK_uID, FK_bID);
     }
 
     @Override

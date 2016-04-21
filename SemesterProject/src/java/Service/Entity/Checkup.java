@@ -9,9 +9,8 @@ public class Checkup {
     private String checkDecay,checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg,TagFilNavn,yVægFilNavn, checkUdfør, checkAnsvar;
     private int checkupid, FK_uID, FK_bID;
 
-    public Checkup( int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String checkAnsvar, int FK_uID, int FK_bID) {
+    public Checkup( int checkupid, String checkName, String checkAddress, String checkPostnr, String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay,String checkUdfør, String checkAnsvar, int FK_uID, int FK_bID) {
         this.checkupid = checkupid;
-        this.checkDecay = checkDecay;
         this.checkName = checkName;
         this.checkAddress = checkAddress;
         this.checkPostnr = checkPostnr;
@@ -24,10 +23,19 @@ public class Checkup {
         this.checkYderVæg = checkYderVæg;
         this.TagFilNavn = TagFilNavn;
         this.yVægFilNavn = yVægFilNavn;
+        this.checkDecay = checkDecay;
         this.checkUdfør = checkUdfør;
         this.checkAnsvar = checkAnsvar;
         this.FK_uID = FK_uID;
         this.FK_bID = FK_bID;
+    }
+
+    public String getCheckDecay() {
+        return checkDecay;
+    }
+
+    public void setCheckDecay(String checkDecay) {
+        this.checkDecay = checkDecay;
     }
     
     public int getCheckupid() {
@@ -38,13 +46,6 @@ public class Checkup {
         this.checkupid = checkupid;
     }
 
-    public String getCheckDecay() {
-        return checkDecay;
-    }
-
-    public void setCheckDecay(String checkDecay) {
-        this.checkDecay = checkDecay;
-    }
 
     public String getCheckName() {
         return checkName;
@@ -141,7 +142,7 @@ public class Checkup {
     public void setyVægFilNavn(String yVægFilNavn) {
         this.yVægFilNavn = yVægFilNavn;
     }
-
+    
     public String getCheckUdfør() {
         return checkUdfør;
     }

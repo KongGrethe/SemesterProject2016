@@ -74,8 +74,8 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
     
     @Override
-    public boolean createCheckup(int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) {
-        return cm.createCheckup(checkupid, checkDecay,checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg,TagFilNavn,yVægFilNavn, checkUdfør, chekAnsvar,FK_uID,FK_bID);
+    public boolean createCheckup(int checkupid, String checkName, String checkAddress, String checkPostnr, String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) {
+        return cm.createCheckup(checkupid,checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg,TagFilNavn,yVægFilNavn, checkDecay, checkUdfør, chekAnsvar,FK_uID,FK_bID);
     }
     
 
@@ -138,6 +138,11 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     @Override
     public boolean createRoom(String room, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_checkupID) {
         return rm.createRoom(room, where, whatHappened, whatHasBeenDone, damageType, wallNotes, ceilingNotes, floorNotes, windowDoorNotes, wallPart, ceilingPart, floorPart, windowDoorPart, moistScan, measuringPoint, FK_checkupID);
+    }
+
+    @Override
+    public int getReportID(String bAddress, String bName) throws DataException {
+        return cm.getReportID(bAddress, bName);
     }
 
     
