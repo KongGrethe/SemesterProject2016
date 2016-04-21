@@ -40,13 +40,11 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
-        return DBF.createCheckup(checkupID, decay, FK_uID, FK_bID);
-    }
-
-    @Override
-    public boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID) {
-        return DBF.updateCheckup(checkupID, decay, FK_uID, FK_bID);
+    public boolean createCheckup(int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, 
+            String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, 
+            String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) 
+    {
+        return DBF.createCheckup(checkupid, checkDecay,checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg,TagFilNavn,yVægFilNavn,checkUdfør,chekAnsvar, FK_uID,FK_bID);
     }
 
     @Override
@@ -59,10 +57,6 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
         return DBF.deleteUser(uID);
     }
 
-    @Override
-    public boolean deleteCheckup( int checkupID, String decay, int FK_uID, int FK_bID) {
-        return DBF.deleteCheckup(checkupID,decay, FK_uID, FK_bID);
-    }
 
     @Override
     public List<Building> selectBuildings()throws DataException{
@@ -123,4 +117,5 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     public boolean createRoom(String room, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_checkupID) {
         return DBF.createRoom(room, where, whatHappened, whatHasBeenDone, damageType, wallNotes, ceilingNotes, floorNotes, windowDoorNotes, wallPart, ceilingPart, floorPart, windowDoorPart, moistScan, measuringPoint, FK_checkupID);
     }
+
 }

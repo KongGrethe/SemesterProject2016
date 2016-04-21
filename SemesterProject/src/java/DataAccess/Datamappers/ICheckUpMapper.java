@@ -15,12 +15,6 @@ import java.util.List;
  */
 public interface ICheckUpMapper{
 
-    boolean createCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
-
-    boolean deleteCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
-
+    boolean createCheckup(int checkupid, String checkDecay, String checkName, String checkAddress, String checkPostnr, String checkDato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID);
     List<Checkup> getCheckups() throws DataException;
-
-    boolean updateCheckup(int checkupID, String decay, int FK_uID, int FK_bID);
-    
 }

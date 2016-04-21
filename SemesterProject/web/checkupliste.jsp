@@ -52,6 +52,8 @@
                         <th>Ydervæg filnavn</th>
                         <th>Checkup udfører</th>
                         <th>Bygningsansvarlig</th>
+                        <th>UsersID</th>
+                        <th>BuildingsID</th>
                     </tr>
 
                     <%
@@ -63,14 +65,25 @@
 
                             for (int i = 0; i < list.size(); i++) {
                                 out.println("<tr><td>"
-                                        + list.get(i).getcheckupID()
+                                        + list.get(i).getCheckupid()
                                         + "</td><td>"
-                                        + list.get(i).getDecay() + "</td><td>"
-                                        + list.get(i).getuLName() + "</td><td>"
-                                        + list.get(i).getUpw() + "</td><td>"
-                                        + list.get(i).getEmail() + "</td><td>"
-                                        + list.get(i).getUserRole() + "</td><td>"
-                                        + list.get(i).getFK_cuID() + "</td>"
+                                        + list.get(i).getCheckName() + "</td><td>"
+                                        + list.get(i).getCheckAddress() + "</td><td>"
+                                        + list.get(i).getCheckPostnr() + "</td><td>"
+                                        + list.get(i).getCheckdato() + "</td><td>"
+                                        + list.get(i).getCheckFileName() + "</td><td>"
+                                        + list.get(i).getCheckBygÅr() + "</td><td>"
+                                        + list.get(i).getCheckBygAreal() + "</td><td>"
+                                        + list.get(i).getCheckFormål() + "</td><td>"
+                                        + list.get(i).getCheckTag() + "</td><td>"
+                                        + list.get(i).getCheckYderVæg() + "</td><td>"
+                                        + list.get(i).getCheckDecay() + "</td><td>"
+                                        + list.get(i).getTagFilNavn() + "</td><td>"
+                                        + list.get(i).getyVægFilNavn() + "</td><td"
+                                        + list.get(i).getCheckUdfør() + "</td><td>"
+                                        + list.get(i).getCheckAnsvar() + "</td><td>"
+                                        + list.get(i).getFK_uID() + "</td><td>"
+                                        + list.get(i).getFK_bID() + "</td>"
                                         + "<td><form action=\"userservlet\" method=\"post\">");
                             }
                         }
