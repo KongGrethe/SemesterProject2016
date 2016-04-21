@@ -55,12 +55,12 @@ public class perbygningservlet extends HttpServlet {
                     try {
                         String navn = filePart.getSubmittedFileName();
                         System.out.println(navn);
-                        fname = navn.substring(navn.lastIndexOf("\\") + 1);
-                        //fname = navn.substring(navn.lastIndexOf("/") + 1);
+                        //fname = navn.substring(navn.lastIndexOf("\\") + 1);
+                        fname = navn.substring(navn.lastIndexOf("/") + 1);
                         
                         //overvej en anden mappe end C:/Mappe
-                        out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
-                        //out = new FileOutputStream(new File("/test/" + files + "_" + fname));
+                        //out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
+                        out = new FileOutputStream(new File(cp + "/test/" + files + "_" + fname));
                         fileContent = filePart.getInputStream();
                         
                         int read = 0;
