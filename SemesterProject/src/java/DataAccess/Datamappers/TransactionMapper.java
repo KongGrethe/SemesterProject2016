@@ -27,18 +27,19 @@ public class TransactionMapper {
     public static String ID = "root";
     public static String PW = "root";
 
-    public boolean Transaction(Connection dbcon) throws DataException {
-        Connection dbCon = null;
+    public boolean Transaction(Connection dbCon) throws DataException {
         PreparedStatement preparedStatementInsert = null;
-        PreparedStatement preparedStatementUpdate = null;
+        PreparedStatement preparedStatementInsert1 = null;
 
-        String insertTableSQL = "INSERT INTO checkup"
-                + "(checkupid, checkName, checkAddress, checkPostnr, checkDato, checkFileName, checkBygÅr, "
-                + "checkBygAreal, checkFormål, checkTag, checkYderVæg, TagFilNavn, yVægFilNavn, checkDecay "
-                + "checkUdfør, checkAnsvar, FK_uID, FK_bID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String insertTableSQL = "INSERT INTO buildings"
+                + "(bID, bName, bAddress, parcelNr, bSize, bfPlan, condLvl, FK_uID) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
 
-        String updateTableSQL = "UPDATE checkup SET checkName =? "
-                + "WHERE checkupid = ?";
+        String insertTableSQL1 = "INSERT INTO room (rName, rDato, rWhere, "
+                + "rHappened, rHasBeenDone, rDamageType, rWallNotes, rCeilingNotes, "
+                + "rFloorNotes, rWindowNotes, rWallName, rCeilingName, rFloorName, "
+                + "rWindowDoorName, rMoistScan, rMeasuringPoint, FK_checkupid) VALUES "
+                + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             dbCon = getConnection();
@@ -49,27 +50,32 @@ public class TransactionMapper {
             preparedStatementInsert.setInt(1, 0);
             preparedStatementInsert.setString(2, "");
             preparedStatementInsert.setString(3, "");
-            preparedStatementInsert.setString(4, "");
-            preparedStatementInsert.setString(5, "");
-            preparedStatementInsert.setString(6, "");
-            preparedStatementInsert.setString(7, "");
-            preparedStatementInsert.setString(8, "");
-            preparedStatementInsert.setString(9, "");
-            preparedStatementInsert.setString(10, "");
-            preparedStatementInsert.setString(11, "");
-            preparedStatementInsert.setString(12, "");
-            preparedStatementInsert.setString(13, "");
-            preparedStatementInsert.setString(14, "");
-            preparedStatementInsert.setString(15, "");
-            preparedStatementInsert.setString(16, "");
-            preparedStatementInsert.setInt(17, 0);
-            preparedStatementInsert.setInt(18, 0);
+            preparedStatementInsert.setInt(4, 0);
+            preparedStatementInsert.setDouble(5, 0.0);
+            preparedStatementInsert.setInt(6, 0);
+            preparedStatementInsert.setInt(7, 0);
+            preparedStatementInsert.setInt(8, 0);
             preparedStatementInsert.executeUpdate();
 
-            preparedStatementUpdate = dbCon.prepareStatement(updateTableSQL);
-            preparedStatementUpdate.setString(1, "Ny String");
-            preparedStatementUpdate.setInt(2, 0);
-            preparedStatementUpdate.executeUpdate();
+            preparedStatementInsert1 = dbCon.prepareStatement(insertTableSQL1);
+            preparedStatementInsert1.setString(1, "");
+            preparedStatementInsert1.setString(2, "");
+            preparedStatementInsert1.setString(3, "");
+            preparedStatementInsert1.setString(4, "");
+            preparedStatementInsert1.setString(5, "");
+            preparedStatementInsert1.setString(6, "");
+            preparedStatementInsert1.setString(7, "");
+            preparedStatementInsert1.setString(8, "");
+            preparedStatementInsert1.setString(9, "");
+            preparedStatementInsert1.setString(10, "");
+            preparedStatementInsert1.setString(11, "");
+            preparedStatementInsert1.setString(12, "");
+            preparedStatementInsert1.setString(13, "");
+            preparedStatementInsert1.setString(14, "");
+            preparedStatementInsert1.setString(15, "");
+            preparedStatementInsert1.setString(16, "");
+            preparedStatementInsert1.setInt(17, 0);
+            preparedStatementInsert1.executeUpdate();
 
             dbCon.commit();
 
@@ -90,8 +96,8 @@ public class TransactionMapper {
                 if (preparedStatementInsert != null) {
                     preparedStatementInsert.close();
                 }
-                if (preparedStatementUpdate != null) {
-                    preparedStatementUpdate.close();
+                if (preparedStatementInsert1 != null) {
+                    preparedStatementInsert1.close();
                 }
                 if (dbCon != null) {
                     dbCon.close();
