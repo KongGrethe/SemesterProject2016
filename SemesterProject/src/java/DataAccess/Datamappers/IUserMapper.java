@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface IUserMapper{
 
-    boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) throws DataException;
+    int createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) throws DataException;
 
     boolean deleteUser(int uID) throws DataException;
 
