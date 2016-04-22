@@ -15,17 +15,26 @@ import Service.DataException;
 public class maptester {
     public static void main(String[] args) throws DataException {
         DBFacade dbf = new DBFacade();
-        /*if(dbf.createCheckup("a", "b", "c", "d","e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", 1, 1) == false) {
-            System.out.println("false");
+        
+        
+        /*if(dbf.createCheckup("sa", "sb", "sc", "sd","se", "sf", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", 1, 1) == false) {
+            System.out.println("false insert checkup");
         } else {
-            System.out.println("true");
+            System.out.println("true insert checkup");
         }*/
         
-        if(dbf.createRoom("za", "zb", "zc", "zd", "ze", "zf", "zg", "zh", "zi", "zj", "zk", "zl", "zn", "zm", "zo", 1) == false) {
-            System.out.println("false");
+        System.out.println(dbf.getReportID("sb", "sa"));
+        
+        
+        
+        //dbf.createCheckup("sa", "sb", "sc", "sd", "se", "sf", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", 1, 1);
+        
+        /*
+        if(dbf.createRoom("xa", "xb", "xc", "xd", "xe", "xf", "xg", "xh", "xi", "xj", "xk", "xl", "xn", "xm", "xo", 1) == false) {
+            System.out.println("false insert room");
         } else {
-            System.out.println("true");
-        }
+            System.out.println("true insert room");
+        }*/
     }
     
 }

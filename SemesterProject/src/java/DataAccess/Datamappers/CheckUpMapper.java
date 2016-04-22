@@ -20,7 +20,7 @@ public class CheckUpMapper {
             String checkUdfør, String checkAnsvar, int FK_uID, int FK_bID) {
         
         try {
-            String sql = "INSERT INTO `checkup` (`checkName`, `checkAddress`, `checkPostnr`, `checkDato`, `checkFileName`, `checkBygÅr`, `checkBygAreal`, `checkFormål`, `checkTag`, `checkYderVæg`, `TagFilNavn`, `yVægFilNavn`, `checkDecay`, `checkUdfør`, `checkAnsvar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO checkup VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
             pstmt.setString(1, checkName);
             pstmt.setString(2, checkAddress);
@@ -83,7 +83,7 @@ public class CheckUpMapper {
     
     public int getReportID(String bAddress, String bName) throws DataException {
         try {
-            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM CheckUp WHERE bAddress='?' and bName='?'");
+            PreparedStatement pstmt = DBConnector.getConnection().prepareStatement("SELECT * FROM checkup WHERE checkAddress=? and checkName=?");
             pstmt.setString(1, bAddress);
             pstmt.setString(2, bName);
             ResultSet rs = pstmt.executeQuery();
