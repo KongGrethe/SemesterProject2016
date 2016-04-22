@@ -35,7 +35,7 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
     }
 
     @Override
-    public boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
+    public int createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID) {
         return DBF.createUser(uID, uFName, uLName, upw, email, userRole, FK_cuID);
     }
 
@@ -44,7 +44,7 @@ public class EntityFacade implements ICreate, IUpdate, IDelete, ISelect{
             String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, 
             String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay,String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) 
     {
-        return DBF.createCheckup(checkupid, checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal, checkFormål, 
+        return DBF.createCheckup(checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal, checkFormål, 
                 checkTag, checkYderVæg, TagFilNavn, yVægFilNavn, checkDecay,checkUdfør, chekAnsvar, FK_uID, FK_bID);
     }
 

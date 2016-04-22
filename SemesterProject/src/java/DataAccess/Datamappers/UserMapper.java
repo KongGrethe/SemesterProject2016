@@ -23,23 +23,29 @@ public class UserMapper{
     
     
 
-    public boolean createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID){
+    public int createUser(int uID, String uFName, String uLName, String upw, String email, String userRole, int FK_cuID){
+            int result; 
         try {
-            String sql = "INSERT INTO users (`uID`, `uFName`, `uLName`, `upw`, `email`, `userRole`, `FK_cuID` ) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO users (`uFName`, `uLName`, `upw`, `email`, `userRole`, `FK_cuID` ) VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
-            pstmt.setInt(1, uID);
-            pstmt.setString(2, uFName);
-            pstmt.setString(3, uLName);
-            pstmt.setString(4, upw);
-            pstmt.setString(5, email);
-            pstmt.setString(6, userRole);
-            pstmt.setInt(7, FK_cuID);
+            
+            pstmt.setString(1, uFName);
+            pstmt.setString(2, uLName);
+            pstmt.setString(3, upw);
+            pstmt.setString(4, email);
+            pstmt.setString(5, userRole);
+            pstmt.setInt(6, FK_cuID);
             pstmt.executeUpdate();
+            //Get last inserted id from auto increment
+            sql = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name ='users' AND table_schema = DATABASE()";
+            ResultSet rs = DBConnector.getConnection().prepareStatement(sql).executeQuery();
+            rs.next();
+            result = rs.getInt(1);
         } catch (SQLException | DataException ex) {
             ex.printStackTrace(); //HVORDAN SMIDER VI SÅ EN SPECIFIK FEJLMEDDELELSE??
-            return false;
+            return -1;
         }
-        return true;
+        return result;
     }
 
     public boolean deleteUser(int uID){
