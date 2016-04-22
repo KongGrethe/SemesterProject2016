@@ -23,7 +23,7 @@ public class filgemmer {
         if (inFile.getSize() > 0) {
             OutputStream out = null;
             InputStream fileContent = null;
-
+//vi skal ændre C:/mappe til noget andet med gad ikke lige nu
             try {
                 out = new FileOutputStream(new File("C:/mappe/" + targetName));
                 fileContent = inFile.getInputStream();
@@ -43,6 +43,8 @@ public class filgemmer {
                     fileContent.close();
                 }
             }
+        } else {
+            System.out.println("filen er tom");
         }
     }
 

@@ -14,7 +14,7 @@ import Service.DataException;
  */
 public class maptester {
     public static void main(String[] args) throws DataException {
-        DBFacade dbf = new DBFacade();
+        //DBFacade dbf = new DBFacade();
         
         
         /*if(dbf.createCheckup("sa", "sb", "sc", "sd","se", "sf", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", 1, 1) == false) {
@@ -23,7 +23,9 @@ public class maptester {
             System.out.println("true insert checkup");
         }*/
         
-        System.out.println(dbf.getReportID("sb", "sa"));
+        //System.out.println(dbf.getReportID("sb", "sa"));
+        
+        System.out.println((int) Math.floor(Math.random() * 2)+1);
         
         
         

@@ -5,10 +5,14 @@
  */
 package Presentation;
 
+import DataAccess.DBFacade;
+import Service.DataException;
 import Service.Entity.Room;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +30,7 @@ import javax.servlet.http.Part;
 @WebServlet(name = "reportservlet", urlPatterns = {"/reportservlet"})
 public class reportservlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, DataException {
         //response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
@@ -49,61 +53,134 @@ public class reportservlet extends HttpServlet {
                 nr.setWhatHappened((String) request.getParameter("rhappened"));
                 nr.setWhatHasBeenDone((String) request.getParameter("rdone"));
                 nr.setDamageType((String) request.getParameter("rdamagetype"));
-                
+
                 nr.setWallNotes((String) request.getParameter("rwalldesc"));
                 nr.setWallPart((Part) request.getPart("rwallfile"));
-                
+
                 nr.setCeilingNotes((String) request.getParameter("rceilingdesc"));
                 nr.setCeilingPart((Part) request.getPart("rceilingfile"));
 
                 nr.setFloorNotes((String) request.getParameter("rfloordesc"));
                 nr.setFloorPart((Part) request.getPart("rfloorfile"));
-                
+
                 nr.setWindowDoorNotes((String) request.getParameter("rwindowsdesc"));
                 nr.setWindowDoorPart((Part) request.getPart("rwindowsfile"));
-                
-                nr.setMoistScan("x");
-                nr.setMeasuringPoint("x");
-                
+
+                nr.setMoistScan((String) request.getParameter("fugtskanning"));
+                nr.setMeasuringPoint((String) request.getParameter("malepunkt"));
+
                 loclist.add(nr);
 
                 session.setAttribute("loclist", loclist);
                 break;
             case "createReport":
-                System.out.println("opretter rapport");
+                int rnd = (int) Math.floor(Math.random() * 1000000) + 1;
+                int inc = 1;
                 String bname = (String) request.getParameter("bname");
-                
-                if(bname == null) {
-                    System.out.println("bname er null");
-                }
-                if(bname.equals("")) {
-                    System.out.println("bname er ikke null, men et tomt tekstfelt");
-                }
-                
-                String baddress = (String ) request.getParameter("baddress");
+                String baddress = (String) request.getParameter("baddress");
                 String bnumber = (String) request.getParameter("bnumber");
                 String bdate = (String) request.getParameter("bdate");
-                
-                System.out.println("kom her til");
                 Part bfrontpic = (Part) request.getPart("bfrontpic");
-                
                 String byear = (String) request.getParameter("byear");
                 String barea = (String) request.getParameter("barea");
                 String bpurpose = (String) request.getParameter("bpurpose");
-                
                 String broofdesc = (String) request.getParameter("broofdesc");
                 Part brooffile = (Part) request.getPart("brooffile");
-                
                 String bouterwallsdesc = (String) request.getParameter("bouterwallsdesc");
                 Part boutherwallsfile = (Part) request.getPart("bouterwallsfile");
-                
-                
                 String tilstand = (String) request.getParameter("tilstand");
                 String checkupperformer = (String) request.getParameter("checkupperformer");
                 String accountableofbuilding = (String) request.getParameter("accountableofbuilding");
+                int uid = (int) session.getAttribute("brugerid");
+                int bid = Integer.parseInt((String) request.getParameter("bid"));
+
+                System.out.println(uid + " and " + bid);
+                //her gemmes lortet
+                ArrayList<Room> sl = null;
+
+                if (session.getAttribute("loclist") != null) {
+                    sl = (ArrayList<Room>) session.getAttribute("loclist");
+                }
+
+                filgemmer fg = new filgemmer();
+
+                String bfrontpicname = null;
+                String brooffilename = null;
+                String boutherwallsfilename = null;
+
+                if (bfrontpic.getSize() != 0) {
+                    bfrontpicname = rnd + "_" + inc + "_" + fg.getCleanFilename(bfrontpic.getSubmittedFileName());
+                    fg.savePartAs(bfrontpic, bfrontpicname);
+                    inc++;
+                }
+
+                if (brooffile.getSize() != 0) {
+                    brooffilename = rnd + "_" + inc + "_" + fg.getCleanFilename(brooffile.getSubmittedFileName());
+                    fg.savePartAs(brooffile, brooffilename);
+                    inc++;
+                }
+
+                if (boutherwallsfile.getSize() != 0) {
+                    boutherwallsfilename = rnd + "_" + inc + "_" + fg.getCleanFilename(boutherwallsfile.getSubmittedFileName());
+                    fg.savePartAs(boutherwallsfile, boutherwallsfilename);
+                    inc++;
+                }
+
+                DBFacade dbf = new DBFacade();
+                dbf.createCheckup(bname, baddress, bnumber, bdate, bfrontpicname, byear, barea, bpurpose, broofdesc, bouterwallsdesc, brooffilename, boutherwallsfilename, tilstand, checkupperformer, accountableofbuilding, uid, bid);
+
+                if (sl != null) {
+                    for (Room tmp : sl) {
+                        String rName = tmp.getRoom();
+                        String rWhere = tmp.getWhere();
+                        String rHappened = tmp.getWhatHappened();
+                        String rHasBeenDone = tmp.getWhatHasBeenDone();
+                        String rDamageType = tmp.getDamageType();
+                        String rWallNotes = tmp.getWallNotes();
+                        String rCeilingNotes = tmp.getCeilingNotes();
+                        String rFloorNotes = tmp.getFloorNotes();
+                        String rWindowNotes = tmp.getWindowDoorNotes();
+                        
+                        String rWallName = null;
+                        if(tmp.getWallPart().getSize() != 0) {
+                            rWallName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getWallPart().getSubmittedFileName());
+                            fg.savePartAs(tmp.getWallPart(), rWallName);
+                            inc++;
+                        }
+                        
+                        
+                        String rCeilingName = null;
+                        if(tmp.getCeilingPart().getSize() != 0) {
+                            rCeilingName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getCeilingPart().getSubmittedFileName());
+                            fg.savePartAs(tmp.getCeilingPart(), rCeilingName);
+                            inc++;
+                        }
+                        
+                        String rFloorName = null;
+                        if(tmp.getFloorPart().getSize() != 0) {
+                            rFloorName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getFloorPart().getSubmittedFileName());
+                            fg.savePartAs(tmp.getFloorPart(), rFloorName);
+                            inc++;
+                        }
+                        
+                        String rWindowDoorName = null;
+                        if(tmp.getWindowDoorPart().getSize() != 0) {
+                            rWindowDoorName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getWindowDoorPart().getSubmittedFileName());
+                            fg.savePartAs(tmp.getWindowDoorPart(), rWindowDoorName);
+                            inc++;
+                        }
+                        
+                        String rMoistScan = tmp.getMoistScan();
+                        String rMeasuringPoint = tmp.getMeasuringPoint();
+                        
+                        dbf.createRoom(rName, rWhere, rHappened, rHasBeenDone, rDamageType, rWallNotes, rCeilingNotes, rFloorNotes, rWindowDoorName, rWallName, rCeilingName, rFloorName, rWindowNotes, rMoistScan, rMeasuringPoint, bid);
+                    }
+                }
+                session.setAttribute("loclist", null);
                 break;
+
         }
-        response.sendRedirect("createreport.jsp");
+        response.sendRedirect("createreport.jsp?bid=" + request.getParameter("bid"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -118,7 +195,11 @@ public class reportservlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (DataException ex) {
+            Logger.getLogger(reportservlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -132,7 +213,11 @@ public class reportservlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (DataException ex) {
+            Logger.getLogger(reportservlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
