@@ -14,32 +14,37 @@ and open the template in the editor.
     <body>
         <fieldset>
             <legend> <img src="http://www.polygongroup.com/UI/build/svg/polygon-logo.svg"> </legend>
-            <div> Velkommmen til Polygon info/frontpage der er knapper til at komme der hen du vil eller info om Polygon </div>
-            <form action="" method="POST">
-                <input
-                    type="submit"
-                    formaction="loginside.jsp"
-                    value="Loginsiden">
-                <input
-                    type="button"
-                    onclick="fun()"
-                    value="Info om os">
-                <input
-                    type="button"
-                    onclick="fun2()"
-                    value="kontakt">
-            </form>
-            <p id="text"></p>
+            <div align="center">
+                <div><font size="6"> Velkommen til Polygons forside, Her kan du få noget info om os </font></div>
+                <form action="" method="POST"><br>
+                    <input
+                        type="submit"
+                        formaction="loginside.jsp"
+                        value="Login"><br><br>
+                    <input
+                        type="button"
+                        onclick="fun()"
+                        value="Info om os">
+                    <input
+                        type="button"
+                        onclick="fun2()"
+                        value="kontakt">
+                </form>
+                <p id="text"></p>
+            </div>
         </fieldset>
         <script>
-        function fun() 
-        {
-            document.getElementById("text").innerHTML = "MONEY LOT OF EM";
-        }
-        function fun2() 
-        {
-            document.getElementById("text").innerHTML = "du kan kontakt os via telefon på 11223344 /Eller Email stop@this.shit";
-        }
+            function fun()
+            {
+                document.getElementById("text").innerHTML = "Polygon er blandt de største aktører inden for skadeservice og specialrengøring i Danmark. Polygon var blandt de første virksomheder i Danmark, som gik aktivt ind i egentlig skadeservice. Vi er således branchens pioner med mere end 50 års erfaring. "
+                        + "Polygon er en serviceorienteret beredskabsvirksomhed, der kan tilkaldes 24 timer i døgnet, 7 dage om ugen, hele året rundt.Vi har 9 afdelinger fordelt over hele landet, hvilket sætter os i stand til at være fremme ved indsatsstedet med meget kort varsel. "
+                        + "Polygon er en del af en global virksomhed med omkring 2.900 medarbejdere fordelt på 13 lande, hvis ressourcer vi har mulighed for at trække på, såfremt det skulle være nødvendigt. "
+                        + "Firmaets styrke ligger i den akkumulerede viden og den veluddannede og meget ansvarsbevidste medarbejderstab, som opererer via en velstyret organisation med et stærkt beredskab.Polygon har desuden et meget tæt og tillidsfuldt samarbejde med landets største forsikringsselskaber samt beredskaber.";
+            }
+            function fun2()
+            {
+                document.getElementById("text").innerHTML = "du kan kontakte os via telefon på 48140555 eller e-mail sundebygninger@polygon.dk";
+            }
         </script>
     </body>
 </html>

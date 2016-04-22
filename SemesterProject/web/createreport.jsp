@@ -101,78 +101,81 @@
             <input type="Submit" name="Submit">
         </form>
 
-        <hr>
+                <hr>
 
-        <h2>Oprettede lokaler</h2>
-        <%
-            if (session.getAttribute("loclist") != null) {
-                ArrayList<Room> loclist = (ArrayList<Room>) session.getAttribute("loclist");
+                <h2>Oprettede lokaler</h2>
+                <%
+                    if (session.getAttribute("loclist") != null) {
+                        ArrayList<Room> loclist = (ArrayList<Room>) session.getAttribute("loclist");
 
-                out.print("<table>");
-                out.print("<tr style=\"background: #EEE;\">");
-                out.print("<th>Room</th>");
-                out.print("<th>Desc</th>");
-                out.print("<th>Where</th>");
-                out.print("<th>Happened</th>");
-                out.print("<th>Done</th>");
-                out.print("<th>DType</th>");
-                out.print("<th>WDesc</th>");
-                out.print("<th>WFile</th>");
-                out.print("<th>CeilDesc</th>");
-                out.print("<th>CeilFile</th>");
-                out.print("<th>Floordesc</th>");
-                out.print("<th>FloorFile</th>");
-                out.print("<th>WinDoorDesc</th>");
-                out.print("<th>WinDoorFile</th>");
-                out.print("</tr>");
-                
-                convertSize cs = new convertSize();
-                
-                for (int i = 0; i < loclist.size(); i++) {
-                    out.print("<tr>");
-                    out.print("<td>" + loclist.get(i).getRoom() + "</td>");
-                    out.print("<td>" + loclist.get(i).getRoomDesc() + "</td>");
-                    out.print("<td>" + loclist.get(i).getWhere() + "</td>");
-                    out.print("<td>" + loclist.get(i).getWhatHappened() + "</td>");
-                    out.print("<td>" + loclist.get(i).getWhatHasBeenDone() + "</td>");
-                    out.print("<td>" + loclist.get(i).getDamageType() + "</td>");
+                        out.print("<table>");
+                        out.print("<tr style=\"background: #EEE;\">");
+                        out.print("<th>Room</th>");
+                        out.print("<th>Desc</th>");
+                        out.print("<th>Where</th>");
+                        out.print("<th>Happened</th>");
+                        out.print("<th>Done</th>");
+                        out.print("<th>DType</th>");
+                        out.print("<th>WDesc</th>");
+                        out.print("<th>WFile</th>");
+                        out.print("<th>CeilDesc</th>");
+                        out.print("<th>CeilFile</th>");
+                        out.print("<th>Floordesc</th>");
+                        out.print("<th>FloorFile</th>");
+                        out.print("<th>WinDoorDesc</th>");
+                        out.print("<th>WinDoorFile</th>");
+                        out.print("</tr>");
 
-                    out.print("<td>" + loclist.get(i).getWallNotes() + "</td>");
-                    if (loclist.get(i).getWallPart() != null) {
-                        out.print("<td>" + cs.convertSize(loclist.get(i).getWallPart().getSize()) + "</td>");
-                    } else {
-                        out.print("<td>(no file)</td>");
-                    }
-                    
-                    out.print("<td>" + loclist.get(i).getCeilingNotes() + "</td>");
-                    if (loclist.get(i).getCeilingPart() != null) {
-                        out.print("<td>" + cs.convertSize(loclist.get(i).getCeilingPart().getSize()) + "</td>");
-                    } else {
-                        out.print("<td>(no file)</td>");
-                    }
-                    
-                    
-                    out.print("<td>" + loclist.get(i).getFloorNotes() + "</td>");
-                    if (loclist.get(i).getFloorPart() != null) {
-                        out.print("<td>" + cs.convertSize(loclist.get(i).getFloorPart().getSize()) + "</td>");
-                    } else {
-                        out.print("<td>(no file)</td>");
-                    }
-                    
-                    out.print("<td>" + loclist.get(i).getWindowDoorNotes() + "</td>");
-                    if (loclist.get(i).getWindowDoorPart() != null) {
-                        out.print("<td>" + cs.convertSize(loclist.get(i).getWindowDoorPart().getSize()) + "</td>");
-                    } else {
-                        out.print("<td>(no file)</td>");
-                    }
-                    
-                }
+                        convertSize cs = new convertSize();
 
-                out.print("</table>");
-            } else {
-                out.print("<p>Der er intet her at vise endnu.</p>");
-            }
-        %>
+                        for (int i = 0; i < loclist.size(); i++) {
+                            out.print("<tr>");
+                            out.print("<td>" + loclist.get(i).getRoom() + "</td>");
+                            out.print("<td>" + loclist.get(i).getRoomDesc() + "</td>");
+                            out.print("<td>" + loclist.get(i).getWhere() + "</td>");
+                            out.print("<td>" + loclist.get(i).getWhatHappened() + "</td>");
+                            out.print("<td>" + loclist.get(i).getWhatHasBeenDone() + "</td>");
+                            out.print("<td>" + loclist.get(i).getDamageType() + "</td>");
+
+                            out.print("<td>" + loclist.get(i).getWallNotes() + "</td>");
+                            if (loclist.get(i).getWallPart() != null) {
+                                out.print("<td>" + cs.convertSize(loclist.get(i).getWallPart().getSize()) + "</td>");
+                            } else {
+                                out.print("<td>(no file)</td>");
+                            }
+
+                            out.print("<td>" + loclist.get(i).getCeilingNotes() + "</td>");
+                            if (loclist.get(i).getCeilingPart() != null) {
+                                out.print("<td>" + cs.convertSize(loclist.get(i).getCeilingPart().getSize()) + "</td>");
+                            } else {
+                                out.print("<td>(no file)</td>");
+                            }
+
+                            out.print("<td>" + loclist.get(i).getFloorNotes() + "</td>");
+                            if (loclist.get(i).getFloorPart() != null) {
+                                out.print("<td>" + cs.convertSize(loclist.get(i).getFloorPart().getSize()) + "</td>");
+                            } else {
+                                out.print("<td>(no file)</td>");
+                            }
+
+                            out.print("<td>" + loclist.get(i).getWindowDoorNotes() + "</td>");
+                            if (loclist.get(i).getWindowDoorPart() != null) {
+                                out.print("<td>" + cs.convertSize(loclist.get(i).getWindowDoorPart().getSize()) + "</td>");
+                            } else {
+                                out.print("<td>(no file)</td>");
+                            }
+
+                        }
+
+                        out.print("</table>");
+                    } else {
+                        out.print("<p>Der er intet her at vise endnu.</p>");
+                    }
+                %>
+
+                <hr>
+                <h2>Opret checkupreport</h2>
+                <span style="background: pink; border: 1px solid red; padding: 0.25em;">Lav rummene først, og udfyld derefter disse felter for at gemme og sende!</span><br><br>
 
         <hr>
         <h2>Færdiggør checkupreport</h2>

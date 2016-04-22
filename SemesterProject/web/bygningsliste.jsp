@@ -31,19 +31,16 @@
                     System.out.println(session.getAttribute("brugertype"));
                     Integer bt = (Integer) session.getAttribute("brugertype");
                     if (bt !=1 ) {
-                        out.print("<a href=\"adminside.jsp\">tilbage til adminside</a>");
+                        out.print("<a href=\"adminside.jsp\">Adminside</a>");
                     }
                 %><br>
-            <a href="BygningsOprettelse.jsp">Gå til bygningsoprettelse</a><br>
             <%
                     System.out.println(session.getAttribute("brugertype"));
                     bt = (Integer) session.getAttribute("brugertype");
                     if (bt == 1) {
-                        out.print("<a href=\"brugerside.jsp\">Tilbage til brugerside</a>");
+                        out.print("<a href=\"brugerside.jsp\">Brugerside</a>");
                     }
             %><br><br>
-            <div>Laves mere smart senere</div>
-            <a href="bygningside.jsp">Få informationer om bygningens tilstand her</a>
             <legend> <img src="polygon-logo-small.png"/></legend>
             <div align="center">
                 <h1>Bygningsliste</h1>

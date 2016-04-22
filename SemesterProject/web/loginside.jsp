@@ -33,13 +33,14 @@
                     </tr>
                 </form>
             </table>
-                    
-                    <%
-                        if (session.getAttribute("error") != null) {
-                            out.println("<br><span class=\"error\">" + session.getAttribute("error") + "</span>");
-                        }
-                    %>
-            <div style="padding: 3em; color: grey;">Fang os døgnet rundt på tlf.11223344</div>
+
+            <%
+                if (session.getAttribute("error") != null) {
+                    out.println("<br><span class=\"error\">" + session.getAttribute("error") + "</span>");
+                }
+            %>
+            <div style="padding: 3em; color: grey;">Fang os døgnet rundt på vores 24-timers tlf: 70110044</div><br>
+            <a href="index.html">Info side</a>
         </div>
     </body>
 </html>
