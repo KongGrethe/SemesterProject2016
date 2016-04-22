@@ -136,8 +136,8 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public boolean createRoom(String room, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_checkupID) {
-        return rm.createRoom(room, where, whatHappened, whatHasBeenDone, damageType, wallNotes, ceilingNotes, floorNotes, windowDoorNotes, wallPart, ceilingPart, floorPart, windowDoorPart, moistScan, measuringPoint, FK_checkupID);
+    public boolean createRoom(String room, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_bID) {
+        return rm.createRoom(room, where, whatHappened, whatHasBeenDone, damageType, wallNotes, ceilingNotes, floorNotes, windowDoorNotes, wallPart, ceilingPart, floorPart, windowDoorPart, moistScan, measuringPoint, FK_bID);
     }
 
     @Override

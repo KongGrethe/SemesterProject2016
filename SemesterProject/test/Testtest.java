@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @author Joachim E. Christensen
+ * @author Christian
  */
 public class Testtest {
         int listsize;
@@ -20,8 +20,6 @@ public class Testtest {
         List<Building> blist = ef.selectBuildings();
         assertEquals(blist.get(blist.size()-1).getbName(),("test"));
     }
-    
-    
     @Test
     public void addUser() throws ClassNotFoundException, DataException {
         EntityFacade ef = new EntityFacade();

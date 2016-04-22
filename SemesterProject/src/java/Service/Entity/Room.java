@@ -16,11 +16,11 @@ public class Room {
     
     private String wallNotes, ceilingNotes, floorNotes, windowDoorNotes;
     private Part wallPart, ceilingPart, floorPart, windowDoorPart;//kan det være rigtigt at det skal være en SERVLET part? skal det overhovedet være her?
-    private int FK_checkupID;
+    private int FK_bID;
     
     String moistScan, measuringPoint;
 
-    public Room(String room, String date, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, String roomDesc , int FK_checkupID) {
+    public Room(String room, String date, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, String roomDesc , int FK_bID) {
         this.room = room;
         this.date = date;
         this.where = where;
@@ -37,7 +37,7 @@ public class Room {
         this.windowDoorPart = windowDoorPart;
         this.moistScan = moistScan;
         this.measuringPoint = measuringPoint;
-        this.FK_checkupID = FK_checkupID;
+        this.FK_bID = FK_bID;
         this.roomDesc = roomDesc;
     }
 
@@ -168,15 +168,15 @@ public class Room {
     public void setMeasuringPoint(String measuringPoint) {
         this.measuringPoint = measuringPoint;
     }
+
+    public int getFK_bID() {
+        return FK_bID;
+    }
+
+    public void setFK_bID(int FK_bID) {
+        this.FK_bID = FK_bID;
+    }
     
-    public int getFK_checkupID() {
-        return FK_checkupID;
-    }
-
-    public void setFK_checkupID(int FK_checkupID) {
-        this.FK_checkupID = FK_checkupID;
-    }
-
     public String getRoomDesc() {
         return roomDesc;
     }
