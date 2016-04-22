@@ -7,6 +7,13 @@
 <%@page import="Presentation.convertSize"%>
 <%@page import="Service.Entity.Room"%>
 <%@page import="java.util.ArrayList"%>
+
+<%
+    if (session.getAttribute("brugerid") == null) {
+        response.sendRedirect("index.html");
+    }
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,9 +25,17 @@
     </head>
     <body>
     <center>
+        <%
+            if(request.getParameter("bid") == null) {
+                out.print("<h3>FEJL - DER ER IKKE NOGEN bid PARAMETER I URL'EN</h3>");
+            }
+        %>
         <h2>Lokaleoprettelse</h2>
         <form action="reportservlet" enctype="multipart/form-data" method="post">
             <input type="hidden" name="job" value="addRoom">
+            <%
+                out.print("<input type=\"hidden\" name=\"bid\" value=\"" + request.getParameter("bid") + "\">");
+            %>
             <table>
                 <tr>
                     <td>Lokale</td>
@@ -75,11 +90,11 @@
             <table>
                 <tr>
                     <td>Fugtskanning</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="fugtskanning"></td>
                 </tr>
                 <tr>
                     <td>Målepunkt</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="malepunkt"></td>
                 </tr>
             </table>
             <br>
@@ -160,11 +175,14 @@
         %>
 
         <hr>
-        <h2>Opret checkupreport</h2>
+        <h2>Færdiggør checkupreport</h2>
         <span style="background: pink; border: 1px solid red; padding: 0.25em;">Lav rummene først, og udfyld derefter disse felter for at gemme og sende!</span><br><br>
 
         <form action="reportservlet" enctype="multipart/form-data" method="post">
             <input type="hidden" name="job" value="createReport">
+            <%
+                out.print("<input type=\"hidden\" name=\"bid\" value=\"" + request.getParameter("bid") + "\">");
+            %>
             <table>
                 <tr>
                     <td>Navn på bygning</td><td><input type="text" name="bname"></td>
