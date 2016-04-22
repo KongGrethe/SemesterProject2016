@@ -73,7 +73,7 @@ CREATE TABLE room(
     rMoistScan VARCHAR(50),
     rMeasuringPoint VARCHAR(50),
     FK_bID INT(7),
-    FOREIGN KEY (FK_checkupid) REFERENCES checkup(checkupid)
+    FOREIGN KEY (FK_bID) REFERENCES buildings(bID)
 );
 
 CREATE TABLE notification(
