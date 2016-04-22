@@ -36,7 +36,7 @@ public class TransactionMapper {
         String insertTableSQL1 = "INSERT INTO room (rName, rDato, rWhere, "
                 + "rHappened, rHasBeenDone, rDamageType, rWallNotes, rCeilingNotes, "
                 + "rFloorNotes, rWindowNotes, rWallName, rCeilingName, rFloorName, "
-                + "rWindowDoorName, rMoistScan, rMeasuringPoint, FK_checkupid) VALUES "
+                + "rWindowDoorName, rMoistScan, rMeasuringPoint, FK_bID) VALUES "
                 + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
