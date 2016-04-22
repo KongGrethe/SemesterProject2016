@@ -24,7 +24,6 @@ import DataAccess.Datamappers.RoomMapper;
 import Service.DataException;
 import Service.Entity.Files;
 import Service.Entity.Notification;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -75,7 +74,7 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     
     @Override
     public boolean createCheckup(String checkName, String checkAddress, String checkPostnr, String checkdato, String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay, String checkUdfør, String chekAnsvar, int FK_uID, int FK_bID) {
-        return cm.createCheckup(checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg,TagFilNavn,yVægFilNavn, checkDecay, checkUdfør, chekAnsvar,FK_uID,FK_bID);
+        return cm.createCheckup(checkName, checkAddress, checkPostnr, checkdato, checkFileName, checkBygÅr, checkBygAreal,checkFormål,checkTag, checkYderVæg, TagFilNavn, yVægFilNavn, checkDecay, checkUdfør, chekAnsvar, FK_uID, FK_bID);
     }
     
 
@@ -136,8 +135,8 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
     }
 
     @Override
-    public boolean createRoom(String room, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, Part wallPart, Part ceilingPart, Part floorPart, Part windowDoorPart, String moistScan, String measuringPoint, int FK_checkupID) {
-        return rm.createRoom(room, where, whatHappened, whatHasBeenDone, damageType, wallNotes, ceilingNotes, floorNotes, windowDoorNotes, wallPart, ceilingPart, floorPart, windowDoorPart, moistScan, measuringPoint, FK_checkupID);
+    public boolean createRoom(String room, String where, String whatHappened, String whatHasBeenDone, String damageType, String wallNotes, String ceilingNotes, String floorNotes, String windowDoorNotes, String wallName, String ceilingName, String floorName, String windowName, String moistScan, String measuringPoint, int FK_bID) {
+        return rm.createRoom(room, where, whatHappened, whatHasBeenDone, damageType, wallNotes, ceilingNotes, floorNotes, windowDoorNotes, wallName, ceilingName, floorName, windowName, moistScan, measuringPoint, FK_bID);
     }
 
     @Override
@@ -145,6 +144,4 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
         return cm.getReportID(bAddress, bName);
     }
 
-    
-    
 }

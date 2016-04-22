@@ -72,8 +72,8 @@ CREATE TABLE room(
     rWindowDoorName VARCHAR(50),
     rMoistScan VARCHAR(50),
     rMeasuringPoint VARCHAR(50),
-    FK_checkupid INT(7),
-    FOREIGN KEY (FK_checkupid) REFERENCES checkup(checkupid)
+    FK_bID INT(7),
+    FOREIGN KEY (FK_bID) REFERENCES buildings(bID)
 );
 
 CREATE TABLE notification(

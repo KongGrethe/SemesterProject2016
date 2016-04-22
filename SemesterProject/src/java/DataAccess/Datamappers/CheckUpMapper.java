@@ -13,13 +13,14 @@ import java.util.List;
  */
 public class CheckUpMapper {
 
-    public boolean createCheckup(String checkName, String checkAddress, String checkPostnr, String checkDato,
+    public boolean createCheckup(
+            String checkName, String checkAddress, String checkPostnr, String checkDato,
             String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, 
             String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay,
             String checkUdfør, String checkAnsvar, int FK_uID, int FK_bID) {
         
         try {
-            String sql = "INSERT INTO `checkup` (`checkName`, `checkAddress`, `checkPostnr`, `checkDato`, `checkFileName`, `checkBygÅr`, `checkBygAreal`, `checkFormål`, `checkTag`, `checkYderVæg`, `TagFilNavn`, `yVægFilNavn`, `checkDecay`, `checkUdfør`, `checkAnsvar`, FK_uID, FK_bID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO `checkup` (`checkName`, `checkAddress`, `checkPostnr`, `checkDato`, `checkFileName`, `checkBygÅr`, `checkBygAreal`, `checkFormål`, `checkTag`, `checkYderVæg`, `TagFilNavn`, `yVægFilNavn`, `checkDecay`, `checkUdfør`, `checkAnsvar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
             pstmt.setString(1, checkName);
             pstmt.setString(2, checkAddress);

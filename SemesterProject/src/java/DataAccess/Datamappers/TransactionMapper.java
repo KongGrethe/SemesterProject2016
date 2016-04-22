@@ -19,8 +19,6 @@ import java.util.logging.Logger;
  * @author Michael
  */
 public class TransactionMapper {
-    //insert checkup rapport
-    //update checkup liste
 
     public static String driver = "com.mysql.jdbc.Driver";
     public static String URL = "jdbc:mysql://localhost/semesterproject"; //"jdbc:mysql://localhost/JDBCWebDB" ;
@@ -38,7 +36,7 @@ public class TransactionMapper {
         String insertTableSQL1 = "INSERT INTO room (rName, rDato, rWhere, "
                 + "rHappened, rHasBeenDone, rDamageType, rWallNotes, rCeilingNotes, "
                 + "rFloorNotes, rWindowNotes, rWallName, rCeilingName, rFloorName, "
-                + "rWindowDoorName, rMoistScan, rMeasuringPoint, FK_checkupid) VALUES "
+                + "rWindowDoorName, rMoistScan, rMeasuringPoint, FK_bID) VALUES "
                 + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
