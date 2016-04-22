@@ -19,8 +19,6 @@ import java.util.logging.Logger;
  * @author Michael
  */
 public class TransactionMapper {
-    //insert checkup rapport
-    //update checkup liste
 
     public static String driver = "com.mysql.jdbc.Driver";
     public static String URL = "jdbc:mysql://localhost/semesterproject"; //"jdbc:mysql://localhost/JDBCWebDB" ;

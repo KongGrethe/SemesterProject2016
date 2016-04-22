@@ -6,7 +6,6 @@
 <%@page import="Service.EntityFacade"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Service.Entity.User"%>
-<%@page import="DataAccess.Datamappers.UserMapper"%>
 <%
     if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
