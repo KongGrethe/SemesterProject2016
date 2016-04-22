@@ -13,33 +13,31 @@ import java.util.List;
  */
 public class CheckUpMapper {
 
-    public boolean createCheckup(
-            int checkupid, String checkName, String checkAddress, String checkPostnr, String checkDato,
+    public boolean createCheckup(String checkName, String checkAddress, String checkPostnr, String checkDato,
             String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, 
             String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay,
             String checkUdfør, String checkAnsvar, int FK_uID, int FK_bID) {
         
         try {
-            String sql = "INSERT INTO `checkup` (`checkupid`, `checkName`, `checkAddress`, `checkPostnr`, `checkDato`, `checkFileName`, `checkBygÅr`, `checkBygAreal`, `checkFormål`, `checkTag`, `checkYderVæg`, `TagFilNavn`, `yVægFilNavn`, `checkDecay`, `checkUdfør`, `checkAnsvar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO `checkup` (`checkName`, `checkAddress`, `checkPostnr`, `checkDato`, `checkFileName`, `checkBygÅr`, `checkBygAreal`, `checkFormål`, `checkTag`, `checkYderVæg`, `TagFilNavn`, `yVægFilNavn`, `checkDecay`, `checkUdfør`, `checkAnsvar`, FK_uID, FK_bID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
-            pstmt.setInt(1, checkupid);
-            pstmt.setString(2, checkName);
-            pstmt.setString(3, checkAddress);
-            pstmt.setString(4, checkPostnr);
-            pstmt.setString(5, checkDato);
-            pstmt.setString(6, checkFileName);
-            pstmt.setString(7, checkBygÅr);
-            pstmt.setString(8, checkBygAreal);
-            pstmt.setString(9, checkFormål);
-            pstmt.setString(10, checkTag);
-            pstmt.setString(11, checkYderVæg);
-            pstmt.setString(12, TagFilNavn);
-            pstmt.setString(13, yVægFilNavn);
-            pstmt.setString(14, checkDecay);
-            pstmt.setString(15, checkUdfør);
-            pstmt.setString(16, checkAnsvar);
-            pstmt.setInt(17, FK_uID);
-            pstmt.setInt(18, FK_bID);
+            pstmt.setString(1, checkName);
+            pstmt.setString(2, checkAddress);
+            pstmt.setString(3, checkPostnr);
+            pstmt.setString(4, checkDato);
+            pstmt.setString(5, checkFileName);
+            pstmt.setString(6, checkBygÅr);
+            pstmt.setString(7, checkBygAreal);
+            pstmt.setString(8, checkFormål);
+            pstmt.setString(9, checkTag);
+            pstmt.setString(10, checkYderVæg);
+            pstmt.setString(11, TagFilNavn);
+            pstmt.setString(12, yVægFilNavn);
+            pstmt.setString(13, checkDecay);
+            pstmt.setString(14, checkUdfør);
+            pstmt.setString(15, checkAnsvar);
+            pstmt.setInt(16, FK_uID);
+            pstmt.setInt(17, FK_bID);
             pstmt.executeUpdate();
         } catch (SQLException | DataException ex) {
             ex.printStackTrace();
