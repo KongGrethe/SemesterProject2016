@@ -57,6 +57,7 @@ public class perbygningservlet extends HttpServlet {
                         System.out.println(navn);
                         fname = navn.substring(navn.lastIndexOf("\\") + 1);
                         //fname = navn.substring(navn.lastIndexOf("/") + 1);
+                        System.out.println("Stien er: " + cp);
                         
                         //overvej en anden mappe end C:/Mappe
                         out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));

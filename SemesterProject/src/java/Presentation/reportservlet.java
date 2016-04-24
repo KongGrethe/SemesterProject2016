@@ -8,11 +8,13 @@ package Presentation;
 import DataAccess.DBFacade;
 import Service.DataException;
 import Service.Entity.Room;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +39,9 @@ public class reportservlet extends HttpServlet {
         String job = request.getParameter("job");
 
         ArrayList<Room> loclist = new ArrayList<Room>();
+
+        ServletContext sc = getServletContext();
+        String cp = sc.getRealPath(File.separator);
 
         switch (job) {
             case "addRoom":
@@ -93,6 +98,7 @@ public class reportservlet extends HttpServlet {
                 String accountableofbuilding = (String) request.getParameter("accountableofbuilding");
                 int uid = (int) session.getAttribute("brugerid");
                 int bid = Integer.parseInt((String) request.getParameter("bid"));
+                System.out.println("USERID ER " + uid);
 
                 System.out.println(uid + " and " + bid);
                 //her gemmes lortet
@@ -110,19 +116,20 @@ public class reportservlet extends HttpServlet {
 
                 if (bfrontpic.getSize() != 0) {
                     bfrontpicname = rnd + "_" + inc + "_" + fg.getCleanFilename(bfrontpic.getSubmittedFileName());
-                    fg.savePartAs(bfrontpic, bfrontpicname);
+                    fg.savePartAs(bfrontpic, cp + "\\test\\" + bfrontpicname);
+                    //out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
                     inc++;
                 }
 
                 if (brooffile.getSize() != 0) {
                     brooffilename = rnd + "_" + inc + "_" + fg.getCleanFilename(brooffile.getSubmittedFileName());
-                    fg.savePartAs(brooffile, brooffilename);
+                    fg.savePartAs(brooffile, cp + "\\test\\" + brooffilename);
                     inc++;
                 }
 
                 if (boutherwallsfile.getSize() != 0) {
                     boutherwallsfilename = rnd + "_" + inc + "_" + fg.getCleanFilename(boutherwallsfile.getSubmittedFileName());
-                    fg.savePartAs(boutherwallsfile, boutherwallsfilename);
+                    fg.savePartAs(boutherwallsfile, cp + "\\test\\" + boutherwallsfilename);
                     inc++;
                 }
 
@@ -140,39 +147,38 @@ public class reportservlet extends HttpServlet {
                         String rCeilingNotes = tmp.getCeilingNotes();
                         String rFloorNotes = tmp.getFloorNotes();
                         String rWindowNotes = tmp.getWindowDoorNotes();
-                        
+
                         String rWallName = null;
-                        if(tmp.getWallPart().getSize() != 0) {
+                        if (tmp.getWallPart().getSize() != 0) {
                             rWallName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getWallPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getWallPart(), rWallName);
+                            fg.savePartAs(tmp.getWallPart(), cp + "\\test\\" + rWallName);
                             inc++;
                         }
-                        
-                        
+
                         String rCeilingName = null;
-                        if(tmp.getCeilingPart().getSize() != 0) {
+                        if (tmp.getCeilingPart().getSize() != 0) {
                             rCeilingName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getCeilingPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getCeilingPart(), rCeilingName);
+                            fg.savePartAs(tmp.getCeilingPart(), cp + "\\test\\" + rCeilingName);
                             inc++;
                         }
-                        
+
                         String rFloorName = null;
-                        if(tmp.getFloorPart().getSize() != 0) {
+                        if (tmp.getFloorPart().getSize() != 0) {
                             rFloorName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getFloorPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getFloorPart(), rFloorName);
+                            fg.savePartAs(tmp.getFloorPart(), cp + "\\test\\" + rFloorName);
                             inc++;
                         }
-                        
+
                         String rWindowDoorName = null;
-                        if(tmp.getWindowDoorPart().getSize() != 0) {
+                        if (tmp.getWindowDoorPart().getSize() != 0) {
                             rWindowDoorName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getWindowDoorPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getWindowDoorPart(), rWindowDoorName);
+                            fg.savePartAs(tmp.getWindowDoorPart(), cp + "\\test\\" + rWindowDoorName);
                             inc++;
                         }
-                        
+
                         String rMoistScan = tmp.getMoistScan();
                         String rMeasuringPoint = tmp.getMeasuringPoint();
-                        
+
                         dbf.createRoom(rName, rWhere, rHappened, rHasBeenDone, rDamageType, rWallNotes, rCeilingNotes, rFloorNotes, rWindowDoorName, rWallName, rCeilingName, rFloorName, rWindowNotes, rMoistScan, rMeasuringPoint, bid);
                     }
                 }

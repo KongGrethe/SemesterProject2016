@@ -107,7 +107,7 @@ public class UserMapper{
                 System.out.println(res[0]);
                 System.out.println(res[1]);
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | DataException ex) {
             res[0] = 0;
             res[1] = 0;
             throw new DataException("Der gik noget galt i valideringen");

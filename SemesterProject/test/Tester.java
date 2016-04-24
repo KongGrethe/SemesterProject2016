@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-
 import DataAccess.DBConnector;
+import DataAccess.DBFacade;
 import DataAccess.Datamappers.UserMapper;
 import Service.DataException;
 import java.sql.Connection;
@@ -18,10 +18,11 @@ import java.sql.SQLException;
  * @author Michael
  */
 public class Tester {
+
     public static void main(String[] args) throws DataException {
-        UserMapper um = new UserMapper();
-        int result = um.createUser(0, "Bob", "The Builder", "12345", "a@b.com", "customer", 1);
-        System.out.println("result: "+result);
+        DBFacade dbf = new DBFacade();
+        int[] hej = dbf.validate("Anette", "jsp");
+        System.out.println(hej[0] + " and " + hej[1]);
 //        try {
 //         //DBFacade dbf = DBFacade.getInstance();
 //         Connection con = DBConnector.getConnection();

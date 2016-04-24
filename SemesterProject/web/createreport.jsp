@@ -9,9 +9,9 @@
 <%@page import="java.util.ArrayList"%>
 
 <%
-    if (session.getAttribute("brugerid") == null) {
+    /*if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
-    }
+    }*/
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -26,6 +26,7 @@
     <body>
     <center>
         <%
+            out.print("<div>Dit brugerid er" + session.getAttribute("brugerid") + ".<br>Hvis der står 0 så er der noget galt - prøv med en anden bruger (fx Anette med koden \"jsp\")</div>");
             if(request.getParameter("bid") == null) {
                 out.print("<h3>FEJL - DER ER IKKE NOGEN bid PARAMETER I URL'EN</h3>");
             }

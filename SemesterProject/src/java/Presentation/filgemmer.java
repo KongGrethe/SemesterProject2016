@@ -25,7 +25,7 @@ public class filgemmer {
             InputStream fileContent = null;
 //vi skal ændre C:/mappe til noget andet med gad ikke lige nu
             try {
-                out = new FileOutputStream(new File("C:/mappe/" + targetName));
+                out = new FileOutputStream(new File(targetName));
                 fileContent = inFile.getInputStream();
 
                 int read = 0;
