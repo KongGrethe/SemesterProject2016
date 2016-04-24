@@ -15,19 +15,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Glemt Password?</h1>
-        
-        <table>
-            
-            <tr>
-                <td>E-mail</td>
-                <td><input type="text" name="email" autocomplete="off"></td>
-               
-            </tr>
-            <tr>
-                <td colspan="2" align="right"><input type="submit" name="Indsend" autocomplete="off"></td>
-            </tr>
-            
-        </table>
+        <fieldset>
+            <legend> <img src="polygon-logo-small.png"/></legend>
+            <div align="center">
+                <h1>Glemt Password?</h1>
+
+                <table>
+
+                    <tr>
+                        <td>E-mail</td>
+                        <td><input type="text" name="email" autocomplete="off"></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right"><input type="submit" name="Indsend" autocomplete="off"></td>
+                    </tr>
+
+                </table>
+            </div>
+        </fieldset>
     </body>
 </html>

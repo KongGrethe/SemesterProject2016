@@ -27,10 +27,10 @@
                     System.out.println(session.getAttribute("brugertype"));
                     Integer bt = (Integer) session.getAttribute("brugertype");
                     if (bt == 2) {
-                        out.print("<a href=\"adminside.jsp\">Adminside</a>");
+                        out.print("<li><a href=\"adminside.jsp\">Adminside</a></li>");
                     }
                 %><br>
-                <a href="bygningsliste.jsp">Bygningslisten</a>
+            <li><a href="bygningsliste.jsp">Bygningslisten</a></li>
             <div align="center">
                 <h1>Brugerliste</h1>
                 <table class="storliste">

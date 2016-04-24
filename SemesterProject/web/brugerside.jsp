@@ -4,8 +4,7 @@
     Author     : Michael
 --%>
 <%
-    if (session.getAttribute("brugerid") == null) 
-    {
+    if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
     }
 %>
@@ -21,10 +20,14 @@
     <body>
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
-        <h1>Velkommen til</h1>
-        <div>Dette er kundesiden..</div><br>
-        <a href="BygningsOprettelse.jsp">Opret bygning</a><br>
-        <a href="bygningsliste.jsp">Se bygningslisten</a><br>
+            <div align="center">
+                <h1>Velkommen til Polygon!</h1>
+                <div><font size="5">Her er dine muligheder som kunde.</div><br>
+                <div><font size="5">
+                    <li><a href="BygningsOprettelse.jsp">Opret bygning</a></li><br>
+                    <li><a href="bygningsliste.jsp">Se bygningslisten</a></li><br>
+                </div>
+            </div>
         </fieldset>
     </body>
 </html>

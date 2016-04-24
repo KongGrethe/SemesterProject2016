@@ -28,7 +28,7 @@
                 System.out.println(session.getAttribute("brugertype"));
                 Integer bt = (Integer) session.getAttribute("brugertype");
                 if (bt == 2) {
-                    out.print("<a href=\"adminside.jsp\">Adminside</a>");
+                    out.print("<li><a href=\"adminside.jsp\">Adminside</a></li>");
                 }
             %><br>
             <div align="center">
@@ -41,8 +41,8 @@
                         <th>Post-Nummer</th>
                         <th>Dato</th>
                         <th>Filnavn</th>
-                        <th>UsersID</th>
-                        <th>BuildingsID</th>
+                        <th>BrugersID</th>
+                        <th>BygningsID</th>
                     </tr>
 
                     <%
@@ -63,7 +63,7 @@
                                         + list.get(i).getCheckFileName() + "</td><td>"
                                         + list.get(i).getFK_uID() + "</td><td>"
                                         + list.get(i).getFK_bID() + "</td>"
-                                        + "<td><form action=\"userservlet\" method=\"post\">");
+                                        + "<td><form action=\"reportservlet\" method=\"post\">");
                             }
                         }
                     %>

@@ -24,8 +24,10 @@
         %>
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
-
-            <div>Du kan oprette en bygning her.</div>
+            <li><a href="brugerside.jsp">Brugersiden</a></li><br>
+            <li><a href="bygningsliste.jsp">Bygningslisten</a></li>
+            <div align="center">
+            <div><font size="5">Du kan oprette en bygning her.</div>
             <form action="buildingservlet" method="post">
                 <table>
                     <tr>
@@ -56,9 +58,8 @@
                     %>
                     <button name="job" value="add">Opret</button>
                 </table>
-                <a href="bygningsliste.jsp">Gå til bygningslisten</a><br>
-                <a href="brugerside.jsp">Tilbage til brugerside</a>
             </form>
+            </div>
         </fieldset>
     </body>
 </html>

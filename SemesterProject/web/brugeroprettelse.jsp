@@ -24,7 +24,7 @@
         <!-- her skal også være plads til en fejlbesked om at brugernavnet er taget -->
         <div align="center">
             <h1>Brugeroprettelse</h1>
-            <a href="adminside.jsp">Tilbage til adminsiden</a><br><br>
+            <a href="adminside.jsp">Adminsiden</a><br><br>
             <%
                 String em = (String) session.getAttribute("errormsg");
                 if(em == null) {

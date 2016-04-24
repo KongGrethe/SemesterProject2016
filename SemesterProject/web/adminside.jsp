@@ -18,31 +18,24 @@
         <title>Admin side</title>
     </head>
     <body>
-        <!-- Head Div -->
-        <div id="head">
+        <fieldset>
+            <legend> <img src="polygon-logo-small.png"/></legend>
+            
+            <div align="center">
+                <!-- Main Div -->
+                <div><h1>Velkommen Polygon employee</h1></div>
+                <div><font size="5">Dette er employee siden.</div><br>
 
-            <!-- Top Div -->
-            <div ID="top">
-                <img src="polygon-logo-small.png"/>
+
+                <!-- Menu Div -->
+                <div><font size="5">
+                    <li><a href="bygningside.jsp?bid=1">Bygningsiden</a></li><br>
+                    <li><a href="brugerliste.jsp">Liste af alle brugere</a></li><br>
+                    <li><a href="checkupliste.jsp">Liste af alle checkup rapporter</a></li><br>
+                    <li><a href="brugeroprettelse.jsp">Opret Bruger</a></li><br>
+                    <li><a href="createreport.jsp">Opret Rapport</a></li><br>
+                </div>
             </div>
-
-            <!-- Main Div -->
-            <div ID="main">
-                <h1>Velkommen admin</h1>
-                Dette er adminstrator siden.
-            </div>
-
-
-            <!-- Menu Div -->
-            <div ID="menu">
-                <ul>
-                    <li><a href="bygningside.jsp?bid=1">Genvej til Bygningside</a></li>
-                    <li><a href="brugerliste.jsp">Liste af alle brugere</a></li>
-                    <li><a href="checkupliste.jsp">Liste af alle checkup rapporter</a></li>
-                    <li><a href="brugeroprettelse.jsp">Opret Bruger</a></li>
-                    <li><a href="createreport.jsp">Opret Rapport</a></li>
-                </ul>
-            </div>
-        </div>
+        </fieldset>
     </body>
 </html>

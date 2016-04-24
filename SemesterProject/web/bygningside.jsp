@@ -25,6 +25,7 @@
     <body>
         <fieldset>
         <legend> <img src="polygon-logo-small.png"/></legend>
+        <li><a href="adminside.jsp">Adminsiden</a></li>
         <div align="center">
             <h1>Bygning <%
                 out.print(request.getParameter("bid"));

@@ -31,14 +31,14 @@
                     System.out.println(session.getAttribute("brugertype"));
                     Integer bt = (Integer) session.getAttribute("brugertype");
                     if (bt !=1 ) {
-                        out.print("<a href=\"adminside.jsp\">Adminside</a>");
+                        out.print("<li><a href=\"adminside.jsp\">Adminside</a></li>");
                     }
                 %><br>
             <%
                     System.out.println(session.getAttribute("brugertype"));
                     bt = (Integer) session.getAttribute("brugertype");
                     if (bt == 1) {
-                        out.print("<a href=\"brugerside.jsp\">Brugerside</a>");
+                        out.print("<li><a href=\"brugerside.jsp\">Brugerside</a></li>");
                     }
             %><br><br>
             <legend> <img src="polygon-logo-small.png"/></legend>
