@@ -39,10 +39,12 @@ public class loginctrl extends HttpServlet {
                 String Password = request.getParameter("password");
 
                 int check[] = DBF.validate(Username, Password);
-                session.setAttribute("brugerid", check[0]);
-                session.setAttribute("brugertype", check[1]);
                 if (check[0] != 0) {
 
+                    session.setAttribute("brugerid", check[0]);
+                    session.setAttribute("brugertype", check[1]);
+                    System.out.println("brugerid er " + check[0]);
+                    System.out.println("brugertype er " + check[1]);
                     if (check[1] == 1) {
                         forward(request, response, "/brugerside.jsp");
                     } else {
@@ -52,11 +54,12 @@ public class loginctrl extends HttpServlet {
                     session.setAttribute("error", "Dit brugernavn eller password var forkert, prøv igen!");
                     forward(request, response, "/loginside.jsp");
                     System.out.println("HA! DU ER STADIG IKKE LOGGET IND!");
+                    System.out.println("øvrig information:" + session.getAttribute("brugerid"));
                 }
             } catch (DataException ex) {
                 session.setAttribute("error", "Databasen fejlede, prøv igen senere!");
-                    forward(request, response, "/loginside.jsp");
-            }   
+                forward(request, response, "/loginside.jsp");
+            }
         }
     }
 
