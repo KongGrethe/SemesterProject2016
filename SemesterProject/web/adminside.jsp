@@ -30,6 +30,7 @@
                 <!-- Menu Div -->
                 <div><font size="5">
                     <li><a href="bygningside.jsp?bid=1">Bygningsiden</a></li><br>
+                    <li><a href="bygningsliste.jsp">Bygningslisten</a></li><br>
                     <li><a href="brugerliste.jsp">Liste af alle brugere</a></li><br>
                     <li><a href="checkupliste.jsp">Liste af alle checkup rapporter</a></li><br>
                     <li><a href="brugeroprettelse.jsp">Opret Bruger</a></li><br>
