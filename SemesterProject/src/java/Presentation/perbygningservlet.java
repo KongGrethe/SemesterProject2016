@@ -35,65 +35,43 @@ public class perbygningservlet extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             String job = request.getParameter("job");
             String fname = null;
-            
+
             DBFacade dbf = new DBFacade();
-            
+
+            int uid = 0;
             int bid = 0;
-            
+
             ServletContext sc = getServletContext();
             String cp = sc.getRealPath(File.separator);
-            System.out.println(cp);
-            
+
             switch (job) {
                 case "file":
                     final Part filePart = request.getPart("file");
-                    OutputStream out = null;
-                    InputStream fileContent = null;
-                    
+
                     int files = (int) Math.floor(Math.random() * 100000);
-                    
-                    try {
-                        String navn = filePart.getSubmittedFileName();
-                        System.out.println(navn);
-                        //fname = navn.substring(navn.lastIndexOf("\\") + 1);
-                        fname = navn.substring(navn.lastIndexOf("/") + 1);
-                        System.out.println("Stien er: " + cp);
-                        
-                        //overvej en anden mappe end C:/Mappe
-                        //out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
-                        out = new FileOutputStream(new File(cp + "/test/" + files + "_" + fname));
-                        System.out.println(cp);
-                        fileContent = filePart.getInputStream();
-                        
-                        int read = 0;
-                        final byte[] bytes = new byte[1024];
-                        while ((read = fileContent.read(bytes)) != -1) {
-                            out.write(bytes, 0, read);
-                        }
-                        
-                        int uid = Integer.parseInt((String) request.getParameter("uid"));
-                        bid = Integer.parseInt((String) request.getParameter("bid"));
-                        
-                        dbf.createFile(files + "_" + fname, bid, uid);
-                    } catch (FileNotFoundException fne) {
-                        System.out.println(fne.getMessage());
-                    } finally {
-                        if (out != null) {
-                            out.close();
-                        }
-                        if (fileContent != null) {
-                            fileContent.close();
-                        }
-                    }
+
+                    String navn = filePart.getSubmittedFileName();
+                    fname = navn.substring(navn.lastIndexOf("\\") + 1);
+                    //fname = navn.substring(navn.lastIndexOf("/") + 1);
+
+                    //overvej en anden mappe end C:/Mappe
+                    filgemmer fg = new filgemmer();
+                    fg.savePartAs(filePart, cp + "\\test\\" + files + "_" + fname);
+                    //out = new FileOutputStream(new File(cp + "/test/" + files + "_" + fname));
+
+                    uid = Integer.parseInt((String) request.getParameter("uid"));
+                    bid = Integer.parseInt((String) request.getParameter("bid"));
+
+                    dbf.createFile(files + "_" + fname, bid, uid);
                     break;
-                case "msg":;
-                String msg = request.getParameter("content");
-                int uid = Integer.parseInt((String) request.getParameter("uid"));
-                bid = Integer.parseInt((String) request.getParameter("bid"));
-                dbf.createNotification(0, msg, bid, uid);
-                break;
+                case "msg":
+                    String msg = request.getParameter("content");
+                    uid = Integer.parseInt((String) request.getParameter("uid"));
+                    bid = Integer.parseInt((String) request.getParameter("bid"));
+                    dbf.createNotification(0, msg, bid, uid);
+                    break;
             }
-            
+
             response.sendRedirect("bygningside.jsp?bid=" + bid);
         } catch (DataException ex) {
             System.out.println("Tjek databaseFacaden");
