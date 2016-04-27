@@ -51,11 +51,11 @@ public class perbygningservlet extends HttpServlet {
                     int files = (int) Math.floor(Math.random() * 100000);
 
                     String navn = filePart.getSubmittedFileName();
-                    fname = navn.substring(navn.lastIndexOf("\\") + 1);
+                    filgemmer fg = new filgemmer();
+                    fname = fg.getCleanFilename(navn);
                     //fname = navn.substring(navn.lastIndexOf("/") + 1);
 
                     //overvej en anden mappe end C:/Mappe
-                    filgemmer fg = new filgemmer();
                     fg.savePartAs(filePart, cp + "\\test\\" + files + "_" + fname);
                     //out = new FileOutputStream(new File(cp + "/test/" + files + "_" + fname));
 
