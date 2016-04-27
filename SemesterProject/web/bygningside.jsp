@@ -95,7 +95,8 @@
                             <input type="hidden" name="job" value="file">
                             <input type="file" name="file" id="file">
 
-                            <%                                out.print("<input type=\"hidden\" name=\"bid\" value=\"" + request.getParameter("bid") + "\">");
+                            <%  
+                                out.print("<input type=\"hidden\" name=\"bid\" value=\"" + request.getParameter("bid") + "\">");
                                 out.print("<input type=\"hidden\" name=\"uid\" value=\"" + session.getAttribute("brugerid") + "\">");
                             %>
                             <input type="submit">
