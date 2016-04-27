@@ -5,8 +5,7 @@
 --%>
 <%@page import="Service.EntityFacade"%>
 <%
-    if (session.getAttribute("brugerid") == null) 
-    {
+    if (session.getAttribute("brugerid") == null) {
         response.sendRedirect("index.html");
     }
 %>
@@ -27,23 +26,27 @@
     </head>
     <body>
         <fieldset>
-            <%
+            <div align="center">
+                <legend> <img src="polygon-logo-small.png"/></legend>
+                <h1>Bygningsliste</h1>
+
+
+                <%
                     System.out.println(session.getAttribute("brugertype"));
                     Integer bt = (Integer) session.getAttribute("brugertype");
-                    if (bt !=1 ) {
+                    if (bt != 1) {
                         out.print("<li><a href=\"adminside.jsp\">Adminside</a></li>");
                     }
                 %><br>
-            <%
+                <%
                     System.out.println(session.getAttribute("brugertype"));
                     bt = (Integer) session.getAttribute("brugertype");
                     if (bt == 1) {
                         out.print("<li><a href=\"brugerside.jsp\">Brugerside</a></li>");
                     }
-            %><br><br>
-            <legend> <img src="polygon-logo-small.png"/></legend>
-            <div align="center">
-                <h1>Bygningsliste</h1>
+                %>
+
+                
                 <a href="BygningsOprettelse.jsp">Opret bygning</a>
                 <table class="storliste">
                     <tr>
@@ -58,12 +61,10 @@
                     </tr>
 
                     <%
-                        
                         EntityFacade ef = new EntityFacade();
-                        
+
                         ArrayList<Building> list = (ArrayList<Building>) ef.selectBuildings();
-                        
-                        
+
                         if (list != null) {
 
                             for (int i = 0; i < list.size(); i++) {

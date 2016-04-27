@@ -50,7 +50,7 @@ public class UserMapper{
 
     public boolean deleteUser(int uID){
         try {
-            String sql = "DELETE FROM `users` WHERE `uID`=?";
+            String sql = "DELETE FROM `users` WHERE `uID`=" + uID;
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
             pstmt.setInt(1, uID);
             pstmt.executeUpdate();

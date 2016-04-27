@@ -23,15 +23,16 @@
     <body>
         <fieldset>
             <legend> <img src="polygon-logo-small.png"/></legend>
-            <%
+            <br>
+            <div align="center">
+            
+                <%
                     System.out.println(session.getAttribute("brugertype"));
                     Integer bt = (Integer) session.getAttribute("brugertype");
                     if (bt == 2) {
-                        out.print("<li><a href=\"adminside.jsp\">Adminside</a></li>");
+                        out.print("<ul><li><a href=\"adminside.jsp\">Adminside</a></li></ol>");
                     }
-                %><br>
-            <li><a href="bygningsliste.jsp">Bygningslisten</a></li>
-            <div align="center">
+                %>
                 <h1>Brugerliste</h1>
                 <table class="storliste">
                     <tr>
