@@ -36,17 +36,21 @@ public class BuildingMapper {
     }
 
     public boolean deleteBuilding(int bID) {
-        System.out.println("hej" + bID);
         try {
             String sql = "DELETE FROM buildings WHERE bID=" + bID;
             PreparedStatement pstmt = DBConnector.getConnection().prepareStatement(sql);
 
             pstmt.executeUpdate();
+            
+            sql = "SELECT * FROM buildings WHERE bID=" + bID;
+            pstmt = DBConnector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            return !rs.next();
+            
         } catch (SQLException | DataException ex) {
             ex.printStackTrace();
             return false;
         }
-        return true;
     }
 
     public List<Building> getBuildings() throws DataException {

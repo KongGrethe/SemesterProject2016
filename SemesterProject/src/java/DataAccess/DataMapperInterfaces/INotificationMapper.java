@@ -1,4 +1,4 @@
-package DataAccess.Datamappers;
+package DataAccess.DataMapperInterfaces;
 
 import Service.DataException;
 import Service.Entity.Notification;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataAccess.Datamappers;
+package DataAccess.DataMapperInterfaces;
 
 import Service.DataException;
 import Service.Entity.Checkup;

@@ -95,4 +95,24 @@ public class Building {
     public void setFK_uID(int FK_uID) {
         this.FK_uID = FK_uID;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Building other = (Building) obj;
+        if (this.bID != other.bID) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
