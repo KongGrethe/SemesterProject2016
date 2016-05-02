@@ -3,11 +3,7 @@ package Presentation;
 import DataAccess.DBFacade;
 import Service.DataException;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +25,7 @@ import javax.servlet.http.Part;
 @WebServlet(name = "perbygningservlet", urlPatterns = {"/perbygningservlet"})
 public class perbygningservlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, DataException {
         try {
             HttpSession session = request.getSession();
             request.setCharacterEncoding("UTF-8");
@@ -56,8 +52,12 @@ public class perbygningservlet extends HttpServlet {
                     //fname = navn.substring(navn.lastIndexOf("/") + 1);
 
                     //overvej en anden mappe end C:/Mappe
+                    
+                    /* HVIS DU BRUGER WINDOWS, UDKOMMENTER PÅ LINJE 57*/
                     fg.savePartAs(filePart, cp + "\\test\\" + files + "_" + fname);
-                    //out = new FileOutputStream(new File(cp + "/test/" + files + "_" + fname));
+                    
+                    /* HVIS DU BRUGER MAC, UDKOMMENTER LINJE 60*/ 
+                    //fg.savePartAs(filePart, cp + "/test/" + files + "_" + fname);
 
                     uid = Integer.parseInt((String) request.getParameter("uid"));
                     bid = Integer.parseInt((String) request.getParameter("bid"));
@@ -96,7 +96,7 @@ public class perbygningservlet extends HttpServlet {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (DataException ex) {
             Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -116,7 +116,7 @@ public class perbygningservlet extends HttpServlet {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (DataException ex) {
             Logger.getLogger(perbygningservlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
