@@ -60,21 +60,3 @@ public class Testtest {
 
 }
 
-//    @Test
-//    public void addUser() throws ClassNotFoundException, DataException {
-//        EntityFacade ef = new EntityFacade();
-//        List<User> ulist = ef.selectUsers();
-//        assertTrue((lastUserInsert = ef.createUser(0, "Bob", "The Builder", "12345", "a@b.com", "customer", 1)) >= 0);
-//        assertEquals(ulist.size()+1, ef.selectUsers().size());
-//        System.out.println("last user insert: "+lastUserInsert);
-//    }
-//    @Test
-//    public void deleteUser() throws ClassNotFoundException, DataException {
-//        EntityFacade ef = new EntityFacade();
-//        List<User> ulist = ef.selectUsers();
-//        listsize = ulist.size();
-//        assertTrue(ef.deleteUser(lastUserInsert));
-//        assertEquals(ef.selectUsers().size(), listsize);
-//        
-//    }
-

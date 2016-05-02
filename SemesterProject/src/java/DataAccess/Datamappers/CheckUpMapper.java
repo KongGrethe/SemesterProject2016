@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CheckUpMapper {
 
-    public boolean createCheckup(
+    public boolean createCheckup( 
             String checkName, String checkAddress, String checkPostnr, String checkDato,
             String checkFileName, String checkBygÅr, String checkBygAreal, String checkFormål, 
             String checkTag, String checkYderVæg, String TagFilNavn, String yVægFilNavn, String checkDecay,

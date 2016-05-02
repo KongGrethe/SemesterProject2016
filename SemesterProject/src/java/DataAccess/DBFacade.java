@@ -129,9 +129,9 @@ public class DBFacade implements IUserMapper, IBuildingMapper, ICheckUpMapper, I
         return fm.selectAllFiles(FK_bID);
     }
 
-    @Override
+    @Override //Denne metode validerer brugernavn og password.
     public int[] validate(String Username, String Password) throws DataException {
-        return um.validate(Username, Password);
+        return um.validate(Username, Password); 
     }
 
     @Override
