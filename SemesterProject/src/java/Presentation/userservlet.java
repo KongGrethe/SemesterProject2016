@@ -5,15 +5,11 @@
  */
 package Presentation;
 
-import DataAccess.Datamappers.UserMapper;
-import Service.Entity.Building;
 import Service.EntityFacade;
 import java.io.IOException;
-import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

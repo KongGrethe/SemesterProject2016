@@ -100,7 +100,7 @@ public class reportservlet extends HttpServlet {
                 System.out.println("USERID ER " + uid);
 
                 System.out.println(uid + " and " + bid);
-                //her gemmes lortet
+                //her gemmes dataen.
                 ArrayList<Room> sl = null;
 
                 if (session.getAttribute("loclist") != null) {
@@ -115,20 +115,22 @@ public class reportservlet extends HttpServlet {
 
                 if (bfrontpic.getSize() != 0) {
                     bfrontpicname = rnd + "_" + inc + "_" + fg.getCleanFilename(bfrontpic.getSubmittedFileName());
-                    fg.savePartAs(bfrontpic, cp + "\\test\\" + bfrontpicname);
-                    //out = new FileOutputStream(new File(cp + "\\test\\" + files + "_" + fname));
+                    fg.savePartAs(bfrontpic, cp + "\\test\\" + bfrontpicname); //if WINDOWS
+                    //fg.savePartAs(bfrontpic, cp + "/test/" + bfrontpicname); //if MAC
                     inc++;
                 }
 
                 if (brooffile.getSize() != 0) {
                     brooffilename = rnd + "_" + inc + "_" + fg.getCleanFilename(brooffile.getSubmittedFileName());
-                    fg.savePartAs(brooffile, cp + "\\test\\" + brooffilename);
+                    fg.savePartAs(brooffile, cp + "\\test\\" + brooffilename); //if WINDOWS
+                    //fg.savePartAs(brooffile, cp + "/test/" + brooffilename); //if MAC
                     inc++;
                 }
 
                 if (boutherwallsfile.getSize() != 0) {
                     boutherwallsfilename = rnd + "_" + inc + "_" + fg.getCleanFilename(boutherwallsfile.getSubmittedFileName());
-                    fg.savePartAs(boutherwallsfile, cp + "\\test\\" + boutherwallsfilename);
+                    fg.savePartAs(boutherwallsfile, cp + "\\test\\" + boutherwallsfilename); //if WINDOWS
+                    //fg.savePartAs(boutherwallsfile, cp + "/test/" + boutherwallsfilename); //if MAC
                     inc++;
                 }
 
@@ -150,28 +152,32 @@ public class reportservlet extends HttpServlet {
                         String rWallName = null;
                         if (tmp.getWallPart().getSize() != 0) {
                             rWallName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getWallPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getWallPart(), cp + "\\test\\" + rWallName);
+                            fg.savePartAs(tmp.getWallPart(), cp + "\\test\\" + rWallName); //if WINDOWS
+                            //fg.savePartAs(tmp.getWallPart(), cp + "/test/" + rWallName); //if MAC
                             inc++;
                         }
 
                         String rCeilingName = null;
                         if (tmp.getCeilingPart().getSize() != 0) {
                             rCeilingName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getCeilingPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getCeilingPart(), cp + "\\test\\" + rCeilingName);
+                            fg.savePartAs(tmp.getCeilingPart(), cp + "\\test\\" + rCeilingName); //if WINDOWS
+                            //fg.savePartAs(tmp.getCeilingPart(), cp + "/test/" + rCeilingName); //if MAC
                             inc++;
                         }
 
                         String rFloorName = null;
                         if (tmp.getFloorPart().getSize() != 0) {
                             rFloorName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getFloorPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getFloorPart(), cp + "\\test\\" + rFloorName);
+                            fg.savePartAs(tmp.getFloorPart(), cp + "\\test\\" + rFloorName); //if WINDOWS
+                            //fg.savePartAs(tmp.getFloorPart(), cp + "/test/" + rFloorName); //if MAC
                             inc++;
                         }
 
                         String rWindowDoorName = null;
                         if (tmp.getWindowDoorPart().getSize() != 0) {
                             rWindowDoorName = rnd + "_" + inc + "_" + fg.getCleanFilename(tmp.getWindowDoorPart().getSubmittedFileName());
-                            fg.savePartAs(tmp.getWindowDoorPart(), cp + "\\test\\" + rWindowDoorName);
+                            fg.savePartAs(tmp.getWindowDoorPart(), cp + "\\test\\" + rWindowDoorName); //if WINDOWS
+                            //fg.savePartAs(tmp.getWindowDoorPart(), cp + "/test/" + rWindowDoorName); //if MAC
                             inc++;
                         }
 
