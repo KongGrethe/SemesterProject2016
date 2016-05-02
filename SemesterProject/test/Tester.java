@@ -20,26 +20,26 @@ import java.sql.SQLException;
 public class Tester {
 
     public static void main(String[] args) throws DataException {
-        DBFacade dbf = new DBFacade();
+        /* DBFacade dbf = new DBFacade();
         int[] hej = dbf.validate("Anette", "jsp");
-        System.out.println(hej[0] + " and " + hej[1]);
-//        try {
-//         //DBFacade dbf = DBFacade.getInstance();
-//         Connection con = DBConnector.getConnection();
-//         PreparedStatement pstmt = con.prepareStatement("SELECT * FROM users");
-//         ResultSet rs = pstmt.executeQuery();
-//         while (rs.next()) {
-//         int uID = rs.getInt(1);
-//         String uFName = rs.getString("uFName");
-//         String uLName = rs.getString("uLName");
-//         String upw = rs.getString("upw");
-//         String email = rs.getString("email");
-//         String userRole = rs.getString("userRole");
-//         int cuID = rs.getInt(1);
-//         System.out.println(uID + "\t" + uFName + "\t" + uLName + "\t" + upw + "\t" + email + "\t" + userRole + "\t" + cuID);
-//         }
-//         } catch (SQLException ex) {
-//             throw new DataException();
-//         }
+        System.out.println(hej[0] + " and " + hej[1]);*/
+        try {
+
+            Connection con = DBConnector.getConnection();
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM users");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int uID = rs.getInt(1);
+                String uFName = rs.getString("uFName");
+                String uLName = rs.getString("uLName");
+                String upw = rs.getString("upw");
+                String email = rs.getString("email");
+                String userRole = rs.getString("userRole");
+                int cuID = rs.getInt(1);
+                System.out.println(uID + "\t" + uFName + "\t" + uLName + "\t" + upw + "\t" + email + "\t" + userRole + "\t" + cuID);
+            }
+        } catch (SQLException ex) {
+            throw new DataException();
+        }
     }
 }
